@@ -24,6 +24,7 @@
 | PUT    | `/knowledge/tags`                          | 批量更新知识标签                           |
 | GET    | `/knowledge/search`                        | 跨知识库搜索/过滤知识                      |
 | POST   | `/knowledge/batch-delete`                  | 同一知识库内批量删除知识（异步任务）       |
+| POST   | `/knowledge/batch-cancel-parse`            | 同一知识库内批量停止进行中的解析（同步）   |
 | POST   | `/knowledge/move`                          | 迁移知识到另一知识库（异步任务）           |
 | GET    | `/knowledge/move/progress/:task_id`        | 查询知识迁移任务进度                       |
 
@@ -820,6 +821,52 @@ curl --location 'http://localhost:8080/api/v1/knowledge/batch-delete' \
     }
 }
 ```
+
+任一 ID 不属于 `kb_id` 或不存在时，返回 400 并整批拒绝。
+
+## POST `/knowledge/batch-cancel-parse` - 同一知识库内批量停止解析
+
+按 ID 列表在单个知识库内批量停止**进行中**的解析任务。与批量删除不同，这是**同步**操作：请求返回时已完成状态翻转，无异步任务。单次最多 200 个 ID；服务侧会校验所有 ID 属于同一 `kb_id`。
+
+只有处于 `pending` / `processing` / `finalizing` 的条目会被停止；已处于终态（`completed` / `failed` / 已 `cancelled`）的条目会被自动归入 `skipped` 而**不报错**，因此可以放心地把「进行中」与「已完成」项一并提交。被停止的条目状态变为 `cancelled`，可通过 `reparse` 重新触发。
+
+**请求体**:
+
+| 字段    | 类型     | 必填 | 说明                              |
+| ------- | -------- | ---- | --------------------------------- |
+| `kb_id` | string   | 是   | 目标知识库 ID                     |
+| `ids`   | string[] | 是   | 待停止解析的知识 ID 列表（≤ 200） |
+
+**请求**:
+
+```curl
+curl --location 'http://localhost:8080/api/v1/knowledge/batch-cancel-parse' \
+--header 'X-API-Key: sk-xxxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+    "kb_id": "kb-00000001",
+    "ids": [
+        "4c4e7c1a-09cf-485b-a7b5-24b8cdc5acf5",
+        "9c8af585-ae15-44ce-8f73-45ad18394651"
+    ]
+}'
+```
+
+**响应**:
+
+```json
+{
+    "success": true,
+    "message": "Batch cancel parse submitted",
+    "data": {
+        "cancelled_count": 1,
+        "skipped_count": 1
+    }
+}
+```
+
+- `cancelled_count`：实际被停止的进行中条目数。
+- `skipped_count`：因已处于终态而跳过的条目数。
 
 任一 ID 不属于 `kb_id` 或不存在时，返回 400 并整批拒绝。
 

@@ -23,6 +23,7 @@
 | POST   | `/knowledge-bases/copy`                   | 拷贝知识库（异步任务）   |
 | GET    | `/knowledge-bases/copy/progress/:task_id` | 获取拷贝进度             |
 | POST   | `/knowledge-bases/:id/duplicate`          | 创建知识库副本（仅设置） |
+| GET    | `/knowledge-bases/:id/build-progress`     | 获取知识库构建总进度     |
 | GET    | `/knowledge-bases/:id/move-targets`       | 获取可迁移目标知识库列表 |
 
 ## POST `/knowledge-bases` - 创建知识库
@@ -688,3 +689,52 @@ curl --location 'http://localhost:8080/api/v1/knowledge-bases/kb-00000001/move-t
     "success": true
 }
 ```
+
+## GET `/knowledge-bases/:id/build-progress` - 获取知识库构建总进度
+
+返回整个知识库按解析状态聚合的**构建总进度**，用于展示整库的构建情况。计数口径为**整库**，直接来自数据库，**不受列表分页或前端筛选影响**。
+
+仅文档类知识库有意义；FAQ 库不使用该端点。任何对该 KB 有读权限的成员（`viewer` 及以上）均可访问。
+
+**路径参数**:
+
+| 字段 | 类型   | 说明        |
+| ---- | ------ | ----------- |
+| id   | string | 知识库 ID   |
+
+**请求**:
+
+```curl
+curl --location 'http://localhost:8080/api/v1/knowledge-bases/kb-00000001/build-progress' \
+--header 'X-API-Key: sk-xxxxx' \
+--header 'Content-Type: application/json'
+```
+
+**响应**:
+
+```json
+{
+    "success": true,
+    "data": {
+        "total": 10,
+        "completed": 6,
+        "processing": 2,
+        "pending": 1,
+        "failed": 1,
+        "cancelled": 0
+    }
+}
+```
+
+**字段说明**:
+
+| 字段         | 说明                                                          |
+| ------------ | ------------------------------------------------------------- |
+| `total`      | 知识库下的知识总数                                            |
+| `completed`  | 已完成解析的条目数                                            |
+| `processing` | 进行中的条目数（合并 `processing` 与 `finalizing` 两个阶段）  |
+| `pending`    | 等待解析的条目数                                              |
+| `failed`     | 解析失败的条目数                                              |
+| `cancelled`  | 已取消的条目数                                                |
+
+> 前端进度条通常以 `completed / total` 计算完成百分比；`total = 0`（空库）时不展示进度条。
