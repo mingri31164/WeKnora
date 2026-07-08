@@ -403,6 +403,7 @@ const selectedIds = ref<Set<string>>(new Set());
 let lastSelectedIndex = -1;
 const batchDeleting = ref(false);
 const batchReparsing = ref(false);
+const batchCancelling = ref(false);
 // IDs submitted for async batch reparse; hold optimistic pending until the worker updates DB.
 const pendingReparseAck = ref<Set<string>>(new Set());
 
@@ -473,6 +474,42 @@ const confirmBatchReparse = async () => {
     MessagePlugin.error(e?.message || t('knowledgeBase.batchReparseFailed'));
   } finally {
     batchReparsing.value = false;
+  }
+};
+
+const confirmBatchCancelParse = async () => {
+  if (batchCancelling.value || batchReparsing.value || batchDeleting.value || selectedIds.value.size === 0) return;
+  const allIds = Array.from(selectedIds.value);
+  // Only in-flight items can be cancelled; filter client-side so we don't send no-ops.
+  const ids = allIds.filter((id) => {
+    const item = cardList.value.find((c) => c.id === id);
+    return item && isParseInFlight(item.parse_status);
+  });
+  if (ids.length === 0) {
+    MessagePlugin.info(t('knowledgeBase.batchCancelParseNone'));
+    return;
+  }
+  batchCancelling.value = true;
+  try {
+    const res: any = await batchCancelKnowledgeParse(kbId.value, ids);
+    if (res?.success) {
+      const cancelled = res?.data?.cancelled_count ?? ids.length;
+      const skipped = res?.data?.skipped_count ?? 0;
+      if (skipped > 0) {
+        MessagePlugin.success(t('knowledgeBase.batchCancelParseSkipped', { cancelled, skipped }));
+      } else {
+        MessagePlugin.success(t('knowledgeBase.batchCancelParseSuccess', { count: cancelled }));
+      }
+      clearSelection();
+      batchMode.value = false;
+      await loadKnowledgeFiles(kbId.value);
+    } else {
+      MessagePlugin.error(res?.message || t('knowledgeBase.batchCancelParseFailed'));
+    }
+  } catch (e: any) {
+    MessagePlugin.error(e?.message || t('knowledgeBase.batchCancelParseFailed'));
+  } finally {
+    batchCancelling.value = false;
   }
 };
 
@@ -2282,8 +2319,10 @@ async function createNewSession(value: string): Promise<void> {
               </div>
               <div class="doc-batch-bar-anchor" v-show="batchMode || selectedIds.size > 0">
                 <DocumentBatchBar :count="selectedIds.size" :delete-loading="batchDeleting"
-                  :reparse-loading="batchReparsing" :visible="batchMode || selectedIds.size > 0"
-                  @cancel="handleBatchCancel" @delete="confirmBatchDelete" @reparse="confirmBatchReparse" />
+                  :reparse-loading="batchReparsing" :cancel-loading="batchCancelling"
+                  :visible="batchMode || selectedIds.size > 0"
+                  @cancel="handleBatchCancel" @delete="confirmBatchDelete" @reparse="confirmBatchReparse"
+                  @cancel-parse="confirmBatchCancelParse" />
               </div>
             </div>
           </div>
