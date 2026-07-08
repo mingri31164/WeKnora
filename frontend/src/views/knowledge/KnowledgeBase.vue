@@ -678,6 +678,29 @@ const getTagName = (tagId?: string | number) => {
   return tagMap.value[key]?.name || '';
 };
 
+// KB-wide build progress (whole-KB parse status aggregate). Independent of
+// list pagination/filters — counts come straight from the backend.
+const buildProgress = ref<{
+  total: number; completed: number; processing: number;
+  pending: number; failed: number; cancelled: number;
+} | null>(null);
+
+const buildProgressPercent = computed(() => {
+  const p = buildProgress.value;
+  if (!p || p.total <= 0) return 0;
+  return Math.round((p.completed / p.total) * 100);
+});
+
+const refreshBuildProgress = async () => {
+  if (!kbId.value || isFAQ.value) return;
+  try {
+    const res: any = await getKnowledgeBuildProgress(kbId.value);
+    if (res?.success) buildProgress.value = res.data;
+  } catch {
+    // Progress is best-effort UI; a fetch failure must not break the list.
+  }
+};
+
 const loadKnowledgeFiles = (kbIdValue: string): Promise<void> => {
   if (!kbIdValue) return Promise.resolve();
   if (!isFAQ.value) {
@@ -693,6 +716,7 @@ const loadKnowledgeFiles = (kbIdValue: string): Promise<void> => {
   ).finally(() => {
     if (isCurrentKb(kbIdValue) && !isFAQ.value) {
       docListLoading.value = false;
+      void refreshBuildProgress();
     }
   });
 };
@@ -1171,6 +1195,8 @@ const updateStatus = (analyzeList: KnowledgeCard[]) => {
       if (shouldRefreshWikiStatus) {
         void fetchWikiStatusOnce();
       }
+      // Keep the KB-wide progress bar in step with in-flight parses.
+      void refreshBuildProgress();
       // If there are no changes, the watch won't trigger, so we must manually poll again
       // Even if there are changes, we can manually poll again just to be safe.
       // The watch will clear this timeout if it triggers.
@@ -2243,6 +2269,14 @@ async function createNewSession(value: string): Promise<void> {
                   </div>
                 </div>
               </div>
+              <div v-if="!isFAQ && buildProgress && buildProgress.total > 0" class="kb-build-progress">
+                <t-progress :percentage="buildProgressPercent" :label="false" :stroke-width="6" theme="line" />
+                <span class="kb-build-progress__text">
+                  {{ buildProgressPercent >= 100
+                    ? t('knowledgeBase.buildProgressAllDone', { total: buildProgress.total })
+                    : t('knowledgeBase.buildProgressLabel', { completed: buildProgress.completed, total: buildProgress.total }) }}
+                </span>
+              </div>
               <div class="doc-scroll-container"
                 :class="{ 'is-empty': !cardList.length && !docListLoading, 'is-marquee-active': docMarqueeVisible }"
                 ref="knowledgeScroll" @scroll="handleScroll" @mousedown="onDocMarqueeMouseDown">
@@ -2952,6 +2986,23 @@ async function createNewSession(value: string): Promise<void> {
         box-shadow: none !important;
       }
     }
+  }
+}
+
+.kb-build-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 4px;
+
+  :deep(.t-progress) {
+    flex: 1;
+  }
+
+  &__text {
+    font-size: 13px;
+    color: var(--td-text-color-secondary);
+    white-space: nowrap;
   }
 }
 
