@@ -2434,6 +2434,111 @@ func (h *KnowledgeHandler) BatchReparseKnowledge(c *gin.Context) {
 	})
 }
 
+type batchCancelKnowledgeParseRequest struct {
+	KBID string   `json:"kb_id" binding:"required"`
+	IDs  []string `json:"ids" binding:"required"`
+}
+
+// BatchCancelKnowledgeParse godoc
+// @Summary      批量停止解析
+// @Description  按 ID 列表停止单个知识库下多个进行中的解析任务；已结束（完成/失败）的条目会被跳过而不报错
+// @Tags         知识管理
+// @Accept       json
+// @Produce      json
+// @Param        request  body      batchCancelKnowledgeParseRequest  true  "批量停止解析请求"
+// @Success      200      {object}  map[string]interface{}            "已提交"
+// @Failure      400      {object}  errors.AppError                   "请求参数错误"
+// @Failure      403      {object}  errors.AppError                   "权限不足"
+// @Security     Bearer
+// @Security     ApiKeyAuth
+// @Router       /knowledge/batch-cancel-parse [post]
+func (h *KnowledgeHandler) BatchCancelKnowledgeParse(c *gin.Context) {
+	ctx := c.Request.Context()
+	var req batchCancelKnowledgeParseRequest
+
+	if err := c.ShouldBindJSON(&req); err != nil {
+		logger.Errorf(ctx, "failed to parse batch cancel parse request: %v", err)
+		c.Error(errors.NewBadRequestError("invalid batch cancel parse request parameters"))
+		return
+	}
+
+	seen := make(map[string]struct{}, len(req.IDs))
+	ids := make([]string, 0, len(req.IDs))
+	for _, raw := range req.IDs {
+		id := strings.TrimSpace(raw)
+		if id == "" {
+			continue
+		}
+		if _, ok := seen[id]; ok {
+			continue
+		}
+		seen[id] = struct{}{}
+		ids = append(ids, id)
+	}
+
+	if len(ids) == 0 {
+		c.Error(errors.NewBadRequestError("no knowledge IDs provided for batch cancel"))
+		return
+	}
+	const maxBatch = 200
+	if len(ids) > maxBatch {
+		c.Error(errors.NewBadRequestError(fmt.Sprintf("too many ids (max %d per batch)", maxBatch)))
+		return
+	}
+
+	_, kbID, effectiveTenantID, permission, err := h.validateKnowledgeBaseAccessWithKBID(c, req.KBID)
+	if err != nil {
+		c.Error(err)
+		return
+	}
+	if permission != types.OrgRoleAdmin && permission != types.OrgRoleEditor {
+		c.Error(errors.NewForbiddenError("no permission to cancel parse in this kb"))
+		return
+	}
+	ctx = context.WithValue(ctx, types.TenantIDContextKey, effectiveTenantID)
+
+	// Single batch fetch to validate that every id exists and belongs to the
+	// requested KB. The service enforces tenant scope but not KB scope, so the
+	// handler must guard against cross-KB cancellation.
+	knowledgeList, err := h.kgService.GetKnowledgeBatch(ctx, effectiveTenantID, ids)
+	if err != nil {
+		logger.Errorf(ctx, "failed to get knowledge batch for cancel, kb_id: %s, size: %d, err: %v", kbID, len(ids), err)
+		c.Error(errors.NewInternalServerError("failed to get knowledge batch"))
+		return
+	}
+	if len(knowledgeList) != len(ids) {
+		c.Error(errors.NewBadRequestError("some knowledge entries were not found"))
+		return
+	}
+	for _, k := range knowledgeList {
+		if k.KnowledgeBaseID != kbID {
+			c.Error(errors.NewBadRequestError(
+				fmt.Sprintf("Knowledge %s does not belong to knowledge base %s",
+					secutils.SanitizeForLog(k.ID), secutils.SanitizeForLog(kbID))))
+			return
+		}
+	}
+
+	cancelled, skipped, err := h.kgService.BatchCancelKnowledgeParse(ctx, ids)
+	if err != nil {
+		logger.Errorf(ctx, "Failed to batch cancel knowledge parse: %v", err)
+		c.Error(errors.NewInternalServerError("Failed to batch cancel parse"))
+		return
+	}
+
+	logger.Infof(ctx, "Batch cancel parse: kb_id=%s cancelled=%d skipped=%d",
+		secutils.SanitizeForLog(kbID), len(cancelled), len(skipped))
+
+	c.JSON(http.StatusOK, gin.H{
+		"success": true,
+		"message": "Batch cancel parse submitted",
+		"data": gin.H{
+			"cancelled_count": len(cancelled),
+			"skipped_count":   len(skipped),
+		},
+	})
+}
+
 func requireTenantAPIKeyKnowledgeBase(ctx context.Context, kbID string) error {
 	return requireTenantAPIKeyKnowledgeBases(ctx, kbID)
 }

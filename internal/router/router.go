@@ -346,6 +346,7 @@ func RegisterKnowledgeRoutes(r *gin.RouterGroup, handler *handler.KnowledgeHandl
 		// KBs with no single owning KB to bound a key's scope against.
 		kgrp.PUT("/tags", g.Contributor(), handler.UpdateKnowledgeTagBatch)
 		kgrp.POST("/batch-reparse", g.Contributor(), handler.BatchReparseKnowledge)
+		kgrp.POST("/batch-cancel-parse", g.Contributor(), handler.BatchCancelKnowledgeParse)
 		kgrp.POST("/batch-delete", g.Contributor(), handler.BatchDeleteKnowledge)
 		kgrp.POST("/move", g.Contributor(), handler.MoveKnowledge)
 	}
