@@ -542,6 +542,34 @@ func (h *KnowledgeBaseHandler) GetKnowledgeBase(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"success": true, "data": buildKBResponse(kb, storeView, extras)})
 }
 
+// GetKnowledgeBuildProgress godoc
+// @Summary      获取知识库构建总进度
+// @Description  返回整个知识库按解析状态聚合的构建进度（total/completed/processing/pending/failed/cancelled）
+// @Tags         知识库
+// @Accept       json
+// @Produce      json
+// @Param        id   path      string  true  "知识库ID"
+// @Success      200  {object}  map[string]interface{}  "进度信息"
+// @Failure      403  {object}  errors.AppError         "权限不足"
+// @Failure      404  {object}  errors.AppError         "知识库不存在"
+// @Security     Bearer
+// @Security     ApiKeyAuth
+// @Router       /knowledge-bases/{id}/build-progress [get]
+func (h *KnowledgeBaseHandler) GetKnowledgeBuildProgress(c *gin.Context) {
+	kb, _, tenantID, _, err := h.validateAndGetKnowledgeBase(c)
+	if err != nil {
+		c.Error(err)
+		return
+	}
+	progress, err := h.service.GetKnowledgeBuildProgress(c.Request.Context(), kb.ID, tenantID)
+	if err != nil {
+		logger.ErrorWithFields(c.Request.Context(), err, map[string]interface{}{"kb_id": kb.ID})
+		c.Error(apperrors.NewInternalServerError("failed to get build progress"))
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"success": true, "data": progress})
+}
+
 // ListKnowledgeBases godoc
 // @Summary      获取知识库列表
 // @Description  获取当前租户的所有知识库；或当传入 agent_id（共享智能体）时，校验权限后返回该智能体配置的知识库范围（用于 @ 提及）
