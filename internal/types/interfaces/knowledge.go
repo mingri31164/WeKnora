@@ -114,6 +114,12 @@ type KnowledgeService interface {
 	// is already cancelled. Returns an error when the knowledge is in a
 	// terminal state (completed / failed) or being deleted.
 	CancelKnowledgeParse(ctx context.Context, knowledgeID string) (*types.Knowledge, error)
+	// BatchCancelKnowledgeParse cancels in-progress parses for the given IDs by
+	// reusing the single-item CancelKnowledgeParse logic. Non-cancellable
+	// entries (completed/failed/deleting/already-cancelled/not-found) are
+	// returned in skipped without failing the batch; err is returned only on an
+	// unrecoverable backend failure.
+	BatchCancelKnowledgeParse(ctx context.Context, ids []string) (cancelled []string, skipped []string, err error)
 	// CloneKnowledgeBase clones knowledge to another knowledge base.
 	CloneKnowledgeBase(ctx context.Context, srcID, dstID string) error
 	// UpdateImageInfo updates image information for a knowledge chunk.

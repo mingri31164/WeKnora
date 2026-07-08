@@ -2335,6 +2335,35 @@ func (s *knowledgeService) CancelKnowledgeParse(
 	return existing, nil
 }
 
+// BatchCancelKnowledgeParse cancels in-progress parses for multiple knowledge
+// IDs by reusing the single-item CancelKnowledgeParse logic. Entries that are
+// not in a cancellable state (already finished, deleting, or not found) are
+// collected into skipped rather than aborting the whole batch — see
+// CancelKnowledgeParse for the per-item state semantics. Only a truly
+// unexpected backend failure (e.g. DB error) stops the batch and is returned.
+func (s *knowledgeService) BatchCancelKnowledgeParse(
+	ctx context.Context, ids []string,
+) (cancelled []string, skipped []string, err error) {
+	for _, id := range ids {
+		_, cerr := s.CancelKnowledgeParse(ctx, id)
+		if cerr == nil {
+			cancelled = append(cancelled, id)
+			continue
+		}
+		// A BadRequest (already finished / deleting) or NotFound means the item
+		// simply isn't cancellable → skip it. Anything else is an unexpected
+		// backend failure and should surface.
+		if appErr, ok := werrors.IsAppError(cerr); ok &&
+			(appErr.Code == werrors.ErrBadRequest || appErr.Code == werrors.ErrNotFound) {
+			skipped = append(skipped, id)
+			continue
+		}
+		logger.Errorf(ctx, "BatchCancelKnowledgeParse: unexpected error for %s: %v", id, cerr)
+		return cancelled, skipped, cerr
+	}
+	return cancelled, skipped, nil
+}
+
 // dequeueKnowledgeTasks asks the task inspector to remove any queued
 // tasks for this knowledge and signal active workers to stop. Safe to
 // call when the inspector is a no-op (Lite mode).
