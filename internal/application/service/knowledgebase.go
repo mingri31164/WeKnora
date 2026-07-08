@@ -404,6 +404,43 @@ func (s *knowledgeBaseService) FillKnowledgeBaseCounts(ctx context.Context, kb *
 	return nil
 }
 
+// GetKnowledgeBuildProgress aggregates per-knowledge parse statuses for the KB
+// into a single progress snapshot. Counts come from the DB, so the result is
+// independent of list pagination or client-side filters. The processing bucket
+// merges "processing" and "finalizing" since both are in-flight from the user's
+// point of view.
+func (s *knowledgeBaseService) GetKnowledgeBuildProgress(
+	ctx context.Context, kbID string, tenantID uint64,
+) (*types.KnowledgeBuildProgress, error) {
+	p := &types.KnowledgeBuildProgress{}
+
+	total, err := s.kgRepo.CountKnowledgeByKnowledgeBaseID(ctx, tenantID, kbID)
+	if err != nil {
+		return nil, err
+	}
+	p.Total = total
+
+	count := func(statuses ...string) (int64, error) {
+		return s.kgRepo.CountKnowledgeByStatus(ctx, tenantID, kbID, statuses)
+	}
+	if p.Completed, err = count(types.ParseStatusCompleted); err != nil {
+		return nil, err
+	}
+	if p.Processing, err = count(types.ParseStatusProcessing, types.ParseStatusFinalizing); err != nil {
+		return nil, err
+	}
+	if p.Pending, err = count(types.ParseStatusPending); err != nil {
+		return nil, err
+	}
+	if p.Failed, err = count(types.ParseStatusFailed); err != nil {
+		return nil, err
+	}
+	if p.Cancelled, err = count(types.ParseStatusCancelled); err != nil {
+		return nil, err
+	}
+	return p, nil
+}
+
 // UpdateKnowledgeBase updates a knowledge base's mutable properties.
 //
 // IMPORTANT — vector_store_id immutability contract:

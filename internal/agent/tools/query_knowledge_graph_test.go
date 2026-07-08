@@ -37,6 +37,12 @@ func (s *stubKnowledgeBaseService) FillKnowledgeBaseCounts(context.Context, *typ
 	return nil
 }
 
+func (s *stubKnowledgeBaseService) GetKnowledgeBuildProgress(
+	context.Context, string, uint64,
+) (*types.KnowledgeBuildProgress, error) {
+	return nil, nil
+}
+
 func (s *stubKnowledgeBaseService) ListKnowledgeBases(context.Context) ([]*types.KnowledgeBase, error) {
 	return nil, nil
 }

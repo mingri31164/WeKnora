@@ -49,6 +49,8 @@ type KnowledgeBaseService interface {
 
 	// FillKnowledgeBaseCounts fills KnowledgeCount, ChunkCount, IsProcessing, ProcessingCount for the given KB (uses kb.TenantID).
 	FillKnowledgeBaseCounts(ctx context.Context, kb *types.KnowledgeBase) error
+	// GetKnowledgeBuildProgress returns the KB-wide aggregate of parse statuses.
+	GetKnowledgeBuildProgress(ctx context.Context, kbID string, tenantID uint64) (*types.KnowledgeBuildProgress, error)
 
 	// ListKnowledgeBases lists all knowledge bases under the current tenant
 	// Parameters:

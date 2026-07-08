@@ -306,3 +306,15 @@ type KBCloneProgress struct {
 	CreatedAt int64             `json:"created_at"` // 任务创建时间
 	UpdatedAt int64             `json:"updated_at"` // 最后更新时间
 }
+
+// KnowledgeBuildProgress is the KB-wide aggregate of per-knowledge parse
+// statuses, used to render a whole-KB build progress bar. Counts come straight
+// from the DB and are independent of list pagination or client-side filters.
+type KnowledgeBuildProgress struct {
+	Total      int64 `json:"total"`
+	Completed  int64 `json:"completed"`
+	Processing int64 `json:"processing"` // processing + finalizing
+	Pending    int64 `json:"pending"`
+	Failed     int64 `json:"failed"`
+	Cancelled  int64 `json:"cancelled"`
+}

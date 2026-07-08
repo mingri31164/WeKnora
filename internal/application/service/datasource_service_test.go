@@ -76,6 +76,11 @@ func (s *processSyncKBService) GetKnowledgeBasesByIDsOnly(context.Context, []str
 func (s *processSyncKBService) FillKnowledgeBaseCounts(context.Context, *types.KnowledgeBase) error {
 	return nil
 }
+func (s *processSyncKBService) GetKnowledgeBuildProgress(
+	context.Context, string, uint64,
+) (*types.KnowledgeBuildProgress, error) {
+	return nil, nil
+}
 func (s *processSyncKBService) ListKnowledgeBases(context.Context) ([]*types.KnowledgeBase, error) {
 	return nil, nil
 }
