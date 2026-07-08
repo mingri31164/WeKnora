@@ -495,3 +495,13 @@ export function batchReparseKnowledge(kbId: string, ids: string[], processConfig
     process_config: processConfig,
   });
 }
+
+// 批量停止解析（同一知识库内）。后端只停止进行中的条目，已结束的条目归入 skipped。
+export function batchCancelKnowledgeParse(kbId: string, ids: string[]) {
+  return post(`/api/v1/knowledge/batch-cancel-parse`, { kb_id: kbId, ids });
+}
+
+// 知识库构建总进度（整库口径，不受分页/筛选影响）。
+export function getKnowledgeBuildProgress(kbId: string) {
+  return get(`/api/v1/knowledge-bases/${kbId}/build-progress`);
+}
