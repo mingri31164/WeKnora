@@ -65,6 +65,7 @@ type knowledgeService struct {
 	kbShareService  interfaces.KBShareService
 	imageResolver   *docparser.ImageResolver
 	taskPendingRepo interfaces.TaskPendingOpsRepository
+	cacheRepo       interfaces.ProcessingCacheRepository
 
 	// In-memory fallbacks for Lite mode (no Redis)
 	memFAQProgress      sync.Map // taskID -> *types.FAQImportProgress
@@ -113,6 +114,7 @@ func NewKnowledgeService(
 	wikiRepo interfaces.WikiPageRepository,
 	wikiService interfaces.WikiPageService,
 	taskPendingRepo interfaces.TaskPendingOpsRepository,
+	cacheRepo interfaces.ProcessingCacheRepository,
 	spanTracker SpanTracker,
 	audit interfaces.AuditLogService,
 ) (interfaces.KnowledgeService, error) {
@@ -142,6 +144,7 @@ func NewKnowledgeService(
 		wikiRepo:        wikiRepo,
 		wikiService:     wikiService,
 		taskPendingRepo: taskPendingRepo,
+		cacheRepo:       cacheRepo,
 		spanTracker:     spanTracker,
 		audit:           audit,
 	}, nil

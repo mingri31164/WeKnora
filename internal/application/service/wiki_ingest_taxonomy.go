@@ -182,6 +182,7 @@ func (s *wikiIngestService) selectRelevantFolders(
 		logger.Warnf(ctx, "wiki ingest: taxonomy plan embed model unavailable, feeding all folders: %v", err)
 		return capFolders(pool, wikiTaxonomyPromptMaxPaths)
 	}
+	embedder = newCachedEmbedder(embedder, s.cacheRepo, kb.TenantID)
 
 	folderTexts := make([]string, len(deeper))
 	for i, p := range deeper {

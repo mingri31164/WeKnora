@@ -78,11 +78,15 @@ func (s *wikiIngestService) extractCandidateSlugs(
 ) ([]extractedItem, []extractedItem, map[string]extractedItem, error) {
 	var prevSlugsText string
 	if len(oldPageSlugs) > 0 {
-		var sb strings.Builder
+		slugs := make([]string, 0, len(oldPageSlugs))
 		for slug := range oldPageSlugs {
-			if !strings.HasPrefix(slug, "entity/") && !strings.HasPrefix(slug, "concept/") {
-				continue
+			if strings.HasPrefix(slug, "entity/") || strings.HasPrefix(slug, "concept/") {
+				slugs = append(slugs, slug)
 			}
+		}
+		sort.Strings(slugs)
+		var sb strings.Builder
+		for _, slug := range slugs {
 			fmt.Fprintf(&sb, "- %s\n", slug)
 		}
 		prevSlugsText = sb.String()

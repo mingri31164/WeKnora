@@ -173,6 +173,7 @@ func (s *knowledgeService) CreateFAQEntry(ctx context.Context,
 	if err != nil {
 		return nil, fmt.Errorf("failed to get embedding model: %w", err)
 	}
+	embeddingModel = newCachedEmbedder(embeddingModel, s.cacheRepo, tenantID)
 
 	// 创建chunk
 	isEnabled := true
@@ -411,6 +412,7 @@ func (s *knowledgeService) UpdateFAQEntry(ctx context.Context,
 	if err != nil {
 		return nil, err
 	}
+	embeddingModel = newCachedEmbedder(embeddingModel, s.cacheRepo, tenantID)
 
 	// 增量索引优化：只对变化的内容进行索引操作
 	if questionIndexMode == types.FAQQuestionIndexModeSeparate && len(oldSimilarQuestions) > 0 {
@@ -583,6 +585,7 @@ func (s *knowledgeService) AddSimilarQuestions(ctx context.Context,
 	if err != nil {
 		return nil, err
 	}
+	embeddingModel = newCachedEmbedder(embeddingModel, s.cacheRepo, tenantID)
 
 	questionIndexMode := types.FAQQuestionIndexModeCombined
 	if kb.FAQConfig != nil && kb.FAQConfig.QuestionIndexMode != "" {

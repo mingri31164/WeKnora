@@ -2,6 +2,8 @@ package service
 
 import (
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -283,6 +285,7 @@ func (s *knowledgeService) processChunks(ctx context.Context,
 			logger.GetLogger(ctx).WithField("error", err).Errorf("processChunks get embedding model failed")
 			return
 		}
+		embeddingModel = newCachedEmbedder(embeddingModel, s.cacheRepo, knowledge.TenantID)
 	} else {
 		logger.Infof(ctx, "Vector/keyword indexing disabled for KB %s, skipping embedding model", kb.ID)
 	}
@@ -389,7 +392,7 @@ func (s *knowledgeService) processChunks(ctx context.Context,
 		parentDBChunks = make([]*types.Chunk, len(options.ParentChunks))
 		for i, pc := range options.ParentChunks {
 			parentDBChunks[i] = &types.Chunk{
-				ID:              uuid.New().String(),
+				ID:              stableChunkID(knowledge.ID, types.ChunkTypeParentText, pc.Seq, pc.Content),
 				TenantID:        knowledge.TenantID,
 				KnowledgeID:     knowledge.ID,
 				KnowledgeBaseID: knowledge.KnowledgeBaseID,
@@ -428,7 +431,7 @@ func (s *knowledgeService) processChunks(ctx context.Context,
 
 		// 创建主文本Chunk
 		textChunk := &types.Chunk{
-			ID:              uuid.New().String(),
+			ID:              stableChunkID(knowledge.ID, types.ChunkTypeText, int(chunkData.Seq), chunkData.Content),
 			TenantID:        knowledge.TenantID,
 			KnowledgeID:     knowledge.ID,
 			KnowledgeBaseID: knowledge.KnowledgeBaseID,
@@ -1047,6 +1050,7 @@ func (s *knowledgeService) ProcessSummaryGeneration(ctx context.Context, t *asyn
 		summaryErr = err
 		return fmt.Errorf("failed to get chat model: %w", err)
 	}
+	chatModel = newCachedChat(chatModel, s.cacheRepo, payload.TenantID, cacheTypeSummary)
 
 	// Generate summary
 	summary, err := s.getSummary(ctx, chatModel, knowledge, textChunks)
@@ -1122,7 +1126,7 @@ func (s *knowledgeService) ProcessSummaryGeneration(ctx context.Context, t *asyn
 		// and surfacing them in retrieved RAG context can re-introduce the
 		// hallucination vector this branch is meant to close.
 		summaryChunk := &types.Chunk{
-			ID:              uuid.New().String(),
+			ID:              stableChunkID(knowledge.ID, types.ChunkTypeSummary, maxChunkIndex+1, summary),
 			TenantID:        knowledge.TenantID,
 			KnowledgeID:     knowledge.ID,
 			KnowledgeBaseID: knowledge.KnowledgeBaseID,
@@ -1167,6 +1171,7 @@ func (s *knowledgeService) ProcessSummaryGeneration(ctx context.Context, t *asyn
 			summaryErr = err
 			return fmt.Errorf("failed to get embedding model: %w", err)
 		}
+		embeddingModel = newCachedEmbedder(embeddingModel, s.cacheRepo, payload.TenantID)
 
 		indexInfo := []*types.IndexInfo{{
 			Content:         summaryChunk.Content,
@@ -1428,6 +1433,7 @@ func (s *knowledgeService) processQuestionGenerationForKnowledge(ctx context.Con
 		logger.Errorf(ctx, "Failed to get chat model: %v", err)
 		return fmt.Errorf("failed to get chat model: %w", err)
 	}
+	chatModel = newCachedChat(chatModel, s.cacheRepo, payload.TenantID, cacheTypeQuestion)
 	resolvedModelID = kb.SummaryModelID
 
 	// Initialize embedding model and retrieval engine
@@ -1437,6 +1443,7 @@ func (s *knowledgeService) processQuestionGenerationForKnowledge(ctx context.Con
 		logger.Errorf(ctx, "Failed to get embedding model: %v", err)
 		return fmt.Errorf("failed to get embedding model: %w", err)
 	}
+	embeddingModel = newCachedEmbedder(embeddingModel, s.cacheRepo, payload.TenantID)
 
 	tenantInfo, err := s.tenantRepo.GetTenantByID(ctx, payload.TenantID)
 	if err != nil {
@@ -1730,6 +1737,7 @@ func (s *knowledgeService) processQuestionGenerationForChunks(ctx context.Contex
 		logger.Errorf(ctx, "Failed to get chat model: %v", err)
 		return fmt.Errorf("failed to get chat model: %w", err)
 	}
+	chatModel = newCachedChat(chatModel, s.cacheRepo, payload.TenantID, cacheTypeQuestion)
 	resolvedModelID = kb.SummaryModelID
 
 	embeddingModel, err := s.modelService.GetEmbeddingModel(ctx, kb.EmbeddingModelID)
@@ -1738,6 +1746,7 @@ func (s *knowledgeService) processQuestionGenerationForChunks(ctx context.Contex
 		logger.Errorf(ctx, "Failed to get embedding model: %v", err)
 		return fmt.Errorf("failed to get embedding model: %w", err)
 	}
+	embeddingModel = newCachedEmbedder(embeddingModel, s.cacheRepo, payload.TenantID)
 
 	tenantInfo, err := s.tenantRepo.GetTenantByID(ctx, payload.TenantID)
 	if err != nil {
@@ -2388,6 +2397,7 @@ func (s *knowledgeService) updateChunkVector(ctx context.Context, kbID string, c
 	if err != nil {
 		return err
 	}
+	embeddingModel = newCachedEmbedder(embeddingModel, s.cacheRepo, types.MustTenantIDFromContext(ctx))
 
 	// Initialize composite retrieve engine from tenant configuration
 	indexInfo := make([]*types.IndexInfo, 0, len(chunks))
@@ -3198,7 +3208,40 @@ func (s *knowledgeService) convert(
 		req.FileType = fileType
 	}
 
-	result, err := s.callDocReaderWithTimeout(ctx, reader, req)
+	var (
+		result   *types.ReadResult
+		parseKey string
+		cacheHit bool
+		err      error
+	)
+	if !isURL && len(req.FileContent) > 0 {
+		fileDigest := sha256.Sum256(req.FileContent)
+		parseKey, _ = contentCacheKey(struct {
+			Version         string
+			FileHash        string
+			FileName        string
+			FileType        string
+			ParserEngine    string
+			ParserOverrides map[string]string
+		}{
+			Version:         "v1",
+			FileHash:        hex.EncodeToString(fileDigest[:]),
+			FileName:        req.FileName,
+			FileType:        req.FileType,
+			ParserEngine:    req.ParserEngine,
+			ParserOverrides: req.ParserEngineOverrides,
+		})
+		var cached types.ReadResult
+		if cacheGetJSON(ctx, s.cacheRepo, knowledge.TenantID, cacheTypeParse, parseKey, &cached) {
+			result = &cached
+			cacheHit = true
+			logger.Infof(ctx, "processing cache hit (type=%s key=%s)", cacheTypeParse, parseKey[:12])
+		}
+	}
+
+	if result == nil {
+		result, err = s.callDocReaderWithTimeout(ctx, reader, req)
+	}
 	if err != nil {
 		// Distinguish DocReader timeout (a knowable user-facing
 		// failure) from generic read errors so the UI can suggest
@@ -3222,10 +3265,14 @@ func (s *knowledgeService) convert(
 			werrors.ErrCodeDocReaderParseFailed, result.Error, nil)
 		return nil, nil
 	}
+	if !cacheHit && parseKey != "" {
+		cachePutJSON(ctx, s.cacheRepo, knowledge.TenantID, cacheTypeParse, parseKey, result)
+	}
 	docOutput := types.JSONMap{
 		"text_length":  len(result.MarkdownContent),
 		"images_found": len(result.ImageRefs),
 		"is_audio":     result.IsAudio,
+		"cache_hit":    cacheHit,
 	}
 	if pages := result.Metadata["pages"]; pages != "" {
 		docOutput["pages"] = pages

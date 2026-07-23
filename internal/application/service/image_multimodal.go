@@ -19,7 +19,6 @@ import (
 	"github.com/Tencent/WeKnora/internal/types"
 	"github.com/Tencent/WeKnora/internal/types/interfaces"
 	secutils "github.com/Tencent/WeKnora/internal/utils"
-	"github.com/google/uuid"
 	"github.com/hibiken/asynq"
 	"github.com/redis/go-redis/v9"
 )
@@ -73,6 +72,7 @@ type ImageMultimodalService struct {
 	ollamaService  *ollama.OllamaService
 	taskEnqueuer   interfaces.TaskEnqueuer
 	redisClient    *redis.Client
+	cacheRepo      interfaces.ProcessingCacheRepository
 	// fileSvc is the globally configured default FileService used as a fallback
 	// when the tenant-scoped storage config cannot produce a usable service
 	// (e.g. images were saved using the global MINIO_* env vars while the
@@ -101,6 +101,7 @@ func NewImageMultimodalService(
 	ollamaService *ollama.OllamaService,
 	taskEnqueuer interfaces.TaskEnqueuer,
 	redisClient *redis.Client,
+	cacheRepo interfaces.ProcessingCacheRepository,
 	fileSvc interfaces.FileService,
 	storageResolver interfaces.StorageBackendResolver,
 	resourceCatalog interfaces.ResourceCatalog,
@@ -117,6 +118,7 @@ func NewImageMultimodalService(
 		ollamaService:   ollamaService,
 		taskEnqueuer:    taskEnqueuer,
 		redisClient:     redisClient,
+		cacheRepo:       cacheRepo,
 		fileSvc:         fileSvc,
 		storageResolver: storageResolver,
 		resourceCatalog: resourceCatalog,
@@ -251,6 +253,7 @@ func (s *ImageMultimodalService) Handle(ctx context.Context, task *asynq.Task) e
 		return nil
 	}
 	imgOut["image_bytes"] = len(imgBytes)
+	vlmModel = newCachedVLM(vlmModel, s.cacheRepo, payload.TenantID)
 
 	imageInfo := types.ImageInfo{
 		URL:         payload.ImageURL,
@@ -302,7 +305,7 @@ func (s *ImageMultimodalService) Handle(ctx context.Context, task *asynq.Task) e
 
 	if imageInfo.OCRText != "" {
 		newChunks = append(newChunks, &types.Chunk{
-			ID:              uuid.New().String(),
+			ID:              stableChunkID(payload.KnowledgeID, types.ChunkTypeImageOCR, payload.ImageIndex, imageInfo.OCRText),
 			TenantID:        payload.TenantID,
 			KnowledgeID:     payload.KnowledgeID,
 			KnowledgeBaseID: payload.KnowledgeBaseID,
@@ -319,7 +322,7 @@ func (s *ImageMultimodalService) Handle(ctx context.Context, task *asynq.Task) e
 
 	if imageInfo.Caption != "" {
 		newChunks = append(newChunks, &types.Chunk{
-			ID:              uuid.New().String(),
+			ID:              stableChunkID(payload.KnowledgeID, types.ChunkTypeImageCaption, payload.ImageIndex, imageInfo.Caption),
 			TenantID:        payload.TenantID,
 			KnowledgeID:     payload.KnowledgeID,
 			KnowledgeBaseID: payload.KnowledgeBaseID,
@@ -458,6 +461,7 @@ func (s *ImageMultimodalService) indexChunks(ctx context.Context, payload types.
 		logger.Warnf(ctx, "[ImageMultimodal] Failed to get embedding model for indexing: %v", err)
 		return
 	}
+	embeddingModel = newCachedEmbedder(embeddingModel, s.cacheRepo, payload.TenantID)
 
 	tenantInfo, err := s.tenantRepo.GetTenantByID(ctx, payload.TenantID)
 	if err != nil {

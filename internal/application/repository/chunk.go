@@ -44,6 +44,24 @@ func (r *chunkRepository) CreateChunks(ctx context.Context, chunks []*types.Chun
 
 	db := r.db.WithContext(ctx)
 
+	// Whole-document replacement soft-deletes the previous rows before
+	// inserting content-addressed chunks with the same IDs. Purge only those
+	// matching tombstones so stable IDs can be reused without changing the
+	// soft-delete semantics of the public delete operations.
+	ids := make([]string, 0, len(chunks))
+	for _, chunk := range chunks {
+		if chunk != nil && chunk.ID != "" {
+			ids = append(ids, chunk.ID)
+		}
+	}
+	if len(ids) > 0 {
+		if err := db.Unscoped().
+			Where("id IN ? AND deleted_at IS NOT NULL", ids).
+			Delete(&types.Chunk{}).Error; err != nil {
+			return fmt.Errorf("failed to purge replaced chunk tombstones: %w", err)
+		}
+	}
+
 	// SQLite doesn't support autoIncrement on non-PK columns,
 	// so we must pre-assign SeqIDs manually (safe: single connection).
 	// PostgreSQL / MySQL use DB sequences — skip to avoid duplicate key

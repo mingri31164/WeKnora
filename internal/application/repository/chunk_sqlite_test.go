@@ -95,6 +95,30 @@ func TestCreateChunks_SQLite_SeqIDContinuesFromExisting(t *testing.T) {
 	}
 }
 
+func TestDeleteChunksByKnowledgeIDAllowsStableIDReuse(t *testing.T) {
+	db := setupChunkTestDB(t)
+	repo := NewChunkRepository(db)
+	ctx := context.Background()
+
+	chunk := makeChunk(uuid.NewString(), uuid.NewString(), types.ChunkTypeText)
+	stableID := chunk.ID
+	require.NoError(t, repo.CreateChunks(ctx, []*types.Chunk{chunk}))
+	require.NoError(t, repo.DeleteChunksByKnowledgeID(ctx, chunk.TenantID, chunk.KnowledgeID))
+
+	replacement := makeChunk(chunk.KnowledgeBaseID, chunk.KnowledgeID, types.ChunkTypeText)
+	replacement.ID = stableID
+	replacement.Content = "replacement"
+	require.NoError(t, repo.CreateChunks(ctx, []*types.Chunk{replacement}))
+
+	got, err := repo.GetChunkByID(ctx, chunk.TenantID, stableID)
+	require.NoError(t, err)
+	require.Equal(t, "replacement", got.Content)
+
+	var count int64
+	require.NoError(t, db.Unscoped().Model(&types.Chunk{}).Where("id = ?", stableID).Count(&count).Error)
+	require.EqualValues(t, 1, count)
+}
+
 func TestCreateChunks_SQLite_SeqIDUniqueAcrossKBs(t *testing.T) {
 	db := setupChunkTestDB(t)
 	repo := NewChunkRepository(db)

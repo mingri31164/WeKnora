@@ -164,6 +164,7 @@ type ChunkExtractService struct {
 	knowledgeRepo     interfaces.KnowledgeRepository
 	chunkRepo         interfaces.ChunkRepository
 	graphEngine       interfaces.RetrieveGraphRepository
+	cacheRepo         interfaces.ProcessingCacheRepository
 	// spanTracker records this graph-extract task's subspan under the
 	// parent attempt's postprocess stage so the trace viewer shows real
 	// per-chunk graph extraction time rather than the upstream's enqueue.
@@ -178,6 +179,7 @@ func NewChunkExtractService(
 	knowledgeRepo interfaces.KnowledgeRepository,
 	chunkRepo interfaces.ChunkRepository,
 	graphEngine interfaces.RetrieveGraphRepository,
+	cacheRepo interfaces.ProcessingCacheRepository,
 	spanTracker SpanTracker,
 ) interfaces.TaskHandler {
 	return &ChunkExtractService{
@@ -187,6 +189,7 @@ func NewChunkExtractService(
 		knowledgeRepo:     knowledgeRepo,
 		chunkRepo:         chunkRepo,
 		graphEngine:       graphEngine,
+		cacheRepo:         cacheRepo,
 		spanTracker:       spanTracker,
 	}
 }
@@ -316,6 +319,7 @@ func (s *ChunkExtractService) Handle(ctx context.Context, t *asynq.Task) error {
 		handleErr = err
 		return err
 	}
+	chatModel = newCachedChat(chatModel, s.cacheRepo, p.TenantID, cacheTypeGraph)
 
 	template := &types.PromptTemplateStructured{
 		Description: types.AppendCustomPromptInstructions(
@@ -406,6 +410,7 @@ type DataTableSummaryService struct {
 	ownership            retriever.TenantStoreOwnership
 	sqlDB                *sql.DB
 	storageResolver      interfaces.StorageBackendResolver
+	cacheRepo            interfaces.ProcessingCacheRepository
 }
 
 // NewDataTableSummaryService creates a new DataTableSummaryService
@@ -420,6 +425,7 @@ func NewDataTableSummaryService(
 	ownership retriever.TenantStoreOwnership,
 	sqlDB *sql.DB,
 	storageResolver interfaces.StorageBackendResolver,
+	cacheRepo interfaces.ProcessingCacheRepository,
 ) interfaces.TaskHandler {
 	return &DataTableSummaryService{
 		modelService:         modelService,
@@ -432,6 +438,7 @@ func NewDataTableSummaryService(
 		ownership:            ownership,
 		sqlDB:                sqlDB,
 		storageResolver:      storageResolver,
+		cacheRepo:            cacheRepo,
 	}
 }
 
@@ -513,6 +520,7 @@ func (s *DataTableSummaryService) prepareResources(ctx context.Context, payload 
 		logger.Errorf(ctx, "failed to get chat model: %v", err)
 		return nil, err
 	}
+	chatModel = newCachedChat(chatModel, s.cacheRepo, payload.TenantID, cacheTypeTable)
 
 	// 获取嵌入模型（用于向量化）
 	embeddingModel, err := s.modelService.GetEmbeddingModel(ctx, payload.EmbeddingModel)
@@ -520,6 +528,7 @@ func (s *DataTableSummaryService) prepareResources(ctx context.Context, payload 
 		logger.Errorf(ctx, "failed to get embedding model: %v", err)
 		return nil, err
 	}
+	embeddingModel = newCachedEmbedder(embeddingModel, s.cacheRepo, payload.TenantID)
 
 	// Load the KB to discover its VectorStoreID binding so the factory can
 	// route to the bound store (or fall back to tenant engines if unbound).

@@ -1382,6 +1382,7 @@ func (s *knowledgeService) executeFAQImport(ctx context.Context, taskID string, 
 	if err != nil {
 		return fmt.Errorf("failed to get embedding model: %w", err)
 	}
+	embeddingModel = newCachedEmbedder(embeddingModel, s.cacheRepo, tenantID)
 	faqKnowledge, err := s.ensureFAQKnowledge(ctx, tenantID, kb)
 	if err != nil {
 		return err
