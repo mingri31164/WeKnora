@@ -276,6 +276,23 @@ func TestBuildSearchTargets_DocumentTagScopeWithMissingKBMetadata(t *testing.T) 
 	assert.True(t, targets[0].DisableRecallThresholds)
 }
 
+func TestBuildSearchTargets_EmptyDocumentTagScopeStaysEmpty(t *testing.T) {
+	svc := newTagTargetSessionService()
+
+	targets, err := svc.buildSearchTargets(
+		tagTargetContext(),
+		100,
+		[]string{"doc-kb"},
+		nil,
+		[]types.TagScope{{KnowledgeBaseID: "doc-kb", TagIDs: []string{"missing-tag"}}},
+	)
+
+	require.NoError(t, err)
+	require.Len(t, targets, 1)
+	assert.Equal(t, types.SearchTargetTypeKnowledge, targets[0].Type)
+	assert.Equal(t, []string{emptyKnowledgeScopeID}, targets[0].KnowledgeIDs)
+}
+
 func TestMergeResolvedTagKnowledgeIDs_OnlyIncludesTagScopedTargets(t *testing.T) {
 	got := mergeResolvedTagKnowledgeIDs(
 		[]string{"existing-doc"},
