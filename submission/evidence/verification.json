@@ -1,0 +1,1757 @@
+{
+  "code_commit": "600565c2f4947bb2a16b0dd025d7a9918d32ac7a",
+  "upstream_base": "081851c6b8802225ae968ba67d8de444e258c67b",
+  "api": {
+    "started_at": "2026-09-11T22:15:55Z",
+    "status": "pass",
+    "counts": {
+      "observed": 15,
+      "pass": 36
+    },
+    "checks": [
+      {
+        "check": "learner_a_settings",
+        "outcome": "observed",
+        "enabled": true,
+        "http_status": 200,
+        "no_store": true
+      },
+      {
+        "check": "learner_a_export_counts",
+        "outcome": "observed",
+        "nodes": 3,
+        "quizzes": 1,
+        "attempts": 3
+      },
+      {
+        "check": "learner_a_registered_remote_model",
+        "outcome": "pass"
+      },
+      {
+        "check": "learner_a_source_statuses",
+        "outcome": "observed",
+        "counts": {
+          "completed": 3
+        }
+      },
+      {
+        "check": "learner_b_settings",
+        "outcome": "observed",
+        "enabled": false,
+        "http_status": 200,
+        "no_store": true
+      },
+      {
+        "check": "learner_b_export_counts",
+        "outcome": "observed",
+        "nodes": 0,
+        "quizzes": 0,
+        "attempts": 0
+      },
+      {
+        "check": "learner_b_registered_remote_model",
+        "outcome": "pass"
+      },
+      {
+        "check": "learner_b_source_statuses",
+        "outcome": "observed",
+        "counts": {
+          "completed": 3
+        }
+      },
+      {
+        "check": "settings_default_false",
+        "outcome": "pass",
+        "http_status": 200
+      },
+      {
+        "check": "explicit_b_opt_in",
+        "outcome": "pass",
+        "http_status": 200
+      },
+      {
+        "check": "enabled_overview",
+        "outcome": "pass",
+        "http_status": 200,
+        "total_nodes": 18
+      },
+      {
+        "check": "enabled_recommendations_deterministic",
+        "outcome": "pass",
+        "http_status": 200,
+        "recommendations": 5
+      },
+      {
+        "check": "current_completed_source",
+        "outcome": "pass",
+        "documents": 1,
+        "chunks": 1,
+        "seconds": 0.007
+      },
+      {
+        "check": "reading_changes_familiarity_not_mastery",
+        "outcome": "pass"
+      },
+      {
+        "check": "wiki_overlay_scope",
+        "outcome": "pass"
+      },
+      {
+        "check": "prepare_quiz",
+        "outcome": "pass",
+        "http_status": 200,
+        "seconds": 0.004
+      },
+      {
+        "check": "http_quiz_status",
+        "outcome": "observed",
+        "status": "pending",
+        "seconds": 0.0
+      },
+      {
+        "check": "http_quiz_status",
+        "outcome": "observed",
+        "status": "running",
+        "seconds": 3.005
+      },
+      {
+        "check": "http_quiz_status",
+        "outcome": "observed",
+        "status": "ready",
+        "seconds": 12.018
+      },
+      {
+        "check": "http_quiz_real_model_ready",
+        "outcome": "pass",
+        "status": "ready",
+        "error_code": null,
+        "polls": 4,
+        "seconds": 12.018
+      },
+      {
+        "check": "preanswer_quiz_has_no_answer_key",
+        "outcome": "pass",
+        "questions": 3
+      },
+      {
+        "check": "preanswer_export_has_no_answer_key",
+        "outcome": "pass"
+      },
+      {
+        "check": "cross_tenant_quiz_read",
+        "outcome": "pass",
+        "http_status": 404,
+        "seconds": 0.002,
+        "error_code": "learning_not_found"
+      },
+      {
+        "check": "cross_tenant_quiz_answer",
+        "outcome": "pass",
+        "http_status": 404,
+        "seconds": 0.002,
+        "error_code": "learning_not_found"
+      },
+      {
+        "check": "submit_choice_zero",
+        "outcome": "pass",
+        "http_status": 200,
+        "seconds": 0.004
+      },
+      {
+        "check": "server_grading_matches_selected_option",
+        "outcome": "pass",
+        "server_correct": false
+      },
+      {
+        "check": "postanswer_explanation_is_source_backed",
+        "outcome": "pass",
+        "evidence_quotes": 1
+      },
+      {
+        "check": "first_answer_mastery_update",
+        "outcome": "pass",
+        "attempts": 1
+      },
+      {
+        "check": "same_attempt_replay_unchanged",
+        "outcome": "pass",
+        "attempts": 1,
+        "http_status": 200
+      },
+      {
+        "check": "conflicting_attempt",
+        "outcome": "pass",
+        "http_status": 409,
+        "seconds": 0.002,
+        "error_code": "learning_conflict"
+      },
+      {
+        "check": "conflicting_attempt_does_not_increment",
+        "outcome": "pass",
+        "attempts": 1
+      },
+      {
+        "check": "only_answered_question_reveals_result",
+        "outcome": "pass"
+      },
+      {
+        "check": "agent_model_binding_before",
+        "outcome": "observed",
+        "configured": false
+      },
+      {
+        "check": "agent_configured_tools",
+        "outcome": "observed",
+        "counts": {
+          "get_learning_profile": 1,
+          "recommend_learning_topics": 1,
+          "prepare_learning_quiz": 1,
+          "wiki_search": 1,
+          "wiki_read_page": 1,
+          "wiki_read_source_doc": 1
+        }
+      },
+      {
+        "check": "agent_temporary_model_binding",
+        "outcome": "pass"
+      },
+      {
+        "check": "agent_recommendations_started",
+        "outcome": "observed"
+      },
+      {
+        "check": "agent_recommendations_real_tool_flow",
+        "outcome": "pass",
+        "status": "completed",
+        "http_status": 200,
+        "events": {
+          "agent_query": 1,
+          "answer": 487,
+          "tool_call": 6,
+          "tool_result": 3,
+          "thinking": 388,
+          "complete": 1
+        },
+        "calls": {
+          "get_learning_profile": 2,
+          "recommend_learning_topics": 2,
+          "wiki_read_page": 2
+        },
+        "successful_tools": {
+          "get_learning_profile": 1,
+          "recommend_learning_topics": 1,
+          "wiki_read_page": 1
+        },
+        "failed_tools": {},
+        "answer_characters": 974,
+        "seconds": 6.806
+      },
+      {
+        "check": "agent_quiz_card_started",
+        "outcome": "observed"
+      },
+      {
+        "check": "agent_quiz_card_real_tool_flow",
+        "outcome": "pass",
+        "status": "completed",
+        "http_status": 200,
+        "events": {
+          "agent_query": 1,
+          "thinking": 228,
+          "tool_call": 4,
+          "tool_result": 2,
+          "answer": 143,
+          "complete": 1
+        },
+        "calls": {
+          "wiki_read_page": 2,
+          "prepare_learning_quiz": 2
+        },
+        "successful_tools": {
+          "wiki_read_page": 1,
+          "prepare_learning_quiz": 1
+        },
+        "failed_tools": {},
+        "answer_characters": 305,
+        "seconds": 3.809
+      },
+      {
+        "check": "agent_quiz_card_reference",
+        "outcome": "observed"
+      },
+      {
+        "check": "agent_owned_session_deleted",
+        "outcome": "pass"
+      },
+      {
+        "check": "agent_original_config_restored",
+        "outcome": "pass"
+      },
+      {
+        "check": "opt_out",
+        "outcome": "pass",
+        "http_status": 200,
+        "seconds": 0.002
+      },
+      {
+        "check": "disabled_export_available",
+        "outcome": "pass",
+        "http_status": 200,
+        "seconds": 0.004
+      },
+      {
+        "check": "opt_out_preserves_attempts",
+        "outcome": "pass",
+        "attempts": 1
+      },
+      {
+        "check": "disabled_clear_available",
+        "outcome": "pass",
+        "http_status": 200,
+        "seconds": 0.004
+      },
+      {
+        "check": "clear_deleted_counts",
+        "outcome": "observed",
+        "deleted_attempts": 1,
+        "deleted_mastery": 1,
+        "deleted_quizzes": 1
+      },
+      {
+        "check": "learner_b_cleared_and_disabled",
+        "outcome": "pass",
+        "nodes": 0,
+        "quizzes": 0,
+        "attempts": 0
+      },
+      {
+        "check": "clear_idempotent",
+        "outcome": "pass"
+      },
+      {
+        "check": "learner_a_intact_across_b_clear",
+        "outcome": "pass",
+        "before_counts": {
+          "nodes": 3,
+          "quizzes": 1,
+          "attempts": 3
+        },
+        "after_counts": {
+          "nodes": 3,
+          "quizzes": 1,
+          "attempts": 3
+        }
+      },
+      {
+        "check": "learner_a_preexisting_data_preserved",
+        "outcome": "pass"
+      }
+    ],
+    "raw_sha256": "d2925468d33e56a3a85f82f4f57f29c733c3797f42048d2b5b85b10323bcf2da"
+  },
+  "browser": {
+    "version": "153.0.8010.12",
+    "single_process": false,
+    "source_changed": false,
+    "source_sha256": {
+      "src/views/knowledge/wiki/LearningPanel.vue": "9770a6e05ba8a39393fd2928dd65bd3f673c50bbb1a54091f1bd5953952179a5",
+      "src/views/knowledge/wiki/LearningQuiz.vue": "e6d68c122824c9e1c4ad633c555dba41c1ebef09c0ee64b18693473f4d1d3029",
+      "src/views/knowledge/wiki/WikiBrowser.vue": "bdecdd12f1d6a44c35dd523ed55e6ade9bae3ad2c17d4fc72b8f894abf1649aa",
+      "src/views/knowledge/KnowledgeBase.vue": "4de3e4b1550deceaad68f496f7886de2644d844bc88bf3896c14ac37529ef503",
+      "src/composables/useLearningState.ts": "17cae8ca92e84db4250c2ee6a1b557b9fb7da61f4c4422b5dcbe64eb74aa441b",
+      "src/i18n/locales/en-US.ts": "b8484b60607c7567950f5c61f5785966716ce18b919f34d62b63534aec43bc8a"
+    },
+    "cases": [
+      {
+        "name": "desktop-learning",
+        "actor": "learner_a",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "outcome": "passed",
+        "checks": [
+          {
+            "passed": true,
+            "message": "Opt-in persisted on backend"
+          },
+          {
+            "passed": true,
+            "message": "Published fixture identity: concept/topic4-retrieval"
+          },
+          {
+            "passed": true,
+            "message": "Published fixture identity: concept/topic4-feedback"
+          },
+          {
+            "passed": true,
+            "message": "Published fixture identity: concept/topic4-review"
+          },
+          {
+            "passed": true,
+            "message": "Real recommendations are nonempty"
+          },
+          {
+            "passed": true,
+            "message": "Recommendation exists: Retrieval and Evidence"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: practice"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: related_topic"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: source_backed"
+          },
+          {
+            "passed": true,
+            "message": "Recommendation exists: Assessment and Feedback"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: related_topic"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: source_backed"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: explore"
+          },
+          {
+            "passed": true,
+            "message": "Recommendation exists: 先修概念"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: source_backed"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: explore"
+          },
+          {
+            "passed": true,
+            "message": "Recommendation exists: 复习推荐"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: source_backed"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: explore"
+          },
+          {
+            "passed": true,
+            "message": "Recommendation exists: Review and Prerequisites"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: related_topic"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: source_backed"
+          },
+          {
+            "passed": true,
+            "message": "Server reason rendered: explore"
+          },
+          {
+            "passed": true,
+            "message": "Recommendation reasons have user-facing translations"
+          },
+          {
+            "passed": true,
+            "message": "desktop-overview: no document horizontal overflow (actual 1280/1280)"
+          },
+          {
+            "passed": true,
+            "message": "desktop-overview: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "desktop-overview: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "desktop-overview: learning content has no horizontal overflow"
+          },
+          {
+            "passed": true,
+            "message": "desktop-overview: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "Reading gives no mastery credit: concept/topic4-retrieval"
+          },
+          {
+            "passed": true,
+            "message": "Reading gives no mastery credit: concept/topic4-feedback"
+          },
+          {
+            "passed": true,
+            "message": "Reading gives no mastery credit: concept/topic4-review"
+          },
+          {
+            "passed": true,
+            "message": "Other disposable learner stays in a separate tenant"
+          },
+          {
+            "passed": true,
+            "message": "Consent exposes switch/checkbox role and checked state to assistive technology"
+          },
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": [
+          "Already opted in: preserved history; did not reset consent to manufacture a cold start."
+        ]
+      },
+      {
+        "name": "mobile-learning",
+        "actor": "learner_a",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "outcome": "passed",
+        "checks": [
+          {
+            "passed": true,
+            "message": "Opt-in persisted on backend"
+          },
+          {
+            "passed": true,
+            "message": "mobile-default: no document horizontal overflow (actual 390/390)"
+          },
+          {
+            "passed": true,
+            "message": "mobile-default: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "mobile-default: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "mobile-default: learning content has no horizontal overflow"
+          },
+          {
+            "passed": true,
+            "message": "mobile-default: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "mobile-collapsed: no document horizontal overflow (actual 390/390)"
+          },
+          {
+            "passed": true,
+            "message": "mobile-collapsed: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "mobile-collapsed: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "mobile-collapsed: learning content has no horizontal overflow"
+          },
+          {
+            "passed": true,
+            "message": "mobile-collapsed: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "mobile-practice: no document horizontal overflow (actual 390/390)"
+          },
+          {
+            "passed": true,
+            "message": "mobile-practice: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "mobile-practice: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "mobile-practice: learning content has no horizontal overflow"
+          },
+          {
+            "passed": true,
+            "message": "mobile-practice: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "mobile-reader: no document horizontal overflow (actual 390/390)"
+          },
+          {
+            "passed": true,
+            "message": "mobile-reader: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "mobile-reader: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "mobile-reader: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": [
+          "Already opted in: preserved history; did not reset consent to manufacture a cold start."
+        ]
+      },
+      {
+        "name": "desktop-graph",
+        "actor": "learner_a",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "outcome": "passed",
+        "checks": [
+          {
+            "passed": true,
+            "message": "Opt-in persisted on backend"
+          },
+          {
+            "passed": true,
+            "message": "Graph square matches real mastery: Review and Prerequisites"
+          },
+          {
+            "passed": true,
+            "message": "Familiar ring remains distinct: Review and Prerequisites"
+          },
+          {
+            "passed": true,
+            "message": "Graph square matches real mastery: Retrieval and Evidence"
+          },
+          {
+            "passed": true,
+            "message": "Familiar ring remains distinct: Retrieval and Evidence"
+          },
+          {
+            "passed": true,
+            "message": "Graph square matches real mastery: Assessment and Feedback"
+          },
+          {
+            "passed": true,
+            "message": "Familiar ring remains distinct: Assessment and Feedback"
+          },
+          {
+            "passed": true,
+            "message": "All four mastery states have text labels"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-expanded: no document horizontal overflow (actual 1280/1280)"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-expanded: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-expanded: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-expanded: .wiki-graph-search-container stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-expanded: .wiki-graph-legend stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-expanded: learning content has no horizontal overflow"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-expanded: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-legend: no document horizontal overflow (actual 1280/1280)"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-legend: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-legend: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-legend: .wiki-graph-search-container stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-legend: .wiki-graph-legend stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "desktop-graph-legend: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": [
+          "Already opted in: preserved history; did not reset consent to manufacture a cold start."
+        ]
+      },
+      {
+        "name": "mobile-graph",
+        "actor": "learner_a",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "outcome": "passed",
+        "checks": [
+          {
+            "passed": true,
+            "message": "Opt-in persisted on backend"
+          },
+          {
+            "passed": true,
+            "message": "Graph square matches real mastery: Review and Prerequisites"
+          },
+          {
+            "passed": true,
+            "message": "Familiar ring remains distinct: Review and Prerequisites"
+          },
+          {
+            "passed": true,
+            "message": "Graph square matches real mastery: Retrieval and Evidence"
+          },
+          {
+            "passed": true,
+            "message": "Familiar ring remains distinct: Retrieval and Evidence"
+          },
+          {
+            "passed": true,
+            "message": "Graph square matches real mastery: Assessment and Feedback"
+          },
+          {
+            "passed": true,
+            "message": "Familiar ring remains distinct: Assessment and Feedback"
+          },
+          {
+            "passed": true,
+            "message": "All four mastery states have text labels"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-expanded: no document horizontal overflow (actual 390/390)"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-expanded: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-expanded: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-expanded: .wiki-graph-search-container stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-expanded: .wiki-graph-legend stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-expanded: learning content has no horizontal overflow"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-expanded: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-legend: no document horizontal overflow (actual 390/390)"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-legend: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-legend: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-legend: .wiki-graph-search-container stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-legend: .wiki-graph-legend stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "mobile-graph-legend: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": [
+          "Already opted in: preserved history; did not reset consent to manufacture a cold start."
+        ]
+      },
+      {
+        "name": "real-evidence-gate",
+        "actor": "learner_a",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "outcome": "skipped",
+        "checks": [
+          {
+            "passed": true,
+            "message": "Opt-in persisted on backend"
+          },
+          {
+            "passed": true,
+            "message": "Published fixture identity: concept/topic4-retrieval"
+          },
+          {
+            "passed": true,
+            "message": "Published fixture identity: concept/topic4-feedback"
+          },
+          {
+            "passed": true,
+            "message": "Published fixture identity: concept/topic4-review"
+          },
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": [
+          "Already opted in: preserved history; did not reset consent to manufacture a cold start.",
+          "Incomplete-evidence branch not applicable: current source references are ready. Use the approved real quiz test."
+        ]
+      },
+      {
+        "name": "desktop-source-reading",
+        "actor": "learner_a",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "outcome": "passed",
+        "checks": [
+          {
+            "passed": true,
+            "message": "Opt-in persisted on backend"
+          },
+          {
+            "passed": true,
+            "message": "Source link fetched the actual fixture document"
+          },
+          {
+            "passed": true,
+            "message": "Source reading gives no assessment credit"
+          },
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": [
+          "Already opted in: preserved history; did not reset consent to manufacture a cold start."
+        ]
+      },
+      {
+        "name": "desktop-privacy-cancel",
+        "actor": "learner_b",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "outcome": "passed",
+        "checks": [
+          {
+            "passed": true,
+            "message": "desktop-before-privacy: no document horizontal overflow (actual 1280/1280)"
+          },
+          {
+            "passed": true,
+            "message": "desktop-before-privacy: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "desktop-before-privacy: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "desktop-before-privacy: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "Export has settings and timestamp"
+          },
+          {
+            "passed": true,
+            "message": "desktop-clear-dialog: no document horizontal overflow (actual 1280/1280)"
+          },
+          {
+            "passed": true,
+            "message": "desktop-clear-dialog: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "desktop-clear-dialog: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "desktop-clear-dialog: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "learner_b consent is unchanged"
+          },
+          {
+            "passed": true,
+            "message": "Cancel sends no DELETE"
+          },
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "name": "mobile-privacy-cancel",
+        "actor": "learner_b",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "outcome": "passed",
+        "checks": [
+          {
+            "passed": true,
+            "message": "mobile-before-privacy: no document horizontal overflow (actual 390/390)"
+          },
+          {
+            "passed": true,
+            "message": "mobile-before-privacy: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "mobile-before-privacy: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "mobile-before-privacy: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "Export has settings and timestamp"
+          },
+          {
+            "passed": true,
+            "message": "mobile-clear-dialog: no document horizontal overflow (actual 390/390)"
+          },
+          {
+            "passed": true,
+            "message": "mobile-clear-dialog: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "mobile-clear-dialog: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "mobile-clear-dialog: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "learner_b consent is unchanged"
+          },
+          {
+            "passed": true,
+            "message": "Cancel sends no DELETE"
+          },
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "name": "tenant-isolation",
+        "actor": "learner_a",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "outcome": "passed",
+        "checks": [
+          {
+            "passed": true,
+            "message": "Foreign node is denied"
+          },
+          {
+            "passed": true,
+            "message": "Foreign export is denied or empty"
+          },
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": [
+          "Authenticated as enabled learner_a; learner_b credentials are not used. No tenant switching, ownership changes, or foreign profile clearing is attempted."
+        ]
+      },
+      {
+        "name": "MOCK-overview-error",
+        "actor": "learner_a",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "outcome": "passed",
+        "checks": [
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": [
+          "Only the failed HTTP response is mocked. Recovery uses the real backend; this is not real successful quiz E2E evidence."
+        ]
+      },
+      {
+        "name": "approved-real-quiz",
+        "actor": "learner_a",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "outcome": "passed",
+        "checks": [
+          {
+            "passed": true,
+            "message": "Opt-in persisted on backend"
+          },
+          {
+            "passed": true,
+            "message": "Published fixture identity: concept/topic4-retrieval"
+          },
+          {
+            "passed": true,
+            "message": "Published fixture identity: concept/topic4-feedback"
+          },
+          {
+            "passed": true,
+            "message": "Published fixture identity: concept/topic4-review"
+          },
+          {
+            "passed": true,
+            "message": "Real question has four options"
+          },
+          {
+            "passed": true,
+            "message": "Real question has four options"
+          },
+          {
+            "passed": true,
+            "message": "Real question has four options"
+          },
+          {
+            "passed": true,
+            "message": "Reload returns identical saved answers and feedback"
+          },
+          {
+            "passed": true,
+            "message": "Replay performs no quiz generation or submission"
+          },
+          {
+            "passed": true,
+            "message": "answered-desktop: no document horizontal overflow (actual 1280/1280)"
+          },
+          {
+            "passed": true,
+            "message": "answered-desktop: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "answered-desktop: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "answered-desktop: learning content has no horizontal overflow"
+          },
+          {
+            "passed": true,
+            "message": "answered-desktop: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "Export nodes stays in fixture KB"
+          },
+          {
+            "passed": true,
+            "message": "Export nodes stays in fixture KB"
+          },
+          {
+            "passed": true,
+            "message": "Export nodes stays in fixture KB"
+          },
+          {
+            "passed": true,
+            "message": "Export quizzes stays in fixture KB"
+          },
+          {
+            "passed": true,
+            "message": "Export attempts stays in fixture KB"
+          },
+          {
+            "passed": true,
+            "message": "Export attempts stays in fixture KB"
+          },
+          {
+            "passed": true,
+            "message": "Export attempts stays in fixture KB"
+          },
+          {
+            "passed": true,
+            "message": "Export has settings and timestamp"
+          },
+          {
+            "passed": true,
+            "message": "answered-mobile: no document horizontal overflow (actual 390/390)"
+          },
+          {
+            "passed": true,
+            "message": "answered-mobile: mobile layout viewport does not widen beyond requested width"
+          },
+          {
+            "passed": true,
+            "message": "answered-mobile: .learning-panel stays inside viewport"
+          },
+          {
+            "passed": true,
+            "message": "answered-mobile: learning content has no horizontal overflow"
+          },
+          {
+            "passed": true,
+            "message": "answered-mobile: controls/columns/graph overlays do not overlap"
+          },
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": [
+          "Reloaded an actual prior quiz through the application scoped sessionStorage pointer; no DTO or success response injected.",
+          "Already opted in: preserved history; did not reset consent to manufacture a cold start.",
+          "Preserved an existing answered question; did not reset or regrade.",
+          "Preserved an existing answered question; did not reset or regrade.",
+          "Preserved an existing answered question; did not reset or regrade."
+        ],
+        "quiz": {
+          "status": "ready",
+          "algorithm_version": "bkt-v1",
+          "submittedThisRun": 0
+        },
+        "answers": [
+          {
+            "correct": true,
+            "mastery": {
+              "state": "learning",
+              "p_mastery": 0.5526315789473685,
+              "attempts": 1,
+              "correct": 1,
+              "consecutive_correct": 1,
+              "last_assessed_at": "2026-09-11T22:02:13.04928377Z",
+              "next_review_at": "2026-09-12T22:02:13.04928377Z",
+              "source_stale": false
+            }
+          },
+          {
+            "correct": false,
+            "mastery": {
+              "state": "learning",
+              "p_mastery": 0.2702020202020202,
+              "attempts": 2,
+              "correct": 1,
+              "consecutive_correct": 0,
+              "last_assessed_at": "2026-09-11T22:02:13.427949849Z",
+              "next_review_at": "2026-09-12T22:02:13.427949849Z",
+              "source_stale": false
+            }
+          },
+          {
+            "correct": false,
+            "mastery": {
+              "state": "learning",
+              "p_mastery": 0.18998681028797537,
+              "attempts": 3,
+              "correct": 1,
+              "consecutive_correct": 0,
+              "last_assessed_at": "2026-09-11T22:02:13.79487762Z",
+              "next_review_at": "2026-09-12T22:02:13.79487762Z",
+              "source_stale": false
+            }
+          }
+        ]
+      },
+      {
+        "name": "approved-real-card",
+        "actor": "learner_a",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "outcome": "passed",
+        "checks": [
+          {
+            "passed": true,
+            "message": "Card quiz belongs to a curated fixture page"
+          },
+          {
+            "passed": true,
+            "message": "Real card reload preserves authoritative feedback"
+          },
+          {
+            "passed": true,
+            "message": "Card opens the owned fixture Wiki"
+          },
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": []
+      }
+    ],
+    "raw_sha256": "feb5c5192b9156d10b5ec6f93356b127d74405da6b8196d4dcb9b2d66af58364"
+  },
+  "initial_real_generation": {
+    "name": "approved-real-quiz",
+    "actor": "learner_a",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "outcome": "passed",
+    "checks": [
+      {
+        "passed": true,
+        "message": "Opt-in persisted on backend"
+      },
+      {
+        "passed": true,
+        "message": "Published fixture identity: concept/topic4-retrieval"
+      },
+      {
+        "passed": true,
+        "message": "Published fixture identity: concept/topic4-feedback"
+      },
+      {
+        "passed": true,
+        "message": "Published fixture identity: concept/topic4-review"
+      },
+      {
+        "passed": true,
+        "message": "Pending real quiz exposes no answer controls"
+      },
+      {
+        "passed": true,
+        "message": "Unanswered DTO hides answer key and explanation"
+      },
+      {
+        "passed": true,
+        "message": "Unanswered DTO hides answer key and explanation"
+      },
+      {
+        "passed": true,
+        "message": "Unanswered DTO hides answer key and explanation"
+      },
+      {
+        "passed": true,
+        "message": "Agent tool transcript carries a quiz reference, not answer keys"
+      },
+      {
+        "passed": true,
+        "message": "Real question has four options"
+      },
+      {
+        "passed": true,
+        "message": "Submit requires a selection"
+      },
+      {
+        "passed": true,
+        "message": "Server result matches selected question/option"
+      },
+      {
+        "passed": true,
+        "message": "Server result includes explanation and evidence"
+      },
+      {
+        "passed": true,
+        "message": "Evidence is from a fixture document"
+      },
+      {
+        "passed": true,
+        "message": "Evidence quote occurs in actual current chunk"
+      },
+      {
+        "passed": true,
+        "message": "Answered question cannot be resubmitted in UI"
+      },
+      {
+        "passed": true,
+        "message": "Real question has four options"
+      },
+      {
+        "passed": true,
+        "message": "Submit requires a selection"
+      },
+      {
+        "passed": true,
+        "message": "Server result matches selected question/option"
+      },
+      {
+        "passed": true,
+        "message": "Server result includes explanation and evidence"
+      },
+      {
+        "passed": true,
+        "message": "Evidence is from a fixture document"
+      },
+      {
+        "passed": true,
+        "message": "Evidence quote occurs in actual current chunk"
+      },
+      {
+        "passed": true,
+        "message": "Answered question cannot be resubmitted in UI"
+      },
+      {
+        "passed": true,
+        "message": "Real question has four options"
+      },
+      {
+        "passed": true,
+        "message": "Submit requires a selection"
+      },
+      {
+        "passed": true,
+        "message": "Server result matches selected question/option"
+      },
+      {
+        "passed": true,
+        "message": "Server result includes explanation and evidence"
+      },
+      {
+        "passed": true,
+        "message": "Evidence is from a fixture document"
+      },
+      {
+        "passed": true,
+        "message": "Evidence quote occurs in actual current chunk"
+      },
+      {
+        "passed": true,
+        "message": "Answered question cannot be resubmitted in UI"
+      },
+      {
+        "passed": true,
+        "message": "Reload returns identical saved answers and feedback"
+      },
+      {
+        "passed": true,
+        "message": "Replay performs no quiz generation or submission"
+      },
+      {
+        "passed": true,
+        "message": "answered-desktop: no document horizontal overflow (actual 1280/1280)"
+      },
+      {
+        "passed": true,
+        "message": "answered-desktop: mobile layout viewport does not widen beyond requested width"
+      },
+      {
+        "passed": true,
+        "message": "answered-desktop: .learning-panel stays inside viewport"
+      },
+      {
+        "passed": true,
+        "message": "answered-desktop: learning content has no horizontal overflow"
+      },
+      {
+        "passed": true,
+        "message": "answered-desktop: controls/columns/graph overlays do not overlap"
+      },
+      {
+        "passed": true,
+        "message": "Export nodes stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export nodes stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export nodes stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export quizzes stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export attempts stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export attempts stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export attempts stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export has settings and timestamp"
+      },
+      {
+        "passed": true,
+        "message": "answered-mobile: no document horizontal overflow (actual 390/390)"
+      },
+      {
+        "passed": true,
+        "message": "answered-mobile: mobile layout viewport does not widen beyond requested width"
+      },
+      {
+        "passed": true,
+        "message": "answered-mobile: .learning-panel stays inside viewport"
+      },
+      {
+        "passed": true,
+        "message": "answered-mobile: learning content has no horizontal overflow"
+      },
+      {
+        "passed": true,
+        "message": "answered-mobile: controls/columns/graph overlays do not overlap"
+      },
+      {
+        "passed": true,
+        "message": "No unhandled browser page errors"
+      },
+      {
+        "passed": true,
+        "message": "No unexpected HTTP errors"
+      },
+      {
+        "passed": true,
+        "message": "No unexpected console errors"
+      },
+      {
+        "passed": true,
+        "message": "No out-of-scope requests"
+      }
+    ],
+    "notes": [
+      "Already opted in: preserved history; did not reset consent to manufacture a cold start."
+    ],
+    "quiz": {
+      "status": "ready",
+      "algorithm_version": "bkt-v1",
+      "submittedThisRun": 3
+    },
+    "answers": [
+      {
+        "correct": true,
+        "mastery": {
+          "state": "learning",
+          "p_mastery": 0.5526315789473685,
+          "attempts": 1,
+          "correct": 1,
+          "consecutive_correct": 1,
+          "last_assessed_at": "2026-09-11T22:02:13.04928377Z",
+          "next_review_at": "2026-09-12T22:02:13.04928377Z",
+          "source_stale": false
+        }
+      },
+      {
+        "correct": false,
+        "mastery": {
+          "state": "learning",
+          "p_mastery": 0.2702020202020202,
+          "attempts": 2,
+          "correct": 1,
+          "consecutive_correct": 0,
+          "last_assessed_at": "2026-09-11T22:02:13.427949849Z",
+          "next_review_at": "2026-09-12T22:02:13.427949849Z",
+          "source_stale": false
+        }
+      },
+      {
+        "correct": false,
+        "mastery": {
+          "state": "learning",
+          "p_mastery": 0.18998681028797537,
+          "attempts": 3,
+          "correct": 1,
+          "consecutive_correct": 0,
+          "last_assessed_at": "2026-09-11T22:02:13.79487762Z",
+          "next_review_at": "2026-09-12T22:02:13.79487762Z",
+          "source_stale": false
+        }
+      }
+    ]
+  },
+  "nonempty_deletion": {
+    "name": "approved-clear-learner-b",
+    "actor": "learner_b",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "outcome": "passed",
+    "checks": [
+      {
+        "passed": true,
+        "message": "Opt-in persisted on backend"
+      },
+      {
+        "passed": true,
+        "message": "Export nodes stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export quizzes stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export attempts stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export attempts stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export attempts stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export has settings and timestamp"
+      },
+      {
+        "passed": true,
+        "message": "Deleted answers/quizzes disappear from export"
+      },
+      {
+        "passed": true,
+        "message": "All cleared topic records lose prior personal state"
+      },
+      {
+        "passed": true,
+        "message": "learner_a export is unchanged by learner_b deletion"
+      },
+      {
+        "passed": true,
+        "message": "Deleted-attempt count matches retained export"
+      },
+      {
+        "passed": true,
+        "message": "No unhandled browser page errors"
+      },
+      {
+        "passed": true,
+        "message": "No unexpected HTTP errors"
+      },
+      {
+        "passed": true,
+        "message": "No unexpected console errors"
+      },
+      {
+        "passed": true,
+        "message": "No out-of-scope requests"
+      }
+    ],
+    "notes": [
+      "Already opted in: preserved history; did not reset consent to manufacture a cold start.",
+      "Reload may legitimately record a fresh view; no learner_a DELETE is ever admitted by the safety guard."
+    ],
+    "deleted": {
+      "deleted_attempts": 3,
+      "deleted_mastery": 1,
+      "deleted_quizzes": 1
+    }
+  }
+}

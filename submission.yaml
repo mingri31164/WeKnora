@@ -1,0 +1,16 @@
+version: 1
+student:
+  # GitHub handle used as the submission byline; legal name was not provided.
+  name: "mingri31164"
+  github_id: "mingri31164"
+topic:
+  id: "4"
+  title: "知识网络与引导式学习"
+result:
+  type: code
+  url: "https://github.com/Tencent/WeKnora/pull/3145"
+repository:
+  url: "https://github.com/mingri31164/WeKnora"
+  branch: "submission/guided-learning"
+  commit: "600565c2f4947bb2a16b0dd025d7a9918d32ac7a"
+  tag: "rhino-2026-final-4"

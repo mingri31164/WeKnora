@@ -1,0 +1,123 @@
+=== RUN   TestLearningOfflineEvaluation
+    offline_eval_test.go:120: dataset=topic4-synthetic-v1 sha256=8bc5d4d5fe393466ba5abd27f74f4c47301a887f88e8d6170d376b6cf3f43237 algorithm=bkt-v1 go=go1.26.0 model=none prompt=none
+    offline_eval_test.go:122: rank=rankRecommendations weights=0.45/0.25/0.20/0.10 kind_diversity=true reserved_exploration=true rank_sha256=660d2ec238ed7ca3fbc304b889629a71282ac0e90bd34b7cf33ece41be1442c8 bkt_sha256=0b55c130e57dbabefec6adde95404fecfe28bfc61fc72268c3c91a6962518211
+    offline_eval_test.go:128: synthetic_only=true ranking_cases=8 topics=12 state_cases=9 prediction_sequences=8 now=2026-09-09T12:00:00Z
+=== RUN   TestLearningOfflineEvaluation/golden_arithmetic
+=== RUN   TestLearningOfflineEvaluation/states_and_freshness
+=== RUN   TestLearningOfflineEvaluation/states_and_freshness/unseen
+=== RUN   TestLearningOfflineEvaluation/states_and_freshness/read_only
+=== RUN   TestLearningOfflineEvaluation/states_and_freshness/uncredited_high
+=== RUN   TestLearningOfflineEvaluation/states_and_freshness/learning
+=== RUN   TestLearningOfflineEvaluation/states_and_freshness/too_few
+=== RUN   TestLearningOfflineEvaluation/states_and_freshness/mastered
+=== RUN   TestLearningOfflineEvaluation/states_and_freshness/due
+=== RUN   TestLearningOfflineEvaluation/states_and_freshness/stale
+=== RUN   TestLearningOfflineEvaluation/states_and_freshness/missing
+=== RUN   TestLearningOfflineEvaluation/fixture_guards
+=== RUN   TestLearningOfflineEvaluation/ranking
+=== RUN   TestLearningOfflineEvaluation/ranking/due_review_priority
+    offline_eval_test.go:187: case=due_review_priority model=production top5=b,f,g,d,e NDCG@5=0.939490 Recall@5=0.833333
+    offline_eval_test.go:187: case=due_review_priority model=degree_only top5=a,b,k,c,d NDCG@5=0.484568 Recall@5=0.500000
+    offline_eval_test.go:187: case=due_review_priority model=cold_start top5=a,b,c,e,f NDCG@5=0.521337 Recall@5=0.666667
+=== RUN   TestLearningOfflineEvaluation/ranking/related_frontier
+    offline_eval_test.go:187: case=related_frontier model=production top5=f,g,d,k,c NDCG@5=0.953888 Recall@5=1.000000
+    offline_eval_test.go:187: case=related_frontier model=degree_only top5=a,b,k,c,d NDCG@5=0.281521 Recall@5=0.500000
+    offline_eval_test.go:187: case=related_frontier model=cold_start top5=a,b,c,e,f NDCG@5=0.296158 Recall@5=0.500000
+=== RUN   TestLearningOfflineEvaluation/ranking/optional_interest_on
+    offline_eval_test.go:187: case=optional_interest_on model=production top5=h,e,g,i,j NDCG@5=0.837277 Recall@5=0.750000
+    offline_eval_test.go:187: case=optional_interest_on model=degree_only top5=a,b,k,e,g NDCG@5=0.047271 Recall@5=0.250000
+    offline_eval_test.go:187: case=optional_interest_on model=cold_start top5=a,b,e,g,h NDCG@5=0.250158 Recall@5=0.500000
+=== RUN   TestLearningOfflineEvaluation/ranking/optional_interest_off
+    offline_eval_test.go:187: case=optional_interest_off model=production top5=a,e,g,b,j NDCG@5=0.119219 Recall@5=0.500000
+    offline_eval_test.go:187: case=optional_interest_off model=degree_only top5=a,b,k,e,g NDCG@5=0.047271 Recall@5=0.250000
+    offline_eval_test.go:187: case=optional_interest_off model=cold_start top5=a,b,e,g,h NDCG@5=0.250158 Recall@5=0.500000
+=== RUN   TestLearningOfflineEvaluation/ranking/exploration_slot
+    offline_eval_test.go:187: case=exploration_slot model=production top5=a,b,c,e,g NDCG@5=0.949658 Recall@5=0.625000
+    offline_eval_test.go:187: case=exploration_slot model=degree_only top5=a,b,c,d,e NDCG@5=1.000000 Recall@5=0.625000
+    offline_eval_test.go:187: case=exploration_slot model=cold_start top5=a,b,c,e,f NDCG@5=1.000000 Recall@5=0.625000
+=== RUN   TestLearningOfflineEvaluation/ranking/freshness_reset
+    offline_eval_test.go:187: case=freshness_reset model=production top5=b,c,g,l,e NDCG@5=0.895830 Recall@5=0.800000
+    offline_eval_test.go:187: case=freshness_reset model=degree_only top5=a,b,c,d,e NDCG@5=0.698658 Recall@5=0.800000
+    offline_eval_test.go:187: case=freshness_reset model=cold_start top5=a,b,c,e,f NDCG@5=0.607774 Recall@5=0.600000
+=== RUN   TestLearningOfflineEvaluation/ranking/cold_start
+    offline_eval_test.go:187: case=cold_start model=production top5=b,e,f,g,a NDCG@5=0.815366 Recall@5=0.714286
+    offline_eval_test.go:187: case=cold_start model=degree_only top5=a,b,k,c,d NDCG@5=0.902402 Recall@5=0.571429
+    offline_eval_test.go:187: case=cold_start model=cold_start top5=a,b,c,e,f NDCG@5=0.949658 Recall@5=0.714286
+=== RUN   TestLearningOfflineEvaluation/ranking/kind_diversity_tradeoff
+    offline_eval_test.go:187: case=kind_diversity_tradeoff model=production top5=a,b,c,d,h NDCG@5=1.000000 Recall@5=1.000000
+    offline_eval_test.go:187: case=kind_diversity_tradeoff model=degree_only top5=a,b,c,d,e NDCG@5=0.973495 Recall@5=0.800000
+    offline_eval_test.go:187: case=kind_diversity_tradeoff model=cold_start top5=a,b,c,e,f NDCG@5=0.884972 Recall@5=0.600000
+=== NAME  TestLearningOfflineEvaluation/ranking
+    offline_eval_test.go:197: ranking_macro model=production cases=8 candidate_occurrences=64 NDCG@5=0.813841 Recall@5=0.777827
+    offline_eval_test.go:197: ranking_macro model=degree_only cases=8 candidate_occurrences=64 NDCG@5=0.554398 Recall@5=0.537054
+    offline_eval_test.go:197: ranking_macro model=cold_start cases=8 candidate_occurrences=64 NDCG@5=0.595027 Recall@5=0.588244
+=== RUN   TestLearningOfflineEvaluation/heldout_prediction
+=== RUN   TestLearningOfflineEvaluation/heldout_prediction/steady_success
+    offline_eval_test.go:223: case=steady_success model=bkt_response train=3 heldout=3 frozen_response_p=0.873009145 Brier=0.016127 LogLoss=0.135809
+    offline_eval_test.go:223: case=steady_success model=fixed_chance_0.25 train=3 heldout=3 frozen_response_p=0.250000000 Brier=0.562500 LogLoss=1.386294
+    offline_eval_test.go:223: case=steady_success model=fixed_prior_response_0.38 train=3 heldout=3 frozen_response_p=0.380000000 Brier=0.384400 LogLoss=0.967584
+=== RUN   TestLearningOfflineEvaluation/heldout_prediction/early_errors_then_success
+    offline_eval_test.go:223: case=early_errors_then_success model=bkt_response train=3 heldout=3 frozen_response_p=0.585560260 Brier=0.228800 LogLoss=0.650400
+    offline_eval_test.go:223: case=early_errors_then_success model=fixed_chance_0.25 train=3 heldout=3 frozen_response_p=0.250000000 Brier=0.395833 LogLoss=1.020090
+    offline_eval_test.go:223: case=early_errors_then_success model=fixed_prior_response_0.38 train=3 heldout=3 frozen_response_p=0.380000000 Brier=0.304400 LogLoss=0.804401
+=== RUN   TestLearningOfflineEvaluation/heldout_prediction/persistent_errors
+    offline_eval_test.go:223: case=persistent_errors model=bkt_response train=3 heldout=3 frozen_response_p=0.362569810 Brier=0.131457 LogLoss=0.450311
+    offline_eval_test.go:223: case=persistent_errors model=fixed_chance_0.25 train=3 heldout=3 frozen_response_p=0.250000000 Brier=0.062500 LogLoss=0.287682
+    offline_eval_test.go:223: case=persistent_errors model=fixed_prior_response_0.38 train=3 heldout=3 frozen_response_p=0.380000000 Brier=0.144400 LogLoss=0.478036
+=== RUN   TestLearningOfflineEvaluation/heldout_prediction/success_then_reversal
+    offline_eval_test.go:223: case=success_then_reversal model=bkt_response train=3 heldout=3 frozen_response_p=0.873009145 Brier=0.762145 LogLoss=2.063640
+    offline_eval_test.go:223: case=success_then_reversal model=fixed_chance_0.25 train=3 heldout=3 frozen_response_p=0.250000000 Brier=0.062500 LogLoss=0.287682
+    offline_eval_test.go:223: case=success_then_reversal model=fixed_prior_response_0.38 train=3 heldout=3 frozen_response_p=0.380000000 Brier=0.144400 LogLoss=0.478036
+=== RUN   TestLearningOfflineEvaluation/heldout_prediction/mixed_recovery
+    offline_eval_test.go:223: case=mixed_recovery model=bkt_response train=3 heldout=3 frozen_response_p=0.663167458 Brier=0.222234 LogLoss=0.636542
+    offline_eval_test.go:223: case=mixed_recovery model=fixed_chance_0.25 train=3 heldout=3 frozen_response_p=0.250000000 Brier=0.395833 LogLoss=1.020090
+    offline_eval_test.go:223: case=mixed_recovery model=fixed_prior_response_0.38 train=3 heldout=3 frozen_response_p=0.380000000 Brier=0.304400 LogLoss=0.804401
+=== RUN   TestLearningOfflineEvaluation/heldout_prediction/mixed_difficulty
+    offline_eval_test.go:223: case=mixed_difficulty model=bkt_response train=3 heldout=3 frozen_response_p=0.417605740 Brier=0.229324 LogLoss=0.651478
+    offline_eval_test.go:223: case=mixed_difficulty model=fixed_chance_0.25 train=3 heldout=3 frozen_response_p=0.250000000 Brier=0.229167 LogLoss=0.653886
+    offline_eval_test.go:223: case=mixed_difficulty model=fixed_prior_response_0.38 train=3 heldout=3 frozen_response_p=0.380000000 Brier=0.224400 LogLoss=0.641219
+=== RUN   TestLearningOfflineEvaluation/heldout_prediction/no_history
+    offline_eval_test.go:223: case=no_history model=bkt_response train=0 heldout=3 frozen_response_p=0.380000000 Brier=0.224400 LogLoss=0.641219
+    offline_eval_test.go:223: case=no_history model=fixed_chance_0.25 train=0 heldout=3 frozen_response_p=0.250000000 Brier=0.229167 LogLoss=0.653886
+    offline_eval_test.go:223: case=no_history model=fixed_prior_response_0.38 train=0 heldout=3 frozen_response_p=0.380000000 Brier=0.224400 LogLoss=0.641219
+=== RUN   TestLearningOfflineEvaluation/heldout_prediction/errors_then_reversal
+    offline_eval_test.go:223: case=errors_then_reversal model=bkt_response train=3 heldout=3 frozen_response_p=0.362569810 Brier=0.406317 LogLoss=1.014538
+    offline_eval_test.go:223: case=errors_then_reversal model=fixed_chance_0.25 train=3 heldout=3 frozen_response_p=0.250000000 Brier=0.562500 LogLoss=1.386294
+    offline_eval_test.go:223: case=errors_then_reversal model=fixed_prior_response_0.38 train=3 heldout=3 frozen_response_p=0.380000000 Brier=0.384400 LogLoss=0.967584
+=== NAME  TestLearningOfflineEvaluation/heldout_prediction
+    offline_eval_test.go:233: prediction_micro model=bkt_response sequences=8 train=21 heldout=24 correct=12 Brier=0.277601 LogLoss=0.780492
+    offline_eval_test.go:233: prediction_micro model=fixed_chance_0.25 sequences=8 train=21 heldout=24 correct=12 Brier=0.312500 LogLoss=0.836988
+    offline_eval_test.go:233: prediction_micro model=fixed_prior_response_0.38 sequences=8 train=21 heldout=24 correct=12 Brier=0.264400 LogLoss=0.722810
+--- PASS: TestLearningOfflineEvaluation (0.00s)
+    --- PASS: TestLearningOfflineEvaluation/golden_arithmetic (0.00s)
+    --- PASS: TestLearningOfflineEvaluation/states_and_freshness (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/states_and_freshness/unseen (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/states_and_freshness/read_only (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/states_and_freshness/uncredited_high (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/states_and_freshness/learning (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/states_and_freshness/too_few (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/states_and_freshness/mastered (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/states_and_freshness/due (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/states_and_freshness/stale (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/states_and_freshness/missing (0.00s)
+    --- PASS: TestLearningOfflineEvaluation/fixture_guards (0.00s)
+    --- PASS: TestLearningOfflineEvaluation/ranking (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/ranking/due_review_priority (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/ranking/related_frontier (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/ranking/optional_interest_on (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/ranking/optional_interest_off (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/ranking/exploration_slot (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/ranking/freshness_reset (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/ranking/cold_start (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/ranking/kind_diversity_tradeoff (0.00s)
+    --- PASS: TestLearningOfflineEvaluation/heldout_prediction (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/heldout_prediction/steady_success (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/heldout_prediction/early_errors_then_success (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/heldout_prediction/persistent_errors (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/heldout_prediction/success_then_reversal (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/heldout_prediction/mixed_recovery (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/heldout_prediction/mixed_difficulty (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/heldout_prediction/no_history (0.00s)
+        --- PASS: TestLearningOfflineEvaluation/heldout_prediction/errors_then_reversal (0.00s)
+PASS
+ok  	github.com/Tencent/WeKnora/internal/application/service/learning	0.530s
