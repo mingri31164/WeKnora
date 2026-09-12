@@ -7,13 +7,13 @@
 | 项目 | 内容 |
 | --- | --- |
 | 提交署名 / GitHub ID | `mingri31164` |
-| 最终代码 Tag | [`rhino-2026-final-4`](https://github.com/mingri31164/WeKnora/tree/rhino-2026-final-4) |
-| 完整代码 SHA | `600565c2f4947bb2a16b0dd025d7a9918d32ac7a` |
+| 最终代码 Tag | [`rhino-2026-final-4-v2`](https://github.com/mingri31164/WeKnora/tree/rhino-2026-final-4-v2) |
+| 完整代码 SHA | `a98c96840e6099bfaf1bd3488009773ff5d2e6ac` |
 | 上游 PR | [Tencent/WeKnora #3145](https://github.com/Tencent/WeKnora/pull/3145) |
-| 上游基线 | `081851c6b8802225ae968ba67d8de444e258c67b` |
+| 上游基线 | `462999ec3f5c1467ef0ccf5cf8c422393f40a0e6` |
 | 材料分支 | `submission/guided-learning` |
 
-署名使用已确认的 GitHub ID，未推定真实姓名。材料分支在最终代码后追加本目录及根目录 `submission.yaml`，不会移动最终 Tag，也不进入上游功能 PR。
+署名使用已确认的 GitHub ID，未推定真实姓名。旧 Tag `rhino-2026-final-4` 保持原指向；本轮审查修复使用新的 `rhino-2026-final-4-v2`。材料分支在最终代码后追加本目录及根目录 `submission.yaml`，不进入上游功能 PR。
 
 ## 材料导航
 

@@ -12,14 +12,14 @@ GitHub ID：mingri31164
 
 成果 PR：https://github.com/Tencent/WeKnora/pull/3145
 代码仓库：https://github.com/mingri31164/WeKnora
-最终 Tag：rhino-2026-final-4
-完整 Commit SHA：600565c2f4947bb2a16b0dd025d7a9918d32ac7a
+最终 Tag：rhino-2026-final-4-v2
+完整 Commit SHA：a98c96840e6099bfaf1bd3488009773ff5d2e6ac
 材料入口：https://github.com/mingri31164/WeKnora/blob/submission/guided-learning/submission/README.md
 submission.yaml：https://github.com/mingri31164/WeKnora/blob/submission/guided-learning/submission.yaml
 
 已实现 Wiki 节点上的个人学习状态、长期记忆兴趣/文档亲和度关联、带来源证据的三题测验、BKT 掌握度与复习推荐、Graph 学习状态、学习 Agent 卡片，以及租户隔离下的查看、导出和删除。
 
-验证包含 Go 全量测试与数据库 race、938 项前端测试、53 项 Python 夹具测试、63 项前端配置测试。真实 API 验收 36 项通过；桌面/移动端完整重放 11 项通过、3 项明确跳过；非空删除另有 2 项通过。设计说明、运行命令、截图、测试范围和机器可读结果见材料入口。
+验证包含 Go 全量测试与数据库 race、894 项前端测试、53 项 Python 夹具测试、63 项前端配置测试。真实 API 验收 36 项通过；learner_a 浏览器重放 9 项通过、6 项按审批门跳过；learner_b 重放 11 项通过、4 项按审批门跳过，非空删除结果为 3 attempts / 1 mastery / 1 quiz。设计说明、运行命令、截图、测试范围和机器可读结果见材料入口。
 
 离线评估使用固定合成数据。推荐排序优于节点度数和冷启动基线；BKT 留出预测优于固定猜测，但弱于固定先验。尚无真人学习收益实验，同模型盲答不能替代人工审核。当前范围为已登录 Web 用户和自有 Wiki 知识库，不覆盖共享 Agent、API Key、IM 或 Embed。
 

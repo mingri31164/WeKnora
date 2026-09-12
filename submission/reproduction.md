@@ -3,10 +3,10 @@
 代码以 `submission.yaml` 中的最终 Tag 和完整 Commit SHA 为准。Tag 指向功能代码；提交材料分支在其后追加材料，不移动最终 Tag。
 
 ```bash
-git clone --branch rhino-2026-final-4 --single-branch https://github.com/mingri31164/WeKnora.git WeKnora-topic4
+git clone --branch rhino-2026-final-4-v2 --single-branch https://github.com/mingri31164/WeKnora.git WeKnora-topic4
 cd WeKnora-topic4
 git rev-parse HEAD
-# 应为 600565c2f4947bb2a16b0dd025d7a9918d32ac7a
+# 应为 a98c96840e6099bfaf1bd3488009773ff5d2e6ac
 ```
 
 克隆到独立目录，不要放在另一个仓库的 `.runtime/` 内。当前测试路径校验不支持嵌套 `.runtime` 根目录。
@@ -30,10 +30,14 @@ go test -race ./internal/application/service/learning ./internal/application/rep
 go test ./internal/application/service/learning -run '^TestLearningOfflineEvaluation$' -count=1 -v
 python3 -B -m unittest discover -s scripts -p 'test_guided_learning_fixtures.py' -v
 npm --prefix frontend ci
-npm --prefix frontend test
+npm --prefix frontend exec -- sh -c \
+  "find src -type f \( -name '*.test.ts' -o -name '*.test.mjs' \) -print0 | sort -z | xargs -0 npx tsx --test --test-concurrency=1"
 npm --prefix frontend run type-check
 npm --prefix frontend run build
 npm --prefix frontend run test:e2e:config
+npm --prefix website-docs ci
+npm --prefix website-docs run check
+npm --prefix website-docs run build
 ```
 
 仓储测试默认使用临时 SQLite 数据库。验证 PostgreSQL 时，给 `LEARNING_TEST_POSTGRES_DSN` 和 `WEKNORA_WIKI_RENAME_TEST_DSN` 提供专用测试数据库连接后，重跑仓储 `-race` 测试。测试创建、删除独立临时 schema，不应配置生产数据库。

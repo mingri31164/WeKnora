@@ -12,5 +12,5 @@ result:
 repository:
   url: "https://github.com/mingri31164/WeKnora"
   branch: "submission/guided-learning"
-  commit: "600565c2f4947bb2a16b0dd025d7a9918d32ac7a"
-  tag: "rhino-2026-final-4"
+  commit: "a98c96840e6099bfaf1bd3488009773ff5d2e6ac"
+  tag: "rhino-2026-final-4-v2"

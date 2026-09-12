@@ -1,8 +1,8 @@
 {
-  "code_commit": "600565c2f4947bb2a16b0dd025d7a9918d32ac7a",
-  "upstream_base": "081851c6b8802225ae968ba67d8de444e258c67b",
+  "code_commit": "a98c96840e6099bfaf1bd3488009773ff5d2e6ac",
+  "upstream_base": "462999ec3f5c1467ef0ccf5cf8c422393f40a0e6",
   "api": {
-    "started_at": "2026-09-11T22:15:55Z",
+    "started_at": "2026-09-12T10:23:04Z",
     "status": "pass",
     "counts": {
       "observed": 15,
@@ -182,7 +182,7 @@
         "check": "conflicting_attempt",
         "outcome": "pass",
         "http_status": 409,
-        "seconds": 0.002,
+        "seconds": 0.001,
         "error_code": "learning_conflict"
       },
       {
@@ -226,10 +226,10 @@
         "http_status": 200,
         "events": {
           "agent_query": 1,
-          "answer": 487,
+          "answer": 372,
           "tool_call": 6,
           "tool_result": 3,
-          "thinking": 388,
+          "thinking": 18,
           "complete": 1
         },
         "calls": {
@@ -243,8 +243,8 @@
           "wiki_read_page": 1
         },
         "failed_tools": {},
-        "answer_characters": 974,
-        "seconds": 6.806
+        "answer_characters": 755,
+        "seconds": 4.306
       },
       {
         "check": "agent_quiz_card_started",
@@ -257,10 +257,10 @@
         "http_status": 200,
         "events": {
           "agent_query": 1,
-          "thinking": 228,
+          "thinking": 300,
           "tool_call": 4,
           "tool_result": 2,
-          "answer": 143,
+          "answer": 231,
           "complete": 1
         },
         "calls": {
@@ -272,8 +272,8 @@
           "prepare_learning_quiz": 1
         },
         "failed_tools": {},
-        "answer_characters": 305,
-        "seconds": 3.809
+        "answer_characters": 417,
+        "seconds": 4.108
       },
       {
         "check": "agent_quiz_card_reference",
@@ -291,7 +291,7 @@
         "check": "opt_out",
         "outcome": "pass",
         "http_status": 200,
-        "seconds": 0.002
+        "seconds": 0.003
       },
       {
         "check": "disabled_export_available",
@@ -308,7 +308,7 @@
         "check": "disabled_clear_available",
         "outcome": "pass",
         "http_status": 200,
-        "seconds": 0.004
+        "seconds": 0.003
       },
       {
         "check": "clear_deleted_counts",
@@ -347,19 +347,19 @@
         "outcome": "pass"
       }
     ],
-    "raw_sha256": "d2925468d33e56a3a85f82f4f57f29c733c3797f42048d2b5b85b10323bcf2da"
+    "raw_sha256": "4efb7d82c3e5c6a32823ab61cc019c44236b04ebc79efc4af9ed4d6dad0e7a5d"
   },
   "browser": {
     "version": "153.0.8010.12",
-    "single_process": false,
+    "single_process": true,
     "source_changed": false,
     "source_sha256": {
       "src/views/knowledge/wiki/LearningPanel.vue": "9770a6e05ba8a39393fd2928dd65bd3f673c50bbb1a54091f1bd5953952179a5",
       "src/views/knowledge/wiki/LearningQuiz.vue": "e6d68c122824c9e1c4ad633c555dba41c1ebef09c0ee64b18693473f4d1d3029",
-      "src/views/knowledge/wiki/WikiBrowser.vue": "bdecdd12f1d6a44c35dd523ed55e6ade9bae3ad2c17d4fc72b8f894abf1649aa",
+      "src/views/knowledge/wiki/WikiBrowser.vue": "03c8c7813792d64ddc305db8b20f33a7572e7c7416d19a715cdf1eb10b4bb5ae",
       "src/views/knowledge/KnowledgeBase.vue": "4de3e4b1550deceaad68f496f7886de2644d844bc88bf3896c14ac37529ef503",
       "src/composables/useLearningState.ts": "17cae8ca92e84db4250c2ee6a1b557b9fb7da61f4c4422b5dcbe64eb74aa441b",
-      "src/i18n/locales/en-US.ts": "b8484b60607c7567950f5c61f5785966716ce18b919f34d62b63534aec43bc8a"
+      "src/i18n/locales/en-US.ts": "2b3d485f3ac408f2614dd1ba8855600a7a7b9b46c0572732fddff59008c49478"
     },
     "cases": [
       {
@@ -867,6 +867,48 @@
         ]
       },
       {
+        "name": "desktop-graph-to-wiki",
+        "actor": "learner_a",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "outcome": "passed",
+        "checks": [
+          {
+            "passed": true,
+            "message": "Opt-in persisted on backend"
+          },
+          {
+            "passed": true,
+            "message": "Graph selection keeps the same slug when entering the Wiki reader"
+          },
+          {
+            "passed": true,
+            "message": "Learning panel remains scoped to the selected page"
+          },
+          {
+            "passed": true,
+            "message": "No unhandled browser page errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected HTTP errors"
+          },
+          {
+            "passed": true,
+            "message": "No unexpected console errors"
+          },
+          {
+            "passed": true,
+            "message": "No out-of-scope requests"
+          }
+        ],
+        "notes": [
+          "Already opted in: preserved history; did not reset consent to manufacture a cold start."
+        ]
+      },
+      {
         "name": "real-evidence-gate",
         "actor": "learner_a",
         "viewport": {
@@ -956,150 +998,6 @@
         ]
       },
       {
-        "name": "desktop-privacy-cancel",
-        "actor": "learner_b",
-        "viewport": {
-          "width": 1280,
-          "height": 900
-        },
-        "outcome": "passed",
-        "checks": [
-          {
-            "passed": true,
-            "message": "desktop-before-privacy: no document horizontal overflow (actual 1280/1280)"
-          },
-          {
-            "passed": true,
-            "message": "desktop-before-privacy: mobile layout viewport does not widen beyond requested width"
-          },
-          {
-            "passed": true,
-            "message": "desktop-before-privacy: .learning-panel stays inside viewport"
-          },
-          {
-            "passed": true,
-            "message": "desktop-before-privacy: controls/columns/graph overlays do not overlap"
-          },
-          {
-            "passed": true,
-            "message": "Export has settings and timestamp"
-          },
-          {
-            "passed": true,
-            "message": "desktop-clear-dialog: no document horizontal overflow (actual 1280/1280)"
-          },
-          {
-            "passed": true,
-            "message": "desktop-clear-dialog: mobile layout viewport does not widen beyond requested width"
-          },
-          {
-            "passed": true,
-            "message": "desktop-clear-dialog: .learning-panel stays inside viewport"
-          },
-          {
-            "passed": true,
-            "message": "desktop-clear-dialog: controls/columns/graph overlays do not overlap"
-          },
-          {
-            "passed": true,
-            "message": "learner_b consent is unchanged"
-          },
-          {
-            "passed": true,
-            "message": "Cancel sends no DELETE"
-          },
-          {
-            "passed": true,
-            "message": "No unhandled browser page errors"
-          },
-          {
-            "passed": true,
-            "message": "No unexpected HTTP errors"
-          },
-          {
-            "passed": true,
-            "message": "No unexpected console errors"
-          },
-          {
-            "passed": true,
-            "message": "No out-of-scope requests"
-          }
-        ],
-        "notes": []
-      },
-      {
-        "name": "mobile-privacy-cancel",
-        "actor": "learner_b",
-        "viewport": {
-          "width": 390,
-          "height": 844
-        },
-        "outcome": "passed",
-        "checks": [
-          {
-            "passed": true,
-            "message": "mobile-before-privacy: no document horizontal overflow (actual 390/390)"
-          },
-          {
-            "passed": true,
-            "message": "mobile-before-privacy: mobile layout viewport does not widen beyond requested width"
-          },
-          {
-            "passed": true,
-            "message": "mobile-before-privacy: .learning-panel stays inside viewport"
-          },
-          {
-            "passed": true,
-            "message": "mobile-before-privacy: controls/columns/graph overlays do not overlap"
-          },
-          {
-            "passed": true,
-            "message": "Export has settings and timestamp"
-          },
-          {
-            "passed": true,
-            "message": "mobile-clear-dialog: no document horizontal overflow (actual 390/390)"
-          },
-          {
-            "passed": true,
-            "message": "mobile-clear-dialog: mobile layout viewport does not widen beyond requested width"
-          },
-          {
-            "passed": true,
-            "message": "mobile-clear-dialog: .learning-panel stays inside viewport"
-          },
-          {
-            "passed": true,
-            "message": "mobile-clear-dialog: controls/columns/graph overlays do not overlap"
-          },
-          {
-            "passed": true,
-            "message": "learner_b consent is unchanged"
-          },
-          {
-            "passed": true,
-            "message": "Cancel sends no DELETE"
-          },
-          {
-            "passed": true,
-            "message": "No unhandled browser page errors"
-          },
-          {
-            "passed": true,
-            "message": "No unexpected HTTP errors"
-          },
-          {
-            "passed": true,
-            "message": "No unexpected console errors"
-          },
-          {
-            "passed": true,
-            "message": "No out-of-scope requests"
-          }
-        ],
-        "notes": []
-      },
-      {
         "name": "tenant-isolation",
         "actor": "learner_a",
         "viewport": {
@@ -1138,36 +1036,6 @@
         ]
       },
       {
-        "name": "MOCK-overview-error",
-        "actor": "learner_a",
-        "viewport": {
-          "width": 1280,
-          "height": 900
-        },
-        "outcome": "passed",
-        "checks": [
-          {
-            "passed": true,
-            "message": "No unhandled browser page errors"
-          },
-          {
-            "passed": true,
-            "message": "No unexpected HTTP errors"
-          },
-          {
-            "passed": true,
-            "message": "No unexpected console errors"
-          },
-          {
-            "passed": true,
-            "message": "No out-of-scope requests"
-          }
-        ],
-        "notes": [
-          "Only the failed HTTP response is mocked. Recovery uses the real backend; this is not real successful quiz E2E evidence."
-        ]
-      },
-      {
         "name": "approved-real-quiz",
         "actor": "learner_a",
         "viewport": {
@@ -1194,7 +1062,23 @@
           },
           {
             "passed": true,
-            "message": "Real question has four options"
+            "message": "Pending real quiz exposes no answer controls"
+          },
+          {
+            "passed": true,
+            "message": "Unanswered DTO hides answer key and explanation"
+          },
+          {
+            "passed": true,
+            "message": "Unanswered DTO hides answer key and explanation"
+          },
+          {
+            "passed": true,
+            "message": "Unanswered DTO hides answer key and explanation"
+          },
+          {
+            "passed": true,
+            "message": "Agent tool transcript carries a quiz reference, not answer keys"
           },
           {
             "passed": true,
@@ -1202,7 +1086,83 @@
           },
           {
             "passed": true,
+            "message": "Submit requires a selection"
+          },
+          {
+            "passed": true,
+            "message": "Server result matches selected question/option"
+          },
+          {
+            "passed": true,
+            "message": "Server result includes explanation and evidence"
+          },
+          {
+            "passed": true,
+            "message": "Evidence is from a fixture document"
+          },
+          {
+            "passed": true,
+            "message": "Evidence quote occurs in actual current chunk"
+          },
+          {
+            "passed": true,
+            "message": "Answered question cannot be resubmitted in UI"
+          },
+          {
+            "passed": true,
             "message": "Real question has four options"
+          },
+          {
+            "passed": true,
+            "message": "Submit requires a selection"
+          },
+          {
+            "passed": true,
+            "message": "Server result matches selected question/option"
+          },
+          {
+            "passed": true,
+            "message": "Server result includes explanation and evidence"
+          },
+          {
+            "passed": true,
+            "message": "Evidence is from a fixture document"
+          },
+          {
+            "passed": true,
+            "message": "Evidence quote occurs in actual current chunk"
+          },
+          {
+            "passed": true,
+            "message": "Answered question cannot be resubmitted in UI"
+          },
+          {
+            "passed": true,
+            "message": "Real question has four options"
+          },
+          {
+            "passed": true,
+            "message": "Submit requires a selection"
+          },
+          {
+            "passed": true,
+            "message": "Server result matches selected question/option"
+          },
+          {
+            "passed": true,
+            "message": "Server result includes explanation and evidence"
+          },
+          {
+            "passed": true,
+            "message": "Evidence is from a fixture document"
+          },
+          {
+            "passed": true,
+            "message": "Evidence quote occurs in actual current chunk"
+          },
+          {
+            "passed": true,
+            "message": "Answered question cannot be resubmitted in UI"
           },
           {
             "passed": true,
@@ -1247,6 +1207,22 @@
           {
             "passed": true,
             "message": "Export quizzes stays in fixture KB"
+          },
+          {
+            "passed": true,
+            "message": "Export quizzes stays in fixture KB"
+          },
+          {
+            "passed": true,
+            "message": "Export attempts stays in fixture KB"
+          },
+          {
+            "passed": true,
+            "message": "Export attempts stays in fixture KB"
+          },
+          {
+            "passed": true,
+            "message": "Export attempts stays in fixture KB"
           },
           {
             "passed": true,
@@ -1302,54 +1278,50 @@
           }
         ],
         "notes": [
-          "Reloaded an actual prior quiz through the application scoped sessionStorage pointer; no DTO or success response injected.",
-          "Already opted in: preserved history; did not reset consent to manufacture a cold start.",
-          "Preserved an existing answered question; did not reset or regrade.",
-          "Preserved an existing answered question; did not reset or regrade.",
-          "Preserved an existing answered question; did not reset or regrade."
+          "Already opted in: preserved history; did not reset consent to manufacture a cold start."
         ],
         "quiz": {
           "status": "ready",
           "algorithm_version": "bkt-v1",
-          "submittedThisRun": 0
+          "submittedThisRun": 3
         },
         "answers": [
           {
             "correct": true,
             "mastery": {
               "state": "learning",
-              "p_mastery": 0.5526315789473685,
-              "attempts": 1,
-              "correct": 1,
-              "consecutive_correct": 1,
-              "last_assessed_at": "2026-09-11T22:02:13.04928377Z",
-              "next_review_at": "2026-09-12T22:02:13.04928377Z",
-              "source_stale": false
-            }
-          },
-          {
-            "correct": false,
-            "mastery": {
-              "state": "learning",
-              "p_mastery": 0.2702020202020202,
-              "attempts": 2,
-              "correct": 1,
-              "consecutive_correct": 0,
-              "last_assessed_at": "2026-09-11T22:02:13.427949849Z",
-              "next_review_at": "2026-09-12T22:02:13.427949849Z",
-              "source_stale": false
-            }
-          },
-          {
-            "correct": false,
-            "mastery": {
-              "state": "learning",
               "p_mastery": 0.18998681028797537,
               "attempts": 3,
               "correct": 1,
               "consecutive_correct": 0,
-              "last_assessed_at": "2026-09-11T22:02:13.79487762Z",
-              "next_review_at": "2026-09-12T22:02:13.79487762Z",
+              "last_assessed_at": "2026-09-11T22:02:13.794877Z",
+              "next_review_at": "2026-09-12T22:02:13.794877Z",
+              "source_stale": false
+            }
+          },
+          {
+            "correct": true,
+            "mastery": {
+              "state": "learning",
+              "p_mastery": 0.539138543712892,
+              "attempts": 4,
+              "correct": 2,
+              "consecutive_correct": 1,
+              "last_assessed_at": "2026-09-12T10:41:26.340582342Z",
+              "next_review_at": "2026-09-13T10:41:26.340582342Z",
+              "source_stale": false
+            }
+          },
+          {
+            "correct": true,
+            "mastery": {
+              "state": "learning",
+              "p_mastery": 0.8368978569895849,
+              "attempts": 5,
+              "correct": 3,
+              "consecutive_correct": 2,
+              "last_assessed_at": "2026-09-12T10:41:26.70672705Z",
+              "next_review_at": "2026-09-15T10:41:26.70672705Z",
               "source_stale": false
             }
           }
@@ -1367,6 +1339,10 @@
           {
             "passed": true,
             "message": "Card quiz belongs to a curated fixture page"
+          },
+          {
+            "passed": true,
+            "message": "Chat card fetches the exact Wiki-submitted answers"
           },
           {
             "passed": true,
@@ -1396,7 +1372,7 @@
         "notes": []
       }
     ],
-    "raw_sha256": "feb5c5192b9156d10b5ec6f93356b127d74405da6b8196d4dcb9b2d66af58364"
+    "raw_sha256": "32a8598dd63a266090fc02fda6ec194a540d2c6085b42e7990ab9548de178501"
   },
   "initial_real_generation": {
     "name": "approved-real-quiz",
@@ -1573,6 +1549,22 @@
       },
       {
         "passed": true,
+        "message": "Export quizzes stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export attempts stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export attempts stays in fixture KB"
+      },
+      {
+        "passed": true,
+        "message": "Export attempts stays in fixture KB"
+      },
+      {
+        "passed": true,
         "message": "Export attempts stays in fixture KB"
       },
       {
@@ -1637,38 +1629,38 @@
         "correct": true,
         "mastery": {
           "state": "learning",
-          "p_mastery": 0.5526315789473685,
-          "attempts": 1,
-          "correct": 1,
-          "consecutive_correct": 1,
-          "last_assessed_at": "2026-09-11T22:02:13.04928377Z",
-          "next_review_at": "2026-09-12T22:02:13.04928377Z",
-          "source_stale": false
-        }
-      },
-      {
-        "correct": false,
-        "mastery": {
-          "state": "learning",
-          "p_mastery": 0.2702020202020202,
-          "attempts": 2,
-          "correct": 1,
-          "consecutive_correct": 0,
-          "last_assessed_at": "2026-09-11T22:02:13.427949849Z",
-          "next_review_at": "2026-09-12T22:02:13.427949849Z",
-          "source_stale": false
-        }
-      },
-      {
-        "correct": false,
-        "mastery": {
-          "state": "learning",
           "p_mastery": 0.18998681028797537,
           "attempts": 3,
           "correct": 1,
           "consecutive_correct": 0,
-          "last_assessed_at": "2026-09-11T22:02:13.79487762Z",
-          "next_review_at": "2026-09-12T22:02:13.79487762Z",
+          "last_assessed_at": "2026-09-11T22:02:13.794877Z",
+          "next_review_at": "2026-09-12T22:02:13.794877Z",
+          "source_stale": false
+        }
+      },
+      {
+        "correct": true,
+        "mastery": {
+          "state": "learning",
+          "p_mastery": 0.539138543712892,
+          "attempts": 4,
+          "correct": 2,
+          "consecutive_correct": 1,
+          "last_assessed_at": "2026-09-12T10:41:26.340582342Z",
+          "next_review_at": "2026-09-13T10:41:26.340582342Z",
+          "source_stale": false
+        }
+      },
+      {
+        "correct": true,
+        "mastery": {
+          "state": "learning",
+          "p_mastery": 0.8368978569895849,
+          "attempts": 5,
+          "correct": 3,
+          "consecutive_correct": 2,
+          "last_assessed_at": "2026-09-12T10:41:26.70672705Z",
+          "next_review_at": "2026-09-15T10:41:26.70672705Z",
           "source_stale": false
         }
       }

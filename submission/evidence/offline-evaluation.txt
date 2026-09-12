@@ -120,4 +120,4 @@
         --- PASS: TestLearningOfflineEvaluation/heldout_prediction/no_history (0.00s)
         --- PASS: TestLearningOfflineEvaluation/heldout_prediction/errors_then_reversal (0.00s)
 PASS
-ok  	github.com/Tencent/WeKnora/internal/application/service/learning	0.530s
+ok  	github.com/Tencent/WeKnora/internal/application/service/learning	0.525s

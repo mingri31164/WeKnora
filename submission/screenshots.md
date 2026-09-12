@@ -18,6 +18,8 @@
 
 ![移动端图例](screenshots/graph-mobile.png)
 
+![Graph 选中页面切回 Wiki](screenshots/graph-to-wiki.png)
+
 ## 测验与反馈
 
 未作答时只显示题目和选项；提交后显示判分、解释与来源引文。

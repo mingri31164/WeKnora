@@ -1,14 +1,15 @@
 {
-  "evidence/offline-evaluation.txt": "6648158626cb099b1f88f0db2e4a9b976d563732501cd8e4cc1da50dd55771e3",
-  "evidence/verification.json": "ad2b294ca9b98c8b992c1a79fb15c3f5bc2b3c1bf481efabb3ec3e6177ffed4f",
-  "screenshots/agent-card.png": "b5c65a96e34c1492ba444328aeb7f2ad2bb78f9813073b3d81d073fac324d15d",
-  "screenshots/graph-desktop.png": "887c4025cb01607090dcf1a7ea8f273f832feabd534f6143765bc018ed0c112d",
-  "screenshots/graph-mobile.png": "4a7c3e0fd73b87d58650aeff956cc3a2dcb7005244aafe17eb600262b59ab95b",
-  "screenshots/privacy-cleared.png": "6ffca34f10feb87a492b3e66f97a027c3c8a99919f53c03b48c33ca1029d179a",
-  "screenshots/privacy-confirmation.png": "7ad807ae6b8a65964672da9ee66ce0ec5db591028d226e04b1e50ed58cfe9c8d",
-  "screenshots/quiz-feedback.png": "7a55b2ef65fc78e22687876e51ba60309f8db8662089aa008d129b2038e6923f",
-  "screenshots/quiz-mobile.png": "59471655322cc0af388d33700dfdd410f3c1f46a06cd06ad7ffd7262c48e3c38",
-  "screenshots/quiz-ready.png": "73e4b23ca0b4cf2394f2f8884a0baacd5e434896c3e9e743c9373e961876af0c",
-  "screenshots/wiki-learning-desktop.png": "596bf79281f748f7e7ed023cb8e16dde4081147d9feb23921c9c5c48d6ddbbce",
-  "screenshots/wiki-learning-mobile.png": "b3940bc8ddb18d1bb6d9b384c7a8369ab706c656656d17002fa6507f21166f2c"
+  "evidence/offline-evaluation.txt": "bbeb8d8c37f47d5612457965f8e5abab9b36dd0f068868e38593d8436ab9abac",
+  "evidence/verification.json": "fd6645182fd37371801abcad5381cb3eede0df39ded0e771461d7aa5825574f4",
+  "screenshots/agent-card.png": "4c9e15d2daaa23cb0aa5759838231f4554a6a396643294d8d2dac81968b75a15",
+  "screenshots/graph-desktop.png": "0882c22d4603d2e2878180c27a1174af011fc5370410d6449521d895e53ac9d5",
+  "screenshots/graph-mobile.png": "265fe12aa98eacaf6d322acfbb2fc1d8efa3bc20294e0ce68839e934a304d17b",
+  "screenshots/graph-to-wiki.png": "a94ba1d341711d3489bdb27c88f55379206cbbc567ec76e6b81239cff5fca529",
+  "screenshots/privacy-cleared.png": "1895ffcba76b80f80aedd3f7612122d30819ac0d255f01493af65f7984be60d7",
+  "screenshots/privacy-confirmation.png": "40107a306d78a6d4dc0ddd23d8f6570aaaa40ec6481f9837d9f3143047ffd4ac",
+  "screenshots/quiz-feedback.png": "394720268e9bd6a54e188d4f84e67f7d78004833386ed2989206c3ce75ab242c",
+  "screenshots/quiz-mobile.png": "4ba33aeebb6256d164166e623957840a04c1fb8e9b5fe6974dbbd1ed8119d7b6",
+  "screenshots/quiz-ready.png": "6b1d9a256f33fcea9957ca700e2b5fcdde9d071c22726c670ed36102c7af90a7",
+  "screenshots/wiki-learning-desktop.png": "569cee95fd8833af931e6b995aee35c7cf8d2e1ad5317193a568fcc213ad05df",
+  "screenshots/wiki-learning-mobile.png": "b4c304349e896eccf8c840957b36e9e9b668578641a07037e2ab9f57948bfb16"
 }
