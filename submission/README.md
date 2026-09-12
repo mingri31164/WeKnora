@@ -13,12 +13,12 @@
 | 完整代码 SHA | `a98c96840e6099bfaf1bd3488009773ff5d2e6ac` |
 | README | 当前页面 |
 | 运行 / 测试命令 | [运行与验证](reproduction.md) |
-| submission.yaml | [提交元数据](../submission.yaml) |
+| submission.yaml | [代码仓库根目录](https://github.com/mingri31164/WeKnora/blob/feat/guided-learning/submission.yaml) |
 | 上游 PR | [Tencent/WeKnora #3145](https://github.com/Tencent/WeKnora/pull/3145) |
 | 上游基线 | `462999ec3f5c1467ef0ccf5cf8c422393f40a0e6` |
 | 材料分支 | `submission/guided-learning` |
 
-旧 Tag `rhino-2026-final-4` 保持原指向，本轮审查修复使用新的 `rhino-2026-final-4-v2`。`submission.yaml` 描述 `feat/guided-learning` 上的最终代码；`submission/guided-learning` 仅保存提交材料，不进入上游功能 PR。
+旧 Tag `rhino-2026-final-4` 保持原指向，本轮审查修复使用新的 `rhino-2026-final-4-v2`。`submission.yaml` 位于最终代码分支 `feat/guided-learning` 的仓库根目录；`submission/guided-learning` 仅保存设计、验证和截图材料。
 
 ## 材料导航
 
@@ -27,7 +27,7 @@
 - [验证结果](verification.md)：本次执行结果、跳过项、评估基线及限制。
 - [功能截图](screenshots.md)：桌面、移动端、Graph、测验、Agent 卡片和删除。
 - [邮件正文](email.txt)：发送前核对署名及链接，未代发。
-- [提交元数据](../submission.yaml)：按交付指引记录最终代码版本。
+- [提交元数据](https://github.com/mingri31164/WeKnora/blob/feat/guided-learning/submission.yaml)：按交付指引保存在最终代码仓库根目录。
 - [机器可读证据](evidence/verification.json)、[离线评估输出](evidence/offline-evaluation.txt)、[证据校验值](evidence-sha256.json)。
 
 ## 完成范围
