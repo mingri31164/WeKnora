@@ -1,0 +1,15 @@
+version: 1
+student:
+  name: "刘德宝"
+  github_id: "mingri31164"
+topic:
+  id: "2"
+  title: "可视化沙箱工作台"
+result:
+  type: "code"
+  url: "https://github.com/Tencent/WeKnora/pull/3146"
+repository:
+  url: "https://github.com/mingri31164/WeKnora.git"
+  branch: "submission/sandbox-workbench"
+  commit: "5d3fa9178131f6cfdbcd183471d57be212c65f26"
+  tag: "rhino-2026-final-2"

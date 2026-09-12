@@ -1,0 +1,34 @@
+# Rhino-bird 2026: Topic 2
+
+Participant: Liu Debao (GitHub: `mingri31164`). Topic: Visual Sandbox Workbench.
+
+The final code is tagged [`rhino-2026-final-2`](https://github.com/mingri31164/WeKnora/tree/rhino-2026-final-2), at commit `5d3fa9178131f6cfdbcd183471d57be212c65f26`. The feature PR is [Tencent/WeKnora#3146](https://github.com/Tencent/WeKnora/pull/3146).
+
+This branch adds submission metadata after the final code tag, as required by the delivery guide. It is not the feature PR branch. The tag must not be moved to this metadata commit.
+
+## Run And Test
+
+Use the project [README](README.md) for the application and dependencies. Enable the workbench and configure trusted Origins, Redis, and a dedicated sandbox according to [Sandbox Workbench](docs/sandbox-workbench.md). This document includes Docker/E2B setup, limits, security boundaries, and reproducible real-backend tests. The original presentation Skill is under [examples/skills/presentation-builder](examples/skills/presentation-builder/).
+
+```bash
+git checkout rhino-2026-final-2
+go test ./... -count=1
+go vet ./...
+python3 -B -I internal/sandbox/workbench_files_test.py
+python3 -B -I internal/sandbox/terminal_runtime_probe_test.py
+python3 -B -I internal/sandbox/terminal_runner_test.py
+```
+
+In `frontend/`, run `npm ci`, `npm test`, `npm run type-check`, and `npm run build`. Real-backend tests require dedicated `WORKBENCH_TEST_*` settings from the workbench document; a skipped backend is not a passing real test. Python file tests require a short physical temporary path with no symlink components.
+
+## Validation And Limits
+
+The final revision passed full Go tests (7,923 leaf tests, 10 environment skips), `go vet`, targeted race tests, incremental golangci-lint, 848 frontend tests, type check, build, and 55 Python tests. Docker/E2B-compatible integration tests passed 45 leaf cases in normal and race runs with no skips. The real API/WebSocket suite passed 24 cases. Concurrent two-tenant checks confirmed separate PID namespaces, private process/file visibility, rejected cross-tenant requests, and per-command audit records.
+
+The final supplement enforces sampled aggregate command-tree RSS in addition to per-process address space. Sampling can overshoot and count shared pages repeatedly; this is not a container memory quota. The workbench terminates bounded commands, while the upstream reconnectable shell retains detach semantics.
+
+Browser recordings and Agent-generated artifacts are separately versioned to `2a209307`. Their report retains driver failures with corrected passes, skips, an executor GPU/proc restriction, and an optional Agent import failure. The original CSV/XLSX outputs omit the requested synthetic-data notice; structure and numeric checks passed, not full prompt conformance.
+
+Real E2B evidence uses a Kubernetes-compatible container backend, not E2B Cloud or native Cube. Cube workbench files remain disabled, the local compatible template catalog returns 404, and host-process execution is not exposed. No production capacity or MicroVM isolation claim is made.
+
+Only `submission.yaml` and this note are added on this branch. Reports, slides, screenshots, recordings, and reproducible acceptance scripts are supplied in the email material package. Credentials and private runtime logs are excluded. Preparing this branch does not send the submission email.
