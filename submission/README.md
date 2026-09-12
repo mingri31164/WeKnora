@@ -1,19 +1,24 @@
 # 课题四：知识网络与引导式学习
 
-本提交在 WeKnora Wiki 中提供个人主题推荐、来源测验、掌握度与复习状态，并集成学习 Agent。可运行代码、设计说明、验证数据和复现方法分别列在下方。
+本提交在 WeKnora Wiki 中提供个人主题推荐、来源测验、掌握度与复习状态，并集成学习 Agent。邮件无需附加压缩包，本页汇总最终代码、运行命令、设计和验证材料。
 
-## 版本
+## 提交项
 
 | 项目 | 内容 |
 | --- | --- |
-| 提交署名 / GitHub ID | `mingri31164` |
+| 姓名 / GitHub ID | 刘德宝 / `mingri31164` |
+| 代码仓库 | [mingri31164/WeKnora](https://github.com/mingri31164/WeKnora) |
+| 最终代码分支 | `feat/guided-learning` |
 | 最终代码 Tag | [`rhino-2026-final-4-v2`](https://github.com/mingri31164/WeKnora/tree/rhino-2026-final-4-v2) |
 | 完整代码 SHA | `a98c96840e6099bfaf1bd3488009773ff5d2e6ac` |
+| README | 当前页面 |
+| 运行 / 测试命令 | [运行与验证](reproduction.md) |
+| submission.yaml | [提交元数据](../submission.yaml) |
 | 上游 PR | [Tencent/WeKnora #3145](https://github.com/Tencent/WeKnora/pull/3145) |
 | 上游基线 | `462999ec3f5c1467ef0ccf5cf8c422393f40a0e6` |
 | 材料分支 | `submission/guided-learning` |
 
-署名使用已确认的 GitHub ID，未推定真实姓名。旧 Tag `rhino-2026-final-4` 保持原指向；本轮审查修复使用新的 `rhino-2026-final-4-v2`。材料分支在最终代码后追加本目录及根目录 `submission.yaml`，不进入上游功能 PR。
+旧 Tag `rhino-2026-final-4` 保持原指向，本轮审查修复使用新的 `rhino-2026-final-4-v2`。`submission.yaml` 描述 `feat/guided-learning` 上的最终代码；`submission/guided-learning` 仅保存提交材料，不进入上游功能 PR。
 
 ## 材料导航
 
