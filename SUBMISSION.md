@@ -4,7 +4,7 @@ Participant: Liu Debao (GitHub: `mingri31164`). Topic: Visual Sandbox Workbench.
 
 The final code is tagged [`rhino-2026-final-2-v3`](https://github.com/mingri31164/WeKnora/tree/rhino-2026-final-2-v3), at commit `28d676539ca25fcff06aa18aa315eff14c092e43`. The feature PR is [Tencent/WeKnora#3146](https://github.com/Tencent/WeKnora/pull/3146). Official main `462999ec` is merged; the v1 and v2 tags remain unchanged.
 
-This branch adds submission metadata after the final code tag, as required by the delivery guide. It is not the feature PR branch. The tag must not be moved to this metadata commit.
+The canonical `submission.yaml` is committed at the root of `feat/sandbox-workbench` after the final code tag, as required by the delivery guide. This branch mirrors that file and keeps public evidence. The tag must not be moved to either metadata commit.
 
 ## Run And Test
 
@@ -39,4 +39,4 @@ Real E2B evidence uses a Kubernetes-compatible container backend, not E2B Cloud 
 
 Unconditional completion is not claimed. CPU/memory budgets apply to each submitted command tree, not the aggregate sandbox session or concurrent Agent/other-shell processes. Whole-sandbox quota acceptance remains unverified if required by the topic's session semantics. Final-revision browser acceptance and email sending also remain outstanding. Current upstream explicitly removed the local host-process backend.
 
-This branch adds `submission.yaml`, this note, public reports, screenshots with provenance, reproducible acceptance scripts, and the new synthetic Agent outputs. Slides, complete reports and recordings are also supplied in the email material package. Credentials and private runtime logs are excluded. Preparing this branch does not send the submission email.
+This branch keeps a mirror of `submission.yaml`, this note, public reports, screenshots with provenance, reproducible acceptance scripts, and the synthetic Agent outputs. Credentials and private runtime logs are excluded. The email submission only needs the canonical root `submission.yaml` as an attachment.
