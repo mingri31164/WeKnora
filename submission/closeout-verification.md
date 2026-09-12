@@ -29,3 +29,7 @@ node verify-closeout-agent.mjs /absolute/path/to/WeKnora closeout-agent/artifact
 npm audit 记录 10 项依赖包告警：7 high、3 moderate、0 critical。受影响锁定条目与旧 HEAD 和官方 main 均相同。未执行 audit fix，不把告警直接认定为可利用漏洞，也不宣称无漏洞。摘要见 dependency-audit-summary.json。
 
 新版本浏览器导航仍受 IDE 执行器限制，未取得新页面验收。公开截图明确来自 2a209307；组件回归和真实 API 检查不替代完整浏览器运行。
+
+## PR 发布确认
+
+2026-09-12，PR 标题、完整正文与四张公开截图已发布。GitHub API 确认 head 为最终 SHA、mergeable=true；开源扫描成功，3 个 Actions 工作流等待维护者批准。邮件尚未发送，PR 尚未合并。

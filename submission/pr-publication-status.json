@@ -1,0 +1,41 @@
+{
+  "verified_at": "2026-09-12T10:08:35.729371+00:00",
+  "pr": "https://github.com/Tencent/WeKnora/pull/3146",
+  "state": "open",
+  "merged": false,
+  "head_commit": "59c4e0b2ed3375bf69510339a19abc882f6ffe34",
+  "base_commit": "462999ec3f5c1467ef0ccf5cf8c422393f40a0e6",
+  "description_published": true,
+  "github_updated_at": "2026-09-12T10:03:39Z",
+  "readback": "GitHub public pull-request API and rendered browser page",
+  "local_description_lf_sha256": "99720b2a2df5571029ea95bae1c24d26ae80dbe59270da5ed6b0d5aed1d47e0f",
+  "mergeable": true,
+  "mergeable_state": "unstable",
+  "github_workflows_awaiting_maintainer_approval": 3,
+  "opensource_scan": "success",
+  "screenshots_loaded": [
+    {
+      "name": "terminal",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "name": "presentation",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "name": "html",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "name": "table",
+      "width": 1440,
+      "height": 1000
+    }
+  ],
+  "final_tag": "rhino-2026-final-2-v2",
+  "original_tag_unchanged": true,
+  "email_sent": false
+}

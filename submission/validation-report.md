@@ -54,4 +54,4 @@
 
 官方五项验收对应关系见 00-official-delivery-checklist.md。任务中的宿主本地进程后端没有开放，遵循当前主线只在会话沙箱执行的边界；如评审要求恢复该后端，需要另行明确安全与部署条件。
 
-本轮另跑真实 Agent 并复核合并失败和依赖告警，详情见 08-closeout-verification.md。
+本轮另跑真实 Agent 并复核合并失败和依赖告警，详情见 [合并收尾复核](closeout-verification.md)。

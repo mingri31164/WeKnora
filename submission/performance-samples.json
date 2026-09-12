@@ -1,0 +1,144 @@
+{
+  "status": "passed",
+  "quantile_method": "nearest-rank; n=5 implies P95 equals max",
+  "concurrency": 1,
+  "samples_per_backend_metric": 5,
+  "payload_bytes": 1048576,
+  "definitions": {
+    "cold_initialization": "Fresh manager/sandbox EnsureWorkbenchSession including workspace/runtime probes; image/template present; client construction excluded",
+    "warm_command_first_byte": "Initialized sandbox after one unmeasured terminal warmup; OpenSessionCommandTerminal through first byte Read; Wait excluded",
+    "upload_1mib": "WorkbenchFiles(write) with bounded helper staging/chunks/digest/fsync/atomic publish",
+    "download_1mib": "WorkbenchFiles(read) through complete response; equality checked outside timed interval; immediate read after upload",
+    "payload": "Deterministic repeated 00 ff 02 03 binary pattern; 1048576 bytes verified byte-for-byte"
+  },
+  "limitations": [
+    "Small serial latency sample, not capacity/concurrency/SLA evidence",
+    "Go manager/provider layer only; HTTP auth, Redis, DB audit, WebSocket and browser excluded",
+    "Host, daemon, image layers, node and OS page caches are warm",
+    "Local E2B-compatible containers, not E2B Cloud or MicroVM isolation",
+    "No 50-way concurrency; documented single-user limit is four",
+    "Shared development host, not reserved benchmark hardware; other agents and services may run concurrently"
+  ],
+  "results": [
+    {
+      "backend": "docker",
+      "metric": "cold_initialization",
+      "n": 5,
+      "p50_ms": 265.518,
+      "p95_ms": 270.479,
+      "max_ms": 270.479,
+      "samples_ms": [
+        237.754,
+        267.926,
+        270.479,
+        253.686,
+        265.518
+      ]
+    },
+    {
+      "backend": "docker",
+      "metric": "download_1mib",
+      "n": 5,
+      "p50_ms": 93.974,
+      "p95_ms": 102.769,
+      "max_ms": 102.769,
+      "samples_ms": [
+        102.769,
+        97.692,
+        93.248,
+        93.974,
+        91.97
+      ]
+    },
+    {
+      "backend": "docker",
+      "metric": "upload_1mib",
+      "n": 5,
+      "p50_ms": 1480.649,
+      "p95_ms": 1494.097,
+      "max_ms": 1494.097,
+      "samples_ms": [
+        1480.649,
+        1467.217,
+        1493.718,
+        1494.097,
+        1410.196
+      ]
+    },
+    {
+      "backend": "docker",
+      "metric": "warm_command_first_byte",
+      "n": 5,
+      "p50_ms": 101.019,
+      "p95_ms": 116.639,
+      "max_ms": 116.639,
+      "samples_ms": [
+        93.648,
+        101.019,
+        89.987,
+        102.784,
+        116.639
+      ]
+    },
+    {
+      "backend": "e2b",
+      "metric": "cold_initialization",
+      "n": 5,
+      "p50_ms": 2144.37,
+      "p95_ms": 2145.056,
+      "max_ms": 2145.056,
+      "samples_ms": [
+        1546.262,
+        2144.37,
+        2143.79,
+        2145.056,
+        2144.619
+      ]
+    },
+    {
+      "backend": "e2b",
+      "metric": "download_1mib",
+      "n": 5,
+      "p50_ms": 56.618,
+      "p95_ms": 58.157,
+      "max_ms": 58.157,
+      "samples_ms": [
+        56.618,
+        55.943,
+        58.157,
+        57.831,
+        55.755
+      ]
+    },
+    {
+      "backend": "e2b",
+      "metric": "upload_1mib",
+      "n": 5,
+      "p50_ms": 696.147,
+      "p95_ms": 717.249,
+      "max_ms": 717.249,
+      "samples_ms": [
+        694.545,
+        696.147,
+        686.46,
+        705.546,
+        717.249
+      ]
+    },
+    {
+      "backend": "e2b",
+      "metric": "warm_command_first_byte",
+      "n": 5,
+      "p50_ms": 26.199,
+      "p95_ms": 26.779,
+      "max_ms": 26.779,
+      "samples_ms": [
+        25.981,
+        26.779,
+        26.032,
+        26.458,
+        26.199
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1875 @@
+{
+  "source_commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+  "generated_at": "2026-09-11T22:27:07.789Z",
+  "official_rules_verified": false,
+  "official_submission_completed": false,
+  "frontend": {
+    "tests_pass": 847,
+    "tests_fail": 0,
+    "type_check": "passed",
+    "build": "passed"
+  },
+  "api": {
+    "passed": 24,
+    "cases": [
+      {
+        "backend": "docker",
+        "name": "bind-and-list-before-exec"
+      },
+      {
+        "backend": "docker",
+        "name": "cross-tenant-session-denied"
+      },
+      {
+        "backend": "docker",
+        "name": "single-use-ticket"
+      },
+      {
+        "backend": "docker",
+        "name": "output-before-completion"
+      },
+      {
+        "backend": "docker",
+        "name": "interactive-stdin"
+      },
+      {
+        "backend": "docker",
+        "name": "native-pty-resize"
+      },
+      {
+        "backend": "docker",
+        "name": "interrupt"
+      },
+      {
+        "backend": "docker",
+        "name": "provider-filesystem-isolation"
+      },
+      {
+        "backend": "docker",
+        "name": "file-upload-rename-download-delete-no-overwrite"
+      },
+      {
+        "backend": "docker",
+        "name": "traversal-and-intermediate-symlink-denied"
+      },
+      {
+        "backend": "docker",
+        "name": "per-process-memory-budget"
+      },
+      {
+        "backend": "docker",
+        "name": "durable-session-audit"
+      },
+      {
+        "backend": "e2b",
+        "name": "bind-and-list-before-exec"
+      },
+      {
+        "backend": "e2b",
+        "name": "cross-tenant-session-denied"
+      },
+      {
+        "backend": "e2b",
+        "name": "single-use-ticket"
+      },
+      {
+        "backend": "e2b",
+        "name": "output-before-completion"
+      },
+      {
+        "backend": "e2b",
+        "name": "interactive-stdin"
+      },
+      {
+        "backend": "e2b",
+        "name": "native-pty-resize"
+      },
+      {
+        "backend": "e2b",
+        "name": "interrupt"
+      },
+      {
+        "backend": "e2b",
+        "name": "provider-filesystem-isolation"
+      },
+      {
+        "backend": "e2b",
+        "name": "file-upload-rename-download-delete-no-overwrite"
+      },
+      {
+        "backend": "e2b",
+        "name": "traversal-and-intermediate-symlink-denied"
+      },
+      {
+        "backend": "e2b",
+        "name": "per-process-memory-budget"
+      },
+      {
+        "backend": "e2b",
+        "name": "durable-session-audit"
+      }
+    ]
+  },
+  "backend": {
+    "schema_version": 1,
+    "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+    "run_id": "backend-20260911T205613Z",
+    "started_at": "2026-09-11T20:56:13.306158+00:00",
+    "status": "passed_with_limitations",
+    "duration_unit": "seconds",
+    "results": [
+      {
+        "name": "python-workbench",
+        "command": "python3 -B -I internal/sandbox/workbench_files_test.py",
+        "exit": 1,
+        "status": "failed",
+        "count": 20,
+        "skips": [],
+        "duration": 2.02,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Original attempt failed because private TMPDIR exceeds AF_UNIX pathname length; raw failure retained"
+        ],
+        "started_at": "2026-09-11T20:58:01.673892+00:00",
+        "finished_at": "2026-09-11T20:58:03.693596+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/python-workbench.raw.log",
+        "raw_sha256": "4bef36977974d05fe83dc86c1984aba421d0edb0a496a713f49c1fcb1d6e8d44",
+        "count_unit": "unittest test methods; subTest cases excluded",
+        "superseded_by": "python-workbench-retry"
+      },
+      {
+        "name": "python-builder",
+        "command": "$REPO/.runtime/submission/private/python-venv/bin/python -B -m unittest discover -s examples/skills/presentation-builder/tests -v",
+        "exit": 0,
+        "status": "passed",
+        "count": 27,
+        "skips": [],
+        "duration": 5.676,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [],
+        "started_at": "2026-09-11T20:58:03.728030+00:00",
+        "finished_at": "2026-09-11T20:58:09.404145+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/python-builder.raw.log",
+        "raw_sha256": "0d42a3900ebfa6a916026405125e3e8cce810d0311b59156b51806f1d1977cee",
+        "count_unit": "unittest test methods; subTest cases excluded"
+      },
+      {
+        "name": "python-runtime-probe",
+        "command": "python3 -B -I internal/sandbox/terminal_runtime_probe_test.py",
+        "exit": 0,
+        "status": "passed",
+        "count": 5,
+        "skips": [],
+        "duration": 0.117,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [],
+        "started_at": "2026-09-11T21:01:03.647653+00:00",
+        "finished_at": "2026-09-11T21:01:03.764367+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/python-runtime-probe.raw.log",
+        "raw_sha256": "c8e80b373c62c34794e27111d83196526e0ec240566d374e106a27e538e72b48",
+        "count_unit": "unittest test methods; subTest cases excluded"
+      },
+      {
+        "name": "python-workbench-retry",
+        "command": "python3 -B -I .runtime/submission/scripts/backend-python-files.py",
+        "exit": 0,
+        "status": "passed",
+        "count": 20,
+        "skips": [],
+        "duration": 0.868,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Fixture-only AF_UNIX bind shortening via /proc/self/fd; all 20 original tests and assertions unchanged"
+        ],
+        "started_at": "2026-09-11T21:06:34.219315+00:00",
+        "finished_at": "2026-09-11T21:06:35.087126+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/python-workbench-retry.raw.log",
+        "raw_sha256": "2f9bd48e4d79f25f8a6a805c5f7a622b720152afb0135d6cf5287dac916ff830",
+        "count_unit": "unittest test methods; subTest cases excluded"
+      },
+      {
+        "name": "go-full",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -count=1 -p=2 -parallel=4 -timeout=15m -json ./...",
+        "exit": 1,
+        "status": "failed",
+        "count": 7919,
+        "skips": [
+          {
+            "package": "github.com/Tencent/WeKnora/docreader/client",
+            "test": "TestReadURL"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/docreader/client",
+            "test": "TestReadFile"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/agent/tools",
+            "test": "TestSkillPythonPackageRecoveryInstallsWithoutPip/uv"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/application/service/memory",
+            "test": "TestPromptEval"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/application/service/memory",
+            "test": "TestTopicMergeEval"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/application/service",
+            "test": "TestCreateStore_DifferentEndpointSameIndex_Allowed"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/DeepSeek_API"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/Aliyun_DeepSeek"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/Aliyun_Qwen3-32b"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/Aliyun_Qwen-max"
+          }
+        ],
+        "duration": 321.232,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Original attempt failed because private TMPDIR exceeds AF_UNIX pathname length; raw failure retained"
+        ],
+        "started_at": "2026-09-11T21:11:35.640407+00:00",
+        "finished_at": "2026-09-11T21:16:56.872673+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/go-full.raw.log",
+        "raw_sha256": "075010e7138cf9bc27e749cd0fc3c815765790f05dc1cf83cd5856dfbcfa6da3",
+        "passed": 7918,
+        "failed": 1,
+        "failed_tests": [
+          {
+            "package": "github.com/Tencent/WeKnora/internal/sandbox",
+            "test": "TestWorkbenchPythonDescriptorSuite"
+          }
+        ],
+        "packages": {
+          "github.com/Tencent/WeKnora/cmd/desktop": "skip",
+          "github.com/Tencent/WeKnora/cmd/download/duckdb": "skip",
+          "github.com/Tencent/WeKnora/cmd/server": "skip",
+          "github.com/Tencent/WeKnora/docreader/client": "pass",
+          "github.com/Tencent/WeKnora/docreader/proto": "skip",
+          "github.com/Tencent/WeKnora/docs": "pass",
+          "github.com/Tencent/WeKnora/internal/agent": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/compaction": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/approval": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/skills": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/token": "pass",
+          "github.com/Tencent/WeKnora/internal/application/access": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/doris": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/elasticsearch": "skip",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/elasticsearch/v7": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/elasticsearch/v8": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/tools": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/neo4j": "skip",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/milvus": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/postgres": "skip",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/opensearch": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/qdrant": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/sqlite": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/tencentvectordb": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/weaviate": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/chat_pipeline": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/file": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/memory": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/metric": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/retriever": "pass",
+          "github.com/Tencent/WeKnora/internal/assets": "skip",
+          "github.com/Tencent/WeKnora/internal/common": "pass",
+          "github.com/Tencent/WeKnora/internal/common/redislock": "pass",
+          "github.com/Tencent/WeKnora/internal/config": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service": "pass",
+          "github.com/Tencent/WeKnora/internal/container": "pass",
+          "github.com/Tencent/WeKnora/internal/database": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/feishu/core": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/feishu/drive": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/gitlab": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/ima": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/notion": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/rss": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/feishu/wiki": "pass",
+          "github.com/Tencent/WeKnora/internal/errors": "skip",
+          "github.com/Tencent/WeKnora/internal/event": "pass",
+          "github.com/Tencent/WeKnora/internal/filetransport": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/yuque": "pass",
+          "github.com/Tencent/WeKnora/internal/handler": "pass",
+          "github.com/Tencent/WeKnora/internal/handler/dto": "pass",
+          "github.com/Tencent/WeKnora/internal/handler/session": "pass",
+          "github.com/Tencent/WeKnora/internal/im": "pass",
+          "github.com/Tencent/WeKnora/internal/im/dingtalk": "pass",
+          "github.com/Tencent/WeKnora/internal/im/feishu": "pass",
+          "github.com/Tencent/WeKnora/internal/im/mattermost": "pass",
+          "github.com/Tencent/WeKnora/internal/im/qqbot": "pass",
+          "github.com/Tencent/WeKnora/internal/im/slack": "pass",
+          "github.com/Tencent/WeKnora/internal/im/wechat": "skip",
+          "github.com/Tencent/WeKnora/internal/im/telegram": "pass",
+          "github.com/Tencent/WeKnora/internal/im/wecom": "pass",
+          "github.com/Tencent/WeKnora/internal/im/yunzhijia": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/chunker": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/docparser": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/docparser/anydoc": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/web_fetch": "pass",
+          "github.com/Tencent/WeKnora/internal/ipclass": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/web_search": "pass",
+          "github.com/Tencent/WeKnora/internal/logger": "pass",
+          "github.com/Tencent/WeKnora/internal/mcp": "pass",
+          "github.com/Tencent/WeKnora/internal/middleware": "pass",
+          "github.com/Tencent/WeKnora/internal/middleware/asynqdl": "pass",
+          "github.com/Tencent/WeKnora/internal/modelcontext": "pass",
+          "github.com/Tencent/WeKnora/internal/models/asr": "pass",
+          "github.com/Tencent/WeKnora/internal/models/chat": "pass",
+          "github.com/Tencent/WeKnora/internal/models/embedding": "pass",
+          "github.com/Tencent/WeKnora/internal/models/limiter": "pass",
+          "github.com/Tencent/WeKnora/internal/models/provider": "pass",
+          "github.com/Tencent/WeKnora/internal/models/rerank": "pass",
+          "github.com/Tencent/WeKnora/internal/models/utils": "skip",
+          "github.com/Tencent/WeKnora/internal/models/utils/ollama": "skip",
+          "github.com/Tencent/WeKnora/internal/ratelimit": "pass",
+          "github.com/Tencent/WeKnora/internal/models/vlm": "pass",
+          "github.com/Tencent/WeKnora/internal/router": "pass",
+          "github.com/Tencent/WeKnora/internal/runtime": "pass",
+          "github.com/Tencent/WeKnora/internal/searchutil": "pass",
+          "github.com/Tencent/WeKnora/internal/storageallowlist": "pass",
+          "github.com/Tencent/WeKnora/internal/storageurl": "pass",
+          "github.com/Tencent/WeKnora/internal/stream": "pass",
+          "github.com/Tencent/WeKnora/internal/sandbox": "fail",
+          "github.com/Tencent/WeKnora/internal/textconv": "pass",
+          "github.com/Tencent/WeKnora/internal/tracing/langfuse": "pass",
+          "github.com/Tencent/WeKnora/internal/types/interfaces": "skip",
+          "github.com/Tencent/WeKnora/internal/types": "pass",
+          "github.com/Tencent/WeKnora/internal/utils": "pass",
+          "github.com/Tencent/WeKnora/packages/dsh-weknora/contract": "pass"
+        },
+        "test_events": 8477,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded",
+        "superseded_by": "go-full-retry"
+      },
+      {
+        "name": "go-vet",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go vet -p=2 ./...",
+        "exit": 0,
+        "status": "passed",
+        "count": 0,
+        "skips": [],
+        "duration": 37.933,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [],
+        "started_at": "2026-09-11T21:17:00.343943+00:00",
+        "finished_at": "2026-09-11T21:17:38.276613+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/go-vet.raw.log",
+        "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "go-race-targeted",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -race -count=1 -p=2 -parallel=4 -timeout=15m -json ./internal/sandbox ./internal/handler ./internal/handler/session ./internal/router ./internal/types",
+        "exit": 1,
+        "status": "failed",
+        "count": 2136,
+        "skips": [],
+        "duration": 177.951,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Original attempt failed because private TMPDIR exceeds AF_UNIX pathname length; raw failure retained"
+        ],
+        "started_at": "2026-09-11T21:17:38.286207+00:00",
+        "finished_at": "2026-09-11T21:20:36.237695+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/go-race-targeted.raw.log",
+        "raw_sha256": "4a02b77b58c28cfd1612147c59d593b1fa5b504512c35a40d8532e4cc8c70888",
+        "passed": 2135,
+        "failed": 1,
+        "failed_tests": [
+          {
+            "package": "github.com/Tencent/WeKnora/internal/sandbox",
+            "test": "TestWorkbenchPythonDescriptorSuite"
+          }
+        ],
+        "packages": {
+          "github.com/Tencent/WeKnora/internal/sandbox": "fail",
+          "github.com/Tencent/WeKnora/internal/handler/session": "pass",
+          "github.com/Tencent/WeKnora/internal/handler": "pass",
+          "github.com/Tencent/WeKnora/internal/router": "pass",
+          "github.com/Tencent/WeKnora/internal/types": "pass"
+        },
+        "test_events": 2319,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded",
+        "superseded_by": "go-race-targeted-retry"
+      },
+      {
+        "name": "go-race-workbench-service",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -race -count=1 -p=2 -parallel=4 -timeout=15m -json ./internal/application/service -run '^TestWorkbench'",
+        "exit": 0,
+        "status": "passed",
+        "count": 32,
+        "skips": [],
+        "duration": 19.697,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [],
+        "started_at": "2026-09-11T21:20:36.584467+00:00",
+        "finished_at": "2026-09-11T21:20:56.281662+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/go-race-workbench-service.raw.log",
+        "raw_sha256": "00d17a0df502b1321dcfe9a6292c4cd21e9c768e1611628f1919b7917686ff6f",
+        "passed": 32,
+        "failed": 0,
+        "failed_tests": [],
+        "packages": {
+          "github.com/Tencent/WeKnora/internal/application/service": "pass"
+        },
+        "test_events": 35,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded"
+      },
+      {
+        "name": "go-incremental-lint",
+        "command": "$REPO/.runtime/bin/golangci-lint run --new-from-rev=b60351f8 --timeout=15m --concurrency=2 --output.json.path=$REPO/.runtime/submission/private/backend-20260911T205613Z/go-incremental-lint.issues.json ./...",
+        "exit": 0,
+        "status": "passed",
+        "count": 0,
+        "skips": [],
+        "duration": 109.187,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Only new findings compared with upstream merge base b60351f8"
+        ],
+        "started_at": "2026-09-11T21:20:56.292171+00:00",
+        "finished_at": "2026-09-11T21:22:45.479461+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/go-incremental-lint.raw.log",
+        "raw_sha256": "6fcc2cd28c75ea16b2d0bbbad273ea4ed9cc269ec96b1433e50490164a85d7f1",
+        "count_unit": "new lint findings"
+      },
+      {
+        "name": "go-full-retry",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -count=1 -p=2 -parallel=4 -timeout=15m -json ./...",
+        "exit": 0,
+        "status": "passed",
+        "count": 7919,
+        "skips": [
+          {
+            "package": "github.com/Tencent/WeKnora/docreader/client",
+            "test": "TestReadURL"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/docreader/client",
+            "test": "TestReadFile"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/agent/tools",
+            "test": "TestSkillPythonPackageRecoveryInstallsWithoutPip/uv"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/application/service/memory",
+            "test": "TestPromptEval"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/application/service/memory",
+            "test": "TestTopicMergeEval"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/application/service",
+            "test": "TestCreateStore_DifferentEndpointSameIndex_Allowed"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/DeepSeek_API"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/Aliyun_DeepSeek"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/Aliyun_Qwen3-32b"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/Aliyun_Qwen-max"
+          }
+        ],
+        "duration": 100.733,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Original Go tests and assertions unchanged; Python descriptor fixture uses private long-path AF_UNIX adapter"
+        ],
+        "started_at": "2026-09-11T21:25:18.894354+00:00",
+        "finished_at": "2026-09-11T21:26:59.627086+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/go-full-retry.raw.log",
+        "raw_sha256": "ecec005e383ef00e901a950bb2e2fdfaca7dba1faa3210b01c0ffb310186a21f",
+        "passed": 7919,
+        "failed": 0,
+        "failed_tests": [],
+        "packages": {
+          "github.com/Tencent/WeKnora/cmd/desktop": "skip",
+          "github.com/Tencent/WeKnora/cmd/download/duckdb": "skip",
+          "github.com/Tencent/WeKnora/cmd/server": "skip",
+          "github.com/Tencent/WeKnora/docreader/client": "pass",
+          "github.com/Tencent/WeKnora/docreader/proto": "skip",
+          "github.com/Tencent/WeKnora/docs": "pass",
+          "github.com/Tencent/WeKnora/internal/agent": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/compaction": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/approval": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/skills": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/token": "pass",
+          "github.com/Tencent/WeKnora/internal/application/access": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/doris": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/elasticsearch": "skip",
+          "github.com/Tencent/WeKnora/internal/agent/tools": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/elasticsearch/v7": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/elasticsearch/v8": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/milvus": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/neo4j": "skip",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/opensearch": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/postgres": "skip",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/qdrant": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/sqlite": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/tencentvectordb": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/weaviate": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/chat_pipeline": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/file": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/memory": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/metric": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/retriever": "pass",
+          "github.com/Tencent/WeKnora/internal/assets": "skip",
+          "github.com/Tencent/WeKnora/internal/common": "pass",
+          "github.com/Tencent/WeKnora/internal/common/redislock": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service": "pass",
+          "github.com/Tencent/WeKnora/internal/config": "pass",
+          "github.com/Tencent/WeKnora/internal/container": "pass",
+          "github.com/Tencent/WeKnora/internal/database": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/feishu/core": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/feishu/drive": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/gitlab": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/ima": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/notion": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/rss": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/feishu/wiki": "pass",
+          "github.com/Tencent/WeKnora/internal/errors": "skip",
+          "github.com/Tencent/WeKnora/internal/event": "pass",
+          "github.com/Tencent/WeKnora/internal/filetransport": "pass",
+          "github.com/Tencent/WeKnora/internal/handler": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/yuque": "pass",
+          "github.com/Tencent/WeKnora/internal/handler/dto": "pass",
+          "github.com/Tencent/WeKnora/internal/handler/session": "pass",
+          "github.com/Tencent/WeKnora/internal/im": "pass",
+          "github.com/Tencent/WeKnora/internal/im/dingtalk": "pass",
+          "github.com/Tencent/WeKnora/internal/im/feishu": "pass",
+          "github.com/Tencent/WeKnora/internal/im/mattermost": "pass",
+          "github.com/Tencent/WeKnora/internal/im/qqbot": "pass",
+          "github.com/Tencent/WeKnora/internal/im/slack": "pass",
+          "github.com/Tencent/WeKnora/internal/im/telegram": "pass",
+          "github.com/Tencent/WeKnora/internal/im/wechat": "skip",
+          "github.com/Tencent/WeKnora/internal/im/wecom": "pass",
+          "github.com/Tencent/WeKnora/internal/im/yunzhijia": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/chunker": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/docparser/anydoc": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/docparser": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/web_fetch": "pass",
+          "github.com/Tencent/WeKnora/internal/ipclass": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/web_search": "pass",
+          "github.com/Tencent/WeKnora/internal/logger": "pass",
+          "github.com/Tencent/WeKnora/internal/mcp": "pass",
+          "github.com/Tencent/WeKnora/internal/middleware": "pass",
+          "github.com/Tencent/WeKnora/internal/middleware/asynqdl": "pass",
+          "github.com/Tencent/WeKnora/internal/modelcontext": "pass",
+          "github.com/Tencent/WeKnora/internal/models/asr": "pass",
+          "github.com/Tencent/WeKnora/internal/models/chat": "pass",
+          "github.com/Tencent/WeKnora/internal/models/embedding": "pass",
+          "github.com/Tencent/WeKnora/internal/models/limiter": "pass",
+          "github.com/Tencent/WeKnora/internal/models/provider": "pass",
+          "github.com/Tencent/WeKnora/internal/models/rerank": "pass",
+          "github.com/Tencent/WeKnora/internal/models/utils": "skip",
+          "github.com/Tencent/WeKnora/internal/models/utils/ollama": "skip",
+          "github.com/Tencent/WeKnora/internal/models/vlm": "pass",
+          "github.com/Tencent/WeKnora/internal/ratelimit": "pass",
+          "github.com/Tencent/WeKnora/internal/router": "pass",
+          "github.com/Tencent/WeKnora/internal/runtime": "pass",
+          "github.com/Tencent/WeKnora/internal/searchutil": "pass",
+          "github.com/Tencent/WeKnora/internal/storageallowlist": "pass",
+          "github.com/Tencent/WeKnora/internal/storageurl": "pass",
+          "github.com/Tencent/WeKnora/internal/stream": "pass",
+          "github.com/Tencent/WeKnora/internal/textconv": "pass",
+          "github.com/Tencent/WeKnora/internal/sandbox": "pass",
+          "github.com/Tencent/WeKnora/internal/tracing/langfuse": "pass",
+          "github.com/Tencent/WeKnora/internal/types/interfaces": "skip",
+          "github.com/Tencent/WeKnora/internal/utils": "pass",
+          "github.com/Tencent/WeKnora/internal/types": "pass",
+          "github.com/Tencent/WeKnora/packages/dsh-weknora/contract": "pass"
+        },
+        "test_events": 8477,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded"
+      },
+      {
+        "name": "go-race-targeted-retry",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -race -count=1 -p=2 -parallel=4 -timeout=15m -json ./internal/sandbox ./internal/handler ./internal/handler/session ./internal/router ./internal/types",
+        "exit": 0,
+        "status": "passed",
+        "count": 2136,
+        "skips": [],
+        "duration": 16.193,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Original Go tests and assertions unchanged; Python descriptor fixture uses private long-path AF_UNIX adapter"
+        ],
+        "started_at": "2026-09-11T21:27:03.105996+00:00",
+        "finished_at": "2026-09-11T21:27:19.298709+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/go-race-targeted-retry.raw.log",
+        "raw_sha256": "c11c67ad25b2bc848e97a4813023b5f5bf38ab8aeff65339a160f36204bd8e8d",
+        "passed": 2136,
+        "failed": 0,
+        "failed_tests": [],
+        "packages": {
+          "github.com/Tencent/WeKnora/internal/handler": "pass",
+          "github.com/Tencent/WeKnora/internal/handler/session": "pass",
+          "github.com/Tencent/WeKnora/internal/sandbox": "pass",
+          "github.com/Tencent/WeKnora/internal/router": "pass",
+          "github.com/Tencent/WeKnora/internal/types": "pass"
+        },
+        "test_events": 2319,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded"
+      },
+      {
+        "name": "go-real-backends",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -count=1 -p=2 -parallel=1 -timeout=15m -json '-tags=sandbox_terminal_integration workbench_integration' ./internal/sandbox -run '^TestTerminalReal|^TestWorkbenchFilesIntegration$|^TestWorkbenchIntegrationConfig$'",
+        "exit": 0,
+        "status": "passed",
+        "count": 39,
+        "skips": [],
+        "duration": 83.906,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [],
+        "started_at": "2026-09-11T21:28:15.230111+00:00",
+        "finished_at": "2026-09-11T21:29:39.136304+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/go-real-backends.raw.log",
+        "raw_sha256": "c512a5eb4e69716e7acb435aedb8fbfe0239074b70d2c0127b0de625e726fec2",
+        "passed": 39,
+        "failed": 0,
+        "failed_tests": [],
+        "packages": {
+          "github.com/Tencent/WeKnora/internal/sandbox": "pass"
+        },
+        "test_events": 44,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded",
+        "real_backend_count": 37,
+        "configuration_unit_tests": 2
+      },
+      {
+        "name": "go-real-backends-race",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -race -count=1 -p=2 -parallel=1 -timeout=15m -json '-tags=sandbox_terminal_integration workbench_integration' ./internal/sandbox -run '^TestTerminalReal|^TestWorkbenchFilesIntegration$|^TestWorkbenchIntegrationConfig$'",
+        "exit": 0,
+        "status": "passed",
+        "count": 39,
+        "skips": [],
+        "duration": 83.996,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [],
+        "started_at": "2026-09-11T21:29:39.153700+00:00",
+        "finished_at": "2026-09-11T21:31:03.149483+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/go-real-backends-race.raw.log",
+        "raw_sha256": "783aac3cf8c752f4fc73b9a0ca9fe1a7176e1db936eff808169fe5260a4fea84",
+        "passed": 39,
+        "failed": 0,
+        "failed_tests": [],
+        "packages": {
+          "github.com/Tencent/WeKnora/internal/sandbox": "pass"
+        },
+        "test_events": 44,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded",
+        "real_backend_count": 37,
+        "configuration_unit_tests": 2
+      },
+      {
+        "name": "backend-benchmark",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -overlay=$REPO/.runtime/submission/private/backend-overlay.json -count=1 -p=2 -parallel=1 -timeout=15m -json '-tags=sandbox_terminal_integration workbench_integration' ./internal/sandbox -run '^TestBackendAcceptanceMetrics$'",
+        "exit": 0,
+        "status": "passed",
+        "count": 10,
+        "skips": [],
+        "duration": 28.764,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Serial five-sample latency run; not capacity"
+        ],
+        "started_at": "2026-09-11T21:32:18.428881+00:00",
+        "finished_at": "2026-09-11T21:32:47.193360+00:00",
+        "raw_log": ".runtime/submission/private/backend-20260911T205613Z/backend-benchmark.raw.log",
+        "raw_sha256": "7beca8b76925d7d512d0cde45881bf7a453604e97d78e3fc183d27787cf82bb3",
+        "passed": 10,
+        "failed": 0,
+        "failed_tests": [],
+        "packages": {
+          "github.com/Tencent/WeKnora/internal/sandbox": "pass"
+        },
+        "test_events": 13,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded"
+      }
+    ],
+    "metrics": {
+      "status": "passed",
+      "quantile_method": "nearest-rank; n=5 implies P95 equals max",
+      "concurrency": 1,
+      "samples_per_backend_metric": 5,
+      "payload_bytes": 1048576,
+      "definitions": {
+        "cold_initialization": "Fresh manager/sandbox EnsureWorkbenchSession including workspace/runtime probes; image/template present; client construction excluded",
+        "warm_command_first_byte": "Initialized sandbox after one unmeasured terminal warmup; OpenSessionCommandTerminal through first byte Read; Wait excluded",
+        "upload_1mib": "WorkbenchFiles(write) with bounded helper staging/chunks/digest/fsync/atomic publish",
+        "download_1mib": "WorkbenchFiles(read) through complete response; equality checked outside timed interval; immediate read after upload",
+        "payload": "Deterministic repeated 00 ff 02 03 binary pattern; 1048576 bytes verified byte-for-byte"
+      },
+      "limitations": [
+        "Small serial latency sample, not capacity/concurrency/SLA evidence",
+        "Go manager/provider layer only; HTTP auth, Redis, DB audit, WebSocket and browser excluded",
+        "Host, daemon, image layers, node and OS page caches are warm",
+        "Local E2B-compatible containers, not E2B Cloud or MicroVM isolation",
+        "No 50-way concurrency; documented single-user limit is four",
+        "Shared development host, not reserved benchmark hardware; other agents and services may run concurrently"
+      ],
+      "results": [
+        {
+          "backend": "docker",
+          "metric": "cold_initialization",
+          "n": 5,
+          "p50_ms": 265.518,
+          "p95_ms": 270.479,
+          "max_ms": 270.479,
+          "samples_ms": [
+            237.754,
+            267.926,
+            270.479,
+            253.686,
+            265.518
+          ]
+        },
+        {
+          "backend": "docker",
+          "metric": "download_1mib",
+          "n": 5,
+          "p50_ms": 93.974,
+          "p95_ms": 102.769,
+          "max_ms": 102.769,
+          "samples_ms": [
+            102.769,
+            97.692,
+            93.248,
+            93.974,
+            91.97
+          ]
+        },
+        {
+          "backend": "docker",
+          "metric": "upload_1mib",
+          "n": 5,
+          "p50_ms": 1480.649,
+          "p95_ms": 1494.097,
+          "max_ms": 1494.097,
+          "samples_ms": [
+            1480.649,
+            1467.217,
+            1493.718,
+            1494.097,
+            1410.196
+          ]
+        },
+        {
+          "backend": "docker",
+          "metric": "warm_command_first_byte",
+          "n": 5,
+          "p50_ms": 101.019,
+          "p95_ms": 116.639,
+          "max_ms": 116.639,
+          "samples_ms": [
+            93.648,
+            101.019,
+            89.987,
+            102.784,
+            116.639
+          ]
+        },
+        {
+          "backend": "e2b",
+          "metric": "cold_initialization",
+          "n": 5,
+          "p50_ms": 2144.37,
+          "p95_ms": 2145.056,
+          "max_ms": 2145.056,
+          "samples_ms": [
+            1546.262,
+            2144.37,
+            2143.79,
+            2145.056,
+            2144.619
+          ]
+        },
+        {
+          "backend": "e2b",
+          "metric": "download_1mib",
+          "n": 5,
+          "p50_ms": 56.618,
+          "p95_ms": 58.157,
+          "max_ms": 58.157,
+          "samples_ms": [
+            56.618,
+            55.943,
+            58.157,
+            57.831,
+            55.755
+          ]
+        },
+        {
+          "backend": "e2b",
+          "metric": "upload_1mib",
+          "n": 5,
+          "p50_ms": 696.147,
+          "p95_ms": 717.249,
+          "max_ms": 717.249,
+          "samples_ms": [
+            694.545,
+            696.147,
+            686.46,
+            705.546,
+            717.249
+          ]
+        },
+        {
+          "backend": "e2b",
+          "metric": "warm_command_first_byte",
+          "n": 5,
+          "p50_ms": 26.199,
+          "p95_ms": 26.779,
+          "max_ms": 26.779,
+          "samples_ms": [
+            25.981,
+            26.779,
+            26.032,
+            26.458,
+            26.199
+          ]
+        }
+      ]
+    },
+    "limitations": [
+      "Root Go module ./... only; nested cli/client modules outside backend scope",
+      "Dedicated WORKBENCH_TEST_* only; no Alice/Bob sessions or production credentials",
+      "E2B Cloud and native Cube not verified",
+      "No frontend, browser, Lark or model calls",
+      "Compiled cache may be reused, but Go tests all use -count=1",
+      "Targeted race only; full service race suite not claimed",
+      "Initial Python/full-Go/targeted-race attempts retained as failures caused by AF_UNIX private path length; successful reruns use a fixture-only /proc/self/fd bind adapter",
+      "One ignored Python bytecode refresh occurred outside allowed write paths from the original Go test bridge; see write_scope_exception",
+      "Go full suite skips are explicitly listed; skipped external dependencies are not verified",
+      "Full Go rerun and targeted race use a private Python launcher; no product or assertion changes"
+    ],
+    "execution_environment": {
+      "go": "go1.26.0 linux/amd64",
+      "GOMAXPROCS": 4,
+      "go_package_parallelism": 2,
+      "test_parallelism": 4,
+      "lint_base": "b60351f8",
+      "cache_and_temp_root": ".runtime/submission/private",
+      "backend_config_source": ".runtime/connections.env; values omitted",
+      "host_logical_cpus": 32,
+      "python": "Python 3.11.2",
+      "lint": "golangci-lint has version 2.12.2 built with go1.26.0 from (unknown, modified: ?, mod sum: \"h1:7+d1uY0bq1MU2UV3R5pW5Q7QWdcoq4naMRXM+gsJKrs=\") on (unknown)",
+      "fixture_launcher": ".runtime/submission/private/python-bin/python3",
+      "fixture_adapter": ".runtime/submission/scripts/backend-python-files.py"
+    },
+    "updated_at": "2026-09-11T21:32:47.194244+00:00",
+    "acceptance": {
+      "python-workbench-retry": {
+        "command": "python3 -B -I .runtime/submission/scripts/backend-python-files.py",
+        "exit": 0,
+        "status": "passed",
+        "count": 20,
+        "skips": [],
+        "duration": 0.868,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Fixture-only AF_UNIX bind shortening via /proc/self/fd; all 20 original tests and assertions unchanged"
+        ]
+      },
+      "python-runtime-probe": {
+        "command": "python3 -B -I internal/sandbox/terminal_runtime_probe_test.py",
+        "exit": 0,
+        "status": "passed",
+        "count": 5,
+        "skips": [],
+        "duration": 0.117,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": []
+      },
+      "python-builder": {
+        "command": "$REPO/.runtime/submission/private/python-venv/bin/python -B -m unittest discover -s examples/skills/presentation-builder/tests -v",
+        "exit": 0,
+        "status": "passed",
+        "count": 27,
+        "skips": [],
+        "duration": 5.676,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": []
+      },
+      "go-full-retry": {
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -count=1 -p=2 -parallel=4 -timeout=15m -json ./...",
+        "exit": 0,
+        "status": "passed",
+        "count": 7919,
+        "skips": [
+          {
+            "package": "github.com/Tencent/WeKnora/docreader/client",
+            "test": "TestReadURL"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/docreader/client",
+            "test": "TestReadFile"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/agent/tools",
+            "test": "TestSkillPythonPackageRecoveryInstallsWithoutPip/uv"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/application/service/memory",
+            "test": "TestPromptEval"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/application/service/memory",
+            "test": "TestTopicMergeEval"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/application/service",
+            "test": "TestCreateStore_DifferentEndpointSameIndex_Allowed"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/DeepSeek_API"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/Aliyun_DeepSeek"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/Aliyun_Qwen3-32b"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/Aliyun_Qwen-max"
+          }
+        ],
+        "duration": 100.733,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Original Go tests and assertions unchanged; Python descriptor fixture uses private long-path AF_UNIX adapter"
+        ]
+      },
+      "go-vet": {
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go vet -p=2 ./...",
+        "exit": 0,
+        "status": "passed",
+        "count": 0,
+        "skips": [],
+        "duration": 37.933,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": []
+      },
+      "go-race-targeted-retry": {
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -race -count=1 -p=2 -parallel=4 -timeout=15m -json ./internal/sandbox ./internal/handler ./internal/handler/session ./internal/router ./internal/types",
+        "exit": 0,
+        "status": "passed",
+        "count": 2136,
+        "skips": [],
+        "duration": 16.193,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Original Go tests and assertions unchanged; Python descriptor fixture uses private long-path AF_UNIX adapter"
+        ]
+      },
+      "go-race-workbench-service": {
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -race -count=1 -p=2 -parallel=4 -timeout=15m -json ./internal/application/service -run '^TestWorkbench'",
+        "exit": 0,
+        "status": "passed",
+        "count": 32,
+        "skips": [],
+        "duration": 19.697,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": []
+      },
+      "go-incremental-lint": {
+        "command": "$REPO/.runtime/bin/golangci-lint run --new-from-rev=b60351f8 --timeout=15m --concurrency=2 --output.json.path=$REPO/.runtime/submission/private/backend-20260911T205613Z/go-incremental-lint.issues.json ./...",
+        "exit": 0,
+        "status": "passed",
+        "count": 0,
+        "skips": [],
+        "duration": 109.187,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Only new findings compared with upstream merge base b60351f8"
+        ]
+      },
+      "go-real-backends": {
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -count=1 -p=2 -parallel=1 -timeout=15m -json '-tags=sandbox_terminal_integration workbench_integration' ./internal/sandbox -run '^TestTerminalReal|^TestWorkbenchFilesIntegration$|^TestWorkbenchIntegrationConfig$'",
+        "exit": 0,
+        "status": "passed",
+        "count": 39,
+        "skips": [],
+        "duration": 83.906,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [],
+        "real_backend_count": 37,
+        "configuration_unit_tests": 2
+      },
+      "go-real-backends-race": {
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -race -count=1 -p=2 -parallel=1 -timeout=15m -json '-tags=sandbox_terminal_integration workbench_integration' ./internal/sandbox -run '^TestTerminalReal|^TestWorkbenchFilesIntegration$|^TestWorkbenchIntegrationConfig$'",
+        "exit": 0,
+        "status": "passed",
+        "count": 39,
+        "skips": [],
+        "duration": 83.996,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [],
+        "real_backend_count": 37,
+        "configuration_unit_tests": 2
+      },
+      "backend-benchmark": {
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -overlay=$REPO/.runtime/submission/private/backend-overlay.json -count=1 -p=2 -parallel=1 -timeout=15m -json '-tags=sandbox_terminal_integration workbench_integration' ./internal/sandbox -run '^TestBackendAcceptanceMetrics$'",
+        "exit": 0,
+        "status": "passed",
+        "count": 10,
+        "skips": [],
+        "duration": 28.764,
+        "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+        "limitations": [
+          "Serial five-sample latency run; not capacity"
+        ]
+      }
+    },
+    "python_total": 52,
+    "cleanup": {
+      "status": "passed",
+      "read_only_postcheck": true,
+      "own_residual_count": 0,
+      "benchmark_sandboxes_deleted_and_not_found": 10,
+      "inventory_counts": {
+        "docker": {
+          "before_count": 15,
+          "after_count": 15,
+          "preexisting_present": 15,
+          "preexisting_missing": 0
+        },
+        "e2b": {
+          "before_count": 2,
+          "after_count": 1,
+          "preexisting_present": 1,
+          "preexisting_missing": 1
+        }
+      },
+      "scope": "Original integration t.Cleanup destroys only its own sessions; read-only inventory confirms no new run-owned metadata remains",
+      "limitations": [
+        "Shared host may have concurrent users; no deletion of resources inferred only from inventory differences"
+      ]
+    },
+    "backend_environment": {
+      "docker_version": "20.10.24+dfsg1",
+      "docker_api": "1.41",
+      "docker_image": {
+        "id": "sha256:c969528c475dd91666b55148e0cd223040edfd7aa9eb9d51df210d075dd71e79",
+        "digests": [],
+        "name": "weknora-wb-sandbox:python-pptx-v1"
+      },
+      "e2b_template": "weknora-wb-python"
+    },
+    "write_scope_exception": {
+      "path": "internal/sandbox/__pycache__/workbench_files.cpython-311.pyc",
+      "reason": "Original Go bridge invokes python -I without -B; it refreshed ignored bytecode during first full run",
+      "source_modified": false,
+      "mitigation": "Subsequent Go runs use private Python launcher with -B; no out-of-scope cleanup attempted"
+    },
+    "head_unchanged": true,
+    "git_status": "",
+    "command": "python3 -B .runtime/submission/scripts/backend-acceptance.py <phase>; exact subprocess commands are recorded per result",
+    "count": {
+      "python-workbench-retry": 20,
+      "python-runtime-probe": 5,
+      "python-builder": 27,
+      "go-full-retry": 7919,
+      "go-vet": 0,
+      "go-race-targeted-retry": 2136,
+      "go-race-workbench-service": 32,
+      "go-incremental-lint": 0,
+      "go-real-backends": 39,
+      "go-real-backends-race": 39,
+      "backend-benchmark": 10
+    },
+    "skips": [
+      {
+        "package": "github.com/Tencent/WeKnora/docreader/client",
+        "test": "TestReadURL"
+      },
+      {
+        "package": "github.com/Tencent/WeKnora/docreader/client",
+        "test": "TestReadFile"
+      },
+      {
+        "package": "github.com/Tencent/WeKnora/internal/agent/tools",
+        "test": "TestSkillPythonPackageRecoveryInstallsWithoutPip/uv"
+      },
+      {
+        "package": "github.com/Tencent/WeKnora/internal/application/service/memory",
+        "test": "TestPromptEval"
+      },
+      {
+        "package": "github.com/Tencent/WeKnora/internal/application/service/memory",
+        "test": "TestTopicMergeEval"
+      },
+      {
+        "package": "github.com/Tencent/WeKnora/internal/application/service",
+        "test": "TestCreateStore_DifferentEndpointSameIndex_Allowed"
+      },
+      {
+        "package": "github.com/Tencent/WeKnora/internal/models/chat",
+        "test": "TestRemoteAPIChat/DeepSeek_API"
+      },
+      {
+        "package": "github.com/Tencent/WeKnora/internal/models/chat",
+        "test": "TestRemoteAPIChat/Aliyun_DeepSeek"
+      },
+      {
+        "package": "github.com/Tencent/WeKnora/internal/models/chat",
+        "test": "TestRemoteAPIChat/Aliyun_Qwen3-32b"
+      },
+      {
+        "package": "github.com/Tencent/WeKnora/internal/models/chat",
+        "test": "TestRemoteAPIChat/Aliyun_Qwen-max"
+      }
+    ],
+    "finished_at": "2026-09-11T21:35:55.386370+00:00",
+    "duration": 988.273,
+    "duration_description": "Sum of all command wall times, including superseded attempts; setup and idle time excluded",
+    "exit": 0,
+    "reproduce": [
+      "Read docs/sandbox-workbench.md and .runtime/README.md; use only dedicated WORKBENCH_TEST_* settings",
+      "Run backend-acceptance.py init in a fresh private output workspace; existing raw logs are never overwritten",
+      "Copy existing module/build caches into private directories or populate isolated caches; no test-result reuse with -count=1",
+      "Install pinned presentation-builder/requirements.txt into private/python-venv",
+      "Run phases python, python-probe, python-files-retry, static, static-retry, real, benchmark in sequence",
+      "Use backend-inventory.py before/after for read-only inventory, then backend-report.py"
+    ],
+    "lint_warnings": [
+      {
+        "Tag": "runner/nolint_filter",
+        "Text": "Found unknown linters in //nolint directives: staticcheck — explicit nil ctx test"
+      }
+    ],
+    "artifact_hashes": {
+      ".runtime/submission/scripts/backend-acceptance.py": "a774d413675804eab5a25433e88738d58e1bce2ef9c1687ed25336920fa8e5c8",
+      ".runtime/submission/scripts/backend-report.py": "53c08b94b69e64c29973481c372f9c6624eb608ace6850b04e37d8ecc81ab7f1",
+      ".runtime/submission/scripts/backend-python-files.py": "edc8e549addf8737ff1d949bb202a20af2148a48ee044a6b19a1416ec33e0fb9",
+      ".runtime/submission/scripts/backend-inventory.py": "33e1cf07bdabe2a18dcca2360bf2a18c25ba9a2278e4b59c3bd28e928a1466ee",
+      ".runtime/submission/private/backend_acceptance_metrics_test.go": "70abe56b63068fabb3d1b4f7037487610c8a37d71130af30e3b436932f5a7f96",
+      ".runtime/submission/private/backend-overlay.json": "8320e990cb1e46805248916adadfb3884cab2193fbf8ebc06d533452f6144818",
+      ".runtime/submission/private/python-bin/python3": "d570276820e3d0d1eeb6d1950e22337a84a987fbc1c057a3d2bb3f2881e99321"
+    },
+    "summary_secret_check": "passed; configured backend API key absent, no account records or environment dumps included"
+  },
+  "browser": {
+    "summary": {
+      "PASS": 26,
+      "fail": 4,
+      "skip": 2,
+      "consoleWarnings": 0,
+      "consoleErrors": 1,
+      "pageErrors": 0,
+      "networkFailures": 0,
+      "httpErrors": 1
+    },
+    "executor": {
+      "launchAttempts": 2,
+      "flags": [
+        "--disable-gpu",
+        "--disable-software-rasterizer"
+      ],
+      "nodeExitCode": 1,
+      "toolExitStatus": 1,
+      "cleanupNote": "Browser/context close awaited and FINISHED emitted, but Node kept an active handle; test-owned Node PID received SIGTERM before continuation.",
+      "previousRuns": [
+        {
+          "endedAt": "2026-09-11T20:48:07.197Z",
+          "nodeExitCode": 0,
+          "flags": [
+            "--disable-gpu",
+            "--disable-software-rasterizer",
+            "--single-process",
+            "--no-zygote"
+          ],
+          "toolExitStatus": "unknown: initial session closed by test-owned SIGTERM after FINISHED; subsequent status poll returned Unknown process id"
+        }
+      ],
+      "restriction": {
+        "reportedAt": "final tool execution response",
+        "paths": [
+          "/dev/dri/renderD128",
+          "/proc/2457102/oom_score_adj",
+          "/proc/2457116/oom_score_adj",
+          "/proc/2457134/oom_score_adj"
+        ],
+        "crashedPid": 2457102,
+        "crashCode": 15,
+        "sandboxBypass": false,
+        "furtherBrowserLaunches": false
+      },
+      "explanation": "26 successful UI checks and videos finalized. Node exit 1 retains 4 initial driver/cascade assertion failures, each followed by corrected PASS. Tool additionally reported resource restrictions on final shutdown; no clean executor exit is claimed."
+    },
+    "cases": [
+      {
+        "name": "keyboard-enter-newline-no-submit",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:46:56.194Z",
+        "ended_at": "2026-09-11T20:46:57.270Z"
+      },
+      {
+        "name": "keyboard-ctrl-enter-real-pty",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:46:57.270Z",
+        "ended_at": "2026-09-11T20:46:57.912Z"
+      },
+      {
+        "name": "keyboard-cmd-enter-real-pty",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:46:57.912Z",
+        "ended_at": "2026-09-11T20:46:58.414Z"
+      },
+      {
+        "name": "keyboard-console-warning-zero",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:46:58.414Z",
+        "ended_at": "2026-09-11T20:46:58.415Z"
+      },
+      {
+        "name": "desktop-interactive-terminal",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:52:45.482Z",
+        "ended_at": "2026-09-11T20:52:46.133Z"
+      },
+      {
+        "name": "upload-and-table-preview",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:52:46.133Z",
+        "ended_at": "2026-09-11T20:52:47.685Z"
+      },
+      {
+        "name": "audit-visible",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:52:47.813Z",
+        "ended_at": "2026-09-11T20:52:48.070Z"
+      },
+      {
+        "name": "mobile-layout",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:52:48.070Z",
+        "ended_at": "2026-09-11T20:52:49.341Z"
+      },
+      {
+        "name": "file-security-invalid-path-blocked",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:54:29.025Z",
+        "ended_at": "2026-09-11T20:54:29.584Z"
+      },
+      {
+        "name": "directory-create-enter-and-upload",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:54:29.584Z",
+        "ended_at": "2026-09-11T20:54:31.111Z"
+      },
+      {
+        "name": "file-security-overwrite-blocked",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:54:31.111Z",
+        "ended_at": "2026-09-11T20:54:31.732Z"
+      },
+      {
+        "name": "file-download-exact-bytes",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:55:43.147Z",
+        "ended_at": "2026-09-11T20:55:43.366Z"
+      },
+      {
+        "name": "file-rename",
+        "status": "fail",
+        "started_at": "2026-09-11T20:55:43.367Z",
+        "ended_at": "2026-09-11T20:55:49.474Z",
+        "note": "Initial driver timing/cascade failure; corrected case retained separately."
+      },
+      {
+        "name": "file-delete-confirm-cancel-and-delete",
+        "status": "fail",
+        "started_at": "2026-09-11T20:55:49.545Z",
+        "ended_at": "2026-09-11T20:55:55.558Z",
+        "note": "Initial driver timing/cascade failure; corrected case retained separately."
+      },
+      {
+        "name": "directory-rename-and-delete-empty",
+        "status": "fail",
+        "started_at": "2026-09-11T20:55:55.627Z",
+        "ended_at": "2026-09-11T20:56:02.912Z",
+        "note": "Initial driver timing/cascade failure; corrected case retained separately."
+      },
+      {
+        "name": "created-root-upload-delete-cleanup",
+        "status": "fail",
+        "started_at": "2026-09-11T20:56:02.986Z",
+        "ended_at": "2026-09-11T20:56:09.024Z",
+        "note": "Initial driver timing/cascade failure; corrected case retained separately."
+      },
+      {
+        "name": "file-rename-corrected",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:57:40.442Z",
+        "ended_at": "2026-09-11T20:57:45.059Z"
+      },
+      {
+        "name": "file-delete-confirm-cancel-and-delete-corrected",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:57:45.062Z",
+        "ended_at": "2026-09-11T20:57:53.518Z"
+      },
+      {
+        "name": "directory-rename-and-delete-empty-corrected",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:57:53.649Z",
+        "ended_at": "2026-09-11T20:58:02.986Z"
+      },
+      {
+        "name": "created-root-upload-delete-cleanup-corrected",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:58:03.308Z",
+        "ended_at": "2026-09-11T20:58:07.845Z"
+      },
+      {
+        "name": "dual-panel-bidirectional-two-rounds",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:58:42.969Z",
+        "ended_at": "2026-09-11T20:58:43.782Z"
+      },
+      {
+        "name": "bound-refresh-original-config-and-explicit-retry",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:58:43.963Z",
+        "ended_at": "2026-09-11T20:58:44.812Z"
+      },
+      {
+        "name": "bound-close-reopen-original-config-and-explicit-retry",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:58:44.815Z",
+        "ended_at": "2026-09-11T20:58:46.140Z"
+      },
+      {
+        "name": "bound-page-reload-original-config-and-explicit-retry",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:58:46.154Z",
+        "ended_at": "2026-09-11T20:58:49.066Z"
+      },
+      {
+        "name": "desktop-workbench-layout",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:58:49.074Z",
+        "ended_at": "2026-09-11T20:58:49.253Z"
+      },
+      {
+        "name": "second-backend-in-browser",
+        "status": "PASS",
+        "started_at": "2026-09-11T21:01:07.678Z",
+        "ended_at": "2026-09-11T21:01:13.097Z"
+      },
+      {
+        "name": "agent-pptx-preview",
+        "status": "PASS",
+        "started_at": "2026-09-11T21:01:15.663Z",
+        "ended_at": "2026-09-11T21:01:17.028Z"
+      },
+      {
+        "name": "agent-html-preview",
+        "status": "PASS",
+        "started_at": "2026-09-11T21:01:17.156Z",
+        "ended_at": "2026-09-11T21:01:18.674Z"
+      },
+      {
+        "name": "agent-table-preview",
+        "status": "PASS",
+        "started_at": "2026-09-11T21:01:18.798Z",
+        "ended_at": "2026-09-11T21:01:20.198Z"
+      },
+      {
+        "name": "mobile-artifact-preview-and-close",
+        "status": "PASS",
+        "started_at": "2026-09-11T21:01:20.298Z",
+        "ended_at": "2026-09-11T21:01:21.908Z"
+      },
+      {
+        "name": "ci-five-page-fixture-new-browser-rerun",
+        "status": "skip",
+        "note": "CPU launch still reports sandbox resource restrictions on shutdown; do not start further browsers. Existing five-page fixture verified locally only; historical 26-pass CI run is not counted as new."
+      },
+      {
+        "name": "new-agent-session-browser-preview",
+        "status": "skip",
+        "note": "Main thread has not supplied its newly generated Agent session ID/ready notification in this conversation; do not occupy it or substitute historical artifacts."
+      }
+    ],
+    "screenshots": [
+      {
+        "name": "keyboard-ctrl-enter",
+        "path": "evidence/browser-2026-09-11T20-45-42-905Z-keyboard-ctrl-enter.png",
+        "captured_at": "2026-09-11T20:46:57.912Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "keyboard-cmd-enter",
+        "path": "evidence/browser-2026-09-11T20-45-42-905Z-keyboard-cmd-enter.png",
+        "captured_at": "2026-09-11T20:46:58.413Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-terminal",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-terminal.png",
+        "captured_at": "2026-09-11T20:52:46.132Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-csv-preview",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-csv-preview.png",
+        "captured_at": "2026-09-11T20:52:47.684Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-audit",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-audit.png",
+        "captured_at": "2026-09-11T20:52:48.069Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "mobile-terminal",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-mobile-terminal.png",
+        "captured_at": "2026-09-11T20:52:49.341Z",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "file-invalid-path-warning",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-file-invalid-path-warning.png",
+        "captured_at": "2026-09-11T20:54:29.583Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "directory-nested-upload",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-directory-nested-upload.png",
+        "captured_at": "2026-09-11T20:54:31.110Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "file-overwrite-warning",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-file-overwrite-warning.png",
+        "captured_at": "2026-09-11T20:54:31.630Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "failure-file-rename",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-failure-file-rename.png",
+        "captured_at": "2026-09-11T20:55:49.544Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "failure-file-delete-confirm-cancel-and-delete",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-failure-file-delete-confirm-cancel-and-delete.png",
+        "captured_at": "2026-09-11T20:55:55.626Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "failure-directory-rename-and-delete-empty",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-failure-directory-rename-and-delete-empty.png",
+        "captured_at": "2026-09-11T20:56:02.985Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "failure-created-root-upload-delete-cleanup",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-failure-created-root-upload-delete-cleanup.png",
+        "captured_at": "2026-09-11T20:56:09.097Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "file-renamed-corrected",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-file-renamed-corrected.png",
+        "captured_at": "2026-09-11T20:57:45.056Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "file-delete-confirm-corrected",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-file-delete-confirm-corrected.png",
+        "captured_at": "2026-09-11T20:57:47.463Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-original-panel",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-original-panel.png",
+        "captured_at": "2026-09-11T20:58:43.152Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-bound-refresh-retry",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-bound-refresh-retry.png",
+        "captured_at": "2026-09-11T20:58:44.684Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-bound-reload-retry",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-bound-reload-retry.png",
+        "captured_at": "2026-09-11T20:58:49.065Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-limits",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-limits.png",
+        "captured_at": "2026-09-11T20:58:49.230Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-e2b-terminal",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-e2b-terminal.png",
+        "captured_at": "2026-09-11T21:01:13.096Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "historical-skill-artifacts",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-historical-skill-artifacts.png",
+        "captured_at": "2026-09-11T21:01:15.661Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "Fresh UI capture of historical/pre-existing Skill artifacts; not newly generated"
+      },
+      {
+        "name": "historical-skill-pptx",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-historical-skill-pptx.png",
+        "captured_at": "2026-09-11T21:01:17.027Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "Fresh UI capture of historical Skill agent-workbench-demo.pptx; not new generation"
+      },
+      {
+        "name": "historical-skill-html",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-historical-skill-html.png",
+        "captured_at": "2026-09-11T21:01:18.608Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "Fresh UI capture of historical Skill workbench-report.html; not new generation"
+      },
+      {
+        "name": "historical-skill-table",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-historical-skill-table.png",
+        "captured_at": "2026-09-11T21:01:20.197Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "Fresh UI capture of historical Skill backend-summary.csv; not new generation"
+      },
+      {
+        "name": "mobile-historical-skill-pptx",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-mobile-historical-skill-pptx.png",
+        "captured_at": "2026-09-11T21:01:21.660Z",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "provenance": "Fresh mobile capture of historical 4-page Skill presentation, not 5-page CI fixture"
+      }
+    ],
+    "videos": [
+      {
+        "name": "keyboard",
+        "path": "evidence/browser-2026-09-11T20-45-42-905Z-keyboard.webm",
+        "recording": "Playwright recordVideo; actual unedited operations",
+        "finished_at": "2026-09-11T20:47:09.853Z"
+      },
+      {
+        "name": "real-ui-core",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-real-ui-core.webm",
+        "recording": "Playwright recordVideo; actual unedited operations",
+        "finished_at": "2026-09-11T21:01:30.252Z"
+      }
+    ]
+  },
+  "agent": {
+    "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+    "started_at": "2026-09-11T20:50:00.618Z",
+    "passed": true,
+    "steps": [
+      "installed-skill-verified",
+      "new-session-explicitly-bound",
+      "csv-uploaded-via-workbench",
+      "agent-read-skill",
+      "agent-called-shell-exec",
+      "four-artifacts-persisted-and-downloaded",
+      "unchanged-upload-excluded-from-artifacts",
+      "pptx-four-pages-and-totals-verified",
+      "spreadsheet-csv-totals-percentages-match",
+      "html-passive-table-verified"
+    ],
+    "artifacts": [
+      {
+        "name": "support-report.html",
+        "kind": "web_page",
+        "size_bytes": 2887,
+        "sha256": "6448ea40b74611862a8530f44ea26e7e7ec04b83730ecf906e821a52daded307"
+      },
+      {
+        "name": "support-review.pptx",
+        "kind": "presentation",
+        "size_bytes": 33963,
+        "sha256": "bd18b8d5349ee1ac7f10b8a8a2db654b96b4ee4c9d2842ebb24c5ba224b7ff49"
+      },
+      {
+        "name": "support-summary.csv",
+        "kind": "spreadsheet",
+        "size_bytes": 109,
+        "sha256": "691fe22f5a5949bb312cb641f4804e52750e26bc5ee883b450ac5d0564293be7"
+      },
+      {
+        "name": "support-summary.xlsx",
+        "kind": "spreadsheet",
+        "size_bytes": 5664,
+        "sha256": "8b7b5b0f6d716da43810110dd0d67a955485e16ccfcbcee63243457ea1a231e5"
+      }
+    ],
+    "agent_elapsed_ms": 36913,
+    "response_types": [
+      "agent_query",
+      "answer",
+      "tool_call",
+      "tool_result",
+      "thinking",
+      "artifacts_pending",
+      "complete"
+    ],
+    "completed_at": "2026-09-11T20:50:38.298Z",
+    "status": "passed_with_limitations",
+    "passed_scope": "Original structure/data assertions, not full prompt conformance.",
+    "prompt_conformance": "partial",
+    "prompt_deviations": [
+      "CSV/XLSX lack an embedded synthetic-data notice requested by the prompt."
+    ]
+  },
+  "limitations": [
+    "Feishu delivery rules are not yet verified.",
+    "Docker and Kubernetes E2B-compatible backend only; no native Cube/E2B Cloud/MicroVM evidence.",
+    "Browser executor restricted GPU/proc accesses; not a clean exit.",
+    "New Agent artifacts structurally verified but not freshly previewed in browser.",
+    "Optional Agent openpyxl verification import exited 1; independent artifact checks passed.",
+    "CSV/XLSX have no embedded synthetic-data notice; full prompt conformance is not claimed."
+  ],
+  "offline_artifact_validation": {
+    "status": "passed",
+    "scope": "Offline structure and data checks, not browser rendering or Agent replay.",
+    "files": [
+      {
+        "name": "support-input.csv",
+        "sha256": "425065dc9d62d13c7b2e0c833e809e398a7cce9db9ce20ef80af2a1b7eaf3e1e"
+      },
+      {
+        "name": "support-review.pptx",
+        "sha256": "bd18b8d5349ee1ac7f10b8a8a2db654b96b4ee4c9d2842ebb24c5ba224b7ff49"
+      },
+      {
+        "name": "support-report.html",
+        "sha256": "6448ea40b74611862a8530f44ea26e7e7ec04b83730ecf906e821a52daded307"
+      },
+      {
+        "name": "support-summary.xlsx",
+        "sha256": "8b7b5b0f6d716da43810110dd0d67a955485e16ccfcbcee63243457ea1a231e5"
+      },
+      {
+        "name": "support-summary.csv",
+        "sha256": "691fe22f5a5949bb312cb641f4804e52750e26bc5ee883b450ac5d0564293be7"
+      }
+    ],
+    "rejected_mutations": [
+      "csv-mismatch",
+      "duplicate-row",
+      "html-wrong-total",
+      "html-active-script",
+      "html-resource"
+    ],
+    "limitations": [
+      "CSV/XLSX contain the required table but no embedded synthetic-data notice.",
+      "This checks the supplied demonstration artifacts, not arbitrary untrusted documents."
+    ]
+  },
+  "original_test_reruns": [
+    {
+      "name": "go-full-original-physicaltmp",
+      "status": "passed",
+      "test_and_subtest_pass": 8467,
+      "skipped": [
+        {
+          "package": "github.com/Tencent/WeKnora/docreader/client",
+          "test": "TestReadURL"
+        },
+        {
+          "package": "github.com/Tencent/WeKnora/docreader/client",
+          "test": "TestReadFile"
+        },
+        {
+          "package": "github.com/Tencent/WeKnora/internal/application/service/memory",
+          "test": "TestPromptEval"
+        },
+        {
+          "package": "github.com/Tencent/WeKnora/internal/agent/tools",
+          "test": "TestSkillPythonPackageRecoveryInstallsWithoutPip/uv"
+        },
+        {
+          "package": "github.com/Tencent/WeKnora/internal/application/service/memory",
+          "test": "TestTopicMergeEval"
+        },
+        {
+          "package": "github.com/Tencent/WeKnora/internal/models/chat",
+          "test": "TestRemoteAPIChat/DeepSeek_API"
+        },
+        {
+          "package": "github.com/Tencent/WeKnora/internal/models/chat",
+          "test": "TestRemoteAPIChat/Aliyun_DeepSeek"
+        },
+        {
+          "package": "github.com/Tencent/WeKnora/internal/models/chat",
+          "test": "TestRemoteAPIChat/Aliyun_Qwen3-32b"
+        },
+        {
+          "package": "github.com/Tencent/WeKnora/internal/models/chat",
+          "test": "TestRemoteAPIChat/Aliyun_Qwen-max"
+        },
+        {
+          "package": "github.com/Tencent/WeKnora/internal/application/service",
+          "test": "TestCreateStore_DifferentEndpointSameIndex_Allowed"
+        }
+      ],
+      "packages_pass": 84,
+      "started_at": "2026-09-12T05:32:06.547638655+08:00",
+      "finished_at": "2026-09-12T05:32:27.587608782+08:00",
+      "environment": "Short canonical physical TMPDIR under the user workspace; original Python and Go code, no wrapper or test adapter."
+    },
+    {
+      "name": "go-race-original-physicaltmp",
+      "status": "passed",
+      "test_and_subtest_pass": 2319,
+      "skipped": [],
+      "packages_pass": 5,
+      "started_at": "2026-09-12T05:32:14.226291697+08:00",
+      "finished_at": "2026-09-12T05:32:24.297883067+08:00",
+      "environment": "Short canonical physical TMPDIR under the user workspace; original Python and Go code, no wrapper or test adapter."
+    },
+    {
+      "name": "python-files-original-physicaltmp",
+      "status": "passed",
+      "tests": 20,
+      "environment": "Short canonical physical TMPDIR; unmodified original unittest suite."
+    }
+  ]
+}

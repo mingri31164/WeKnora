@@ -1,0 +1,111 @@
+//go:build sandbox_terminal_integration && workbench_integration
+
+package sandbox
+
+import (
+	"bytes"
+	"context"
+	"encoding/json"
+	"fmt"
+	"io"
+	"testing"
+	"time"
+
+	"github.com/Tencent/WeKnora/internal/types"
+	"github.com/stretchr/testify/require"
+)
+
+func TestBackendAcceptanceMetrics(t *testing.T) {
+	for _, backend := range []SandboxType{SandboxTypeDocker, SandboxTypeE2B} {
+		t.Run(string(backend), func(t *testing.T) {
+			for sample := 1; sample <= 5; sample++ {
+				t.Run(fmt.Sprintf("sample-%d", sample), func(t *testing.T) {
+					cfg := workbenchRealBackendConfig(t, backend)
+					client := newWorkbenchIntegrationClient(t, cfg)
+					manager, err := NewSessionBoundManager(SessionBoundManagerConfig{
+						Config: cfg, Client: client, Store: NewMemorySessionSandboxBindingStore(),
+						Checker: PermissiveSessionExistenceChecker{}, ConfigID: "wb-backend-metrics",
+						SkipHealthProbe: true,
+					})
+					require.NoError(t, err)
+					const tenant = 928881
+					ctx, cancel := context.WithTimeout(types.WithSandboxTenantID(context.Background(), tenant), 3*time.Minute)
+					defer cancel()
+					session := fmt.Sprintf("weknora-wb-backend-metrics-%s-%d", backend, time.Now().UnixNano())
+					var ownedID string
+					logObject := func(marker string, value any) {
+						data, err := json.Marshal(value)
+						require.NoError(t, err)
+						t.Log(marker + " " + string(data))
+					}
+					t.Cleanup(func() {
+						cleanup, done := context.WithTimeout(types.WithSandboxTenantID(context.Background(), tenant), time.Minute)
+						defer done()
+						require.NoError(t, manager.DestroySession(cleanup, session))
+						if ownedID != "" {
+							require.Eventually(t, func() bool {
+								_, err := client.Get(cleanup, ownedID)
+								return IsRemoteNotFound(err)
+							}, 30*time.Second, 200*time.Millisecond)
+							logObject("BACKEND_OWNED", map[string]any{
+								"backend": backend, "id": ownedID, "session": session, "deleted_confirmed": true,
+							})
+						}
+					})
+					record := func(metric string, duration time.Duration) {
+						logObject("BACKEND_SAMPLE", map[string]any{
+							"backend": backend, "metric": metric, "sample": sample,
+							"milliseconds": float64(duration) / float64(time.Millisecond),
+						})
+					}
+					start := time.Now()
+					err = manager.EnsureWorkbenchSession(ctx, session)
+					elapsed := time.Since(start)
+					require.NoError(t, err)
+					handle, ok, err := manager.lookupSessionHandle(ctx, session)
+					require.NoError(t, err)
+					require.True(t, ok)
+					ownedID = handle.ID()
+					record("cold_initialization", elapsed)
+					command := func(measured bool) {
+						start := time.Now()
+						terminal, err := manager.OpenSessionCommandTerminal(ctx, session, CommandTerminalRequest{
+							Command: "printf WB_METRIC_READY", Timeout: 15 * time.Second,
+						})
+						require.NoError(t, err)
+						defer terminal.Close()
+						first := make([]byte, 1)
+						_, err = io.ReadFull(terminal, first)
+						elapsed := time.Since(start)
+						require.NoError(t, err)
+						rest, err := io.ReadAll(terminal)
+						require.NoError(t, err)
+						require.Equal(t, "WB_METRIC_READY", string(first)+string(rest))
+						exit, err := terminal.Wait(ctx)
+						require.NoError(t, err)
+						require.Equal(t, 0, exit.ExitCode)
+						if measured {
+							record("warm_command_first_byte", elapsed)
+						}
+					}
+					command(false)
+					command(true)
+					payload := bytes.Repeat([]byte{0, 255, 2, 3}, (1<<20)/4)
+					start = time.Now()
+					_, err = manager.WorkbenchFiles(ctx, session, WorkbenchFileRequest{
+						Operation: "write", Path: "sample.bin", Content: payload,
+					})
+					elapsed = time.Since(start)
+					require.NoError(t, err)
+					record("upload_1mib", elapsed)
+					start = time.Now()
+					result, err := manager.WorkbenchFiles(ctx, session, WorkbenchFileRequest{Operation: "read", Path: "sample.bin"})
+					elapsed = time.Since(start)
+					require.NoError(t, err)
+					require.Equal(t, payload, result.Content)
+					record("download_1mib", elapsed)
+				})
+			}
+		})
+	}
+}
