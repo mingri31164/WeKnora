@@ -12,6 +12,7 @@ PR：https://github.com/Tencent/WeKnora/pull/3145
 代码仓库：https://github.com/mingri31164/WeKnora
 最终 Tag：rhino-2026-final-4-v2
 完整 Commit SHA：a98c96840e6099bfaf1bd3488009773ff5d2e6ac
+版本说明：初始 Tag `rhino-2026-final-4` 按要求保留；本次最终审查修复使用 `rhino-2026-final-4-v2`，以上 SHA 为最终提交版本。
 材料入口：https://github.com/mingri31164/WeKnora/blob/submission/guided-learning/submission/README.md
 submission.yaml：https://github.com/mingri31164/WeKnora/blob/submission/guided-learning/submission.yaml
 
