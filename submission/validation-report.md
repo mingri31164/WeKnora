@@ -1,6 +1,6 @@
 # 测试与验收报告
 
-最终代码：`59c4e0b2ed3375bf69510339a19abc882f6ffe34`；Tag：`rhino-2026-final-2-v2`。
+最终代码：`28d676539ca25fcff06aa18aa315eff14c092e43`；Tag：`rhino-2026-final-2-v3`。
 
 ## 最终版本复核
 
@@ -8,10 +8,10 @@
 
 | 检查 | 结果 | 测试数 / 跳过 |
 | --- | --- | --- |
-| go-full | PASS | 8134 / 33 |
+| go-full | PASS | 8147 / 33 |
 | go-vet | PASS | - / 0 |
-| go-race | PASS | 2156 / 0 |
-| go-race-workbench-service | PASS | 33 / 0 |
+| go-race | PASS | 2163 / 0 |
+| go-race-workbench-service | PASS | 39 / 0 |
 | go-incremental-lint | PASS | - / 0 |
 | go-integration-lint | PASS | - / 0 |
 | python-files | PASS | 20 / 0 |
@@ -24,7 +24,7 @@
 | offline-artifacts | PASS | - / 0 |
 | go-real | PASS | 45 / 0 |
 | go-real-race | PASS | 45 / 0 |
-| 前端用例 | PASS | 928 / 0 |
+| 前端用例 | PASS | 943 / 0 |
 | API / WebSocket | PASS | 24 / 0 |
 | 两租户同时运行 | PASS | Docker、E2B 兼容后端各一组 |
 
@@ -48,10 +48,10 @@
 
 `prior-validation-summary.json` 保留 `2a209307` 的测试与失败重跑记录，包括过长/软链接 TMPDIR 的问题。最终测试使用短物理临时目录，未修改安全断言。
 
-`performance-samples.json` 同样来自 `2a209307`，仅每项五个串行样本；不将先前测量当作新代码的性能结论。`validation-5d3fa917.json` 保留上一版最终 Tag 的验证。旧 Tag rhino-2026-final-2 未移动，当前改用 v2 Tag。
+`performance-samples.json` 同样来自 `2a209307`，仅每项五个串行样本；不将先前测量当作新代码的性能结论。`validation-5d3fa917.json` 与 `validation-59c4e0b2.json` 保留 v1/v2 的验证。两个旧 Tag 均未移动，当前版本为 `rhino-2026-final-2-v3`。
 
 实测后端为 Docker Engine 和 Kubernetes E2B 兼容接口。原生 Cube/E2B Cloud、MicroVM 隔离与多用户容量未验收。Cube 文件能力关闭；当前兼容环境模板目录返回404，首次配置依赖预配置。
 
 官方五项验收对应关系见 00-official-delivery-checklist.md。任务中的宿主本地进程后端没有开放，遵循当前主线只在会话沙箱执行的边界；如评审要求恢复该后端，需要另行明确安全与部署条件。
 
-本轮另跑真实 Agent 并复核合并失败和依赖告警，详情见 [合并收尾复核](closeout-verification.md)。
+此前合并阶段运行真实 Agent，并保留合并失败和依赖告警，详情见 [合并收尾复核](closeout-verification.md)。

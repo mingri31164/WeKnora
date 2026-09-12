@@ -1,41 +1,50 @@
 {
-  "verified_at": "2026-09-12T10:08:35.729371+00:00",
+  "verified_at": "2026-09-12T13:15:36.544312+00:00",
   "pr": "https://github.com/Tencent/WeKnora/pull/3146",
   "state": "open",
   "merged": false,
-  "head_commit": "59c4e0b2ed3375bf69510339a19abc882f6ffe34",
-  "base_commit": "462999ec3f5c1467ef0ccf5cf8c422393f40a0e6",
+  "head_commit": "28d676539ca25fcff06aa18aa315eff14c092e43",
+  "reviewed_base_commit": "462999ec3f5c1467ef0ccf5cf8c422393f40a0e6",
   "description_published": true,
-  "github_updated_at": "2026-09-12T10:03:39Z",
-  "readback": "GitHub public pull-request API and rendered browser page",
-  "local_description_lf_sha256": "99720b2a2df5571029ea95bae1c24d26ae80dbe59270da5ed6b0d5aed1d47e0f",
+  "browser_observed_at": "2026-09-12T13:10:42.540Z",
+  "readback": "Anonymous GitHub HTML (embedded head and exact Markdown) plus fresh browser navigation",
+  "public_api_note": "Unauthenticated REST API returned HTTP 403, remaining rate limit 0. Anonymous HTML and browser readback used instead.",
+  "anonymous_html_sha256": "c8591d87ce3420611951a9f0334181664ba7fc6788afb1e2c05884faaa36bdb0",
+  "local_description_lf_sha256": "4e76186d528d1b4d8527ed18e0b53e850c6c5cdba11c4c4d2dd2dcbcfef1958c",
+  "remote_description_lf_sha256": "4e76186d528d1b4d8527ed18e0b53e850c6c5cdba11c4c4d2dd2dcbcfef1958c",
   "mergeable": true,
-  "mergeable_state": "unstable",
+  "mergeability_source": "No conflicts with base branchChanges can be cleanly merged.",
   "github_workflows_awaiting_maintainer_approval": 3,
   "opensource_scan": "success",
   "screenshots_loaded": [
     {
       "name": "terminal",
+      "complete": true,
       "width": 1440,
       "height": 1000
     },
     {
       "name": "presentation",
+      "complete": true,
       "width": 1440,
       "height": 1000
     },
     {
       "name": "html",
+      "complete": true,
       "width": 1440,
       "height": 1000
     },
     {
       "name": "table",
+      "complete": true,
       "width": 1440,
       "height": 1000
     }
   ],
-  "final_tag": "rhino-2026-final-2-v2",
+  "final_tag": "rhino-2026-final-2-v3",
+  "final_tag_object": "54fbc0bc8c69d4a90fd93d1dbfdfe7adaec8daa7",
   "original_tag_unchanged": true,
+  "v2_tag_unchanged": true,
   "email_sent": false
 }
