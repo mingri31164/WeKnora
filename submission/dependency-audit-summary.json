@@ -1,0 +1,57 @@
+{
+  "counts": {
+    "info": 0,
+    "low": 0,
+    "moderate": 3,
+    "high": 7,
+    "critical": 0,
+    "total": 10
+  },
+  "scope": "Advisory provenance, not runtime exploitability.",
+  "unchanged_affected_lock_entries_against": [
+    "5d3fa9178131f6cfdbcd183471d57be212c65f26",
+    "462999ec3f5c1467ef0ccf5cf8c422393f40a0e6"
+  ],
+  "entries": [
+    {
+      "name": "axios",
+      "severity": "high"
+    },
+    {
+      "name": "baseline-browser-mapping",
+      "severity": "moderate"
+    },
+    {
+      "name": "browserslist",
+      "severity": "high"
+    },
+    {
+      "name": "dompurify",
+      "severity": "moderate"
+    },
+    {
+      "name": "fast-uri",
+      "severity": "high"
+    },
+    {
+      "name": "image-size",
+      "severity": "high"
+    },
+    {
+      "name": "less",
+      "severity": "high"
+    },
+    {
+      "name": "mermaid",
+      "severity": "moderate"
+    },
+    {
+      "name": "nanoid",
+      "severity": "high"
+    },
+    {
+      "name": "postcss",
+      "severity": "high"
+    }
+  ]
+}

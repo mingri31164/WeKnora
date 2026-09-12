@@ -1,0 +1,30 @@
+{
+  "captured_code_commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+  "final_code_commit": "59c4e0b2ed3375bf69510339a19abc882f6ffe34",
+  "files": [
+    {
+      "file": "terminal.png",
+      "sha256": "d0b90f168a7d9c5538a0db9a83552df897f1f82bdcdf21473c19c2f26a3163c4",
+      "captured_at": "2026-09-11T20:52:46.132Z",
+      "provenance": "fresh real UI"
+    },
+    {
+      "file": "presentation.png",
+      "sha256": "203f6149cfd19d9c41539e17004bd8c7fe0030d60c1190d1c0b2a4d3ba45451c",
+      "captured_at": "2026-09-11T21:01:17.027Z",
+      "provenance": "Fresh UI capture of historical Skill agent-workbench-demo.pptx; not new generation"
+    },
+    {
+      "file": "html.png",
+      "sha256": "096ca48ce45e8a6a974eb2ca034abbad900bbec024524a354346748dc89a6d18",
+      "captured_at": "2026-09-11T21:01:18.608Z",
+      "provenance": "Fresh UI capture of historical Skill workbench-report.html; not new generation"
+    },
+    {
+      "file": "table.png",
+      "sha256": "aa3308fcfe8c905efcf0f0952c6449252670464050cb70267a445032ca2848fe",
+      "captured_at": "2026-09-11T21:01:20.197Z",
+      "provenance": "Fresh UI capture of historical Skill backend-summary.csv; not new generation"
+    }
+  ]
+}

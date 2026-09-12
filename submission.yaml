@@ -11,5 +11,5 @@ result:
 repository:
   url: "https://github.com/mingri31164/WeKnora.git"
   branch: "submission/sandbox-workbench"
-  commit: "5d3fa9178131f6cfdbcd183471d57be212c65f26"
-  tag: "rhino-2026-final-2"
+  commit: "59c4e0b2ed3375bf69510339a19abc882f6ffe34"
+  tag: "rhino-2026-final-2-v2"

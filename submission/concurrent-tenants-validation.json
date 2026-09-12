@@ -1,0 +1,56 @@
+{
+  "source_commit": "59c4e0b2ed3375bf69510339a19abc882f6ffe34",
+  "started_at": "2026-09-12T09:47:59.552Z",
+  "status": "passed",
+  "cases": [
+    {
+      "backend": "docker",
+      "status": "passed",
+      "simultaneous_terminals": 2,
+      "distinct_pid_namespaces": true,
+      "own_process_visible": true,
+      "foreign_process_invisible": true,
+      "own_file_readable": true,
+      "foreign_file_invisible": true,
+      "cross_tenant_http_denied": true,
+      "outside_output_paths_denied": true,
+      "accepted_and_completion_audit_for_each_command": true
+    },
+    {
+      "backend": "e2b",
+      "status": "passed",
+      "simultaneous_terminals": 2,
+      "distinct_pid_namespaces": true,
+      "own_process_visible": true,
+      "foreign_process_invisible": true,
+      "own_file_readable": true,
+      "foreign_file_invisible": true,
+      "cross_tenant_http_denied": true,
+      "outside_output_paths_denied": true,
+      "accepted_and_completion_audit_for_each_command": true
+    }
+  ],
+  "cleanup": [
+    {
+      "backend": "docker",
+      "label": "alice",
+      "session_delete": "passed"
+    },
+    {
+      "backend": "docker",
+      "label": "bob",
+      "session_delete": "passed"
+    },
+    {
+      "backend": "e2b",
+      "label": "alice",
+      "session_delete": "passed"
+    },
+    {
+      "backend": "e2b",
+      "label": "bob",
+      "session_delete": "passed"
+    }
+  ],
+  "completed_at": "2026-09-12T09:48:05.870Z"
+}

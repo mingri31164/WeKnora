@@ -1,0 +1,1348 @@
+{
+  "source_commit": "59c4e0b2ed3375bf69510339a19abc882f6ffe34",
+  "final_tag": "rhino-2026-final-2-v2",
+  "metadata_branch": "submission/sandbox-workbench",
+  "upstream_base": "462999ec3f5c1467ef0ccf5cf8c422393f40a0e6",
+  "generated_at": "2026-09-12T09:51:40.982152+00:00",
+  "official_rules_verified": true,
+  "official_submission_completed": false,
+  "frontend": {
+    "source_commit": "59c4e0b2ed3375bf69510339a19abc882f6ffe34",
+    "tests_pass": 928,
+    "tests_fail": 0,
+    "type_check": "passed",
+    "build": "passed"
+  },
+  "backend": {
+    "status": "passed",
+    "checks": [
+      {
+        "name": "go-full",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -count=1 -p=4 -parallel=8 -timeout=15m -json ./...",
+        "exit_code": 0,
+        "duration_seconds": 58.34,
+        "log": ".runtime/submission/private/static-20260912T094644Z/go-full.log",
+        "sha256": "c6b3f1cc1c6845ecc83b910548b49786c4389487b5f525a3c477c0def6367ccf",
+        "count": 8134,
+        "passed": 8134,
+        "failed": 0,
+        "skips": [
+          {
+            "package": "github.com/Tencent/WeKnora/docreader/client",
+            "test": "TestReadURL"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/docreader/client",
+            "test": "TestReadFile"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/agent/tools",
+            "test": "TestSkillPythonPackageRecoveryInstallsWithoutPip/uv"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/application/service/memory",
+            "test": "TestPromptEval"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestReconnectAfterServerRestartKeepsAuthorizationAndPausesTasks"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestRequestsRouteToBrowserOwnerAcrossReplicas"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestRealExtension"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestNativeDaemonRelay"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestConcurrentCommandsShareAutomaticSessionCreation"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestStopCancelsActiveCommandAndRejectsFurtherCalls"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestScreenshotUsesNativeTaskAndPreservesCrop"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestProgressReportsNavigationFailureAndFreezesElapsedTime"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestSharedDaemonRoutesAndIsolatesUsers"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestConcurrentPairingSharesOneDaemon"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestSharedDaemonCrashKeepsAuthorizationAndPausesTasks"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestSlowDaemonStartupDoesNotBlockStatusOrCancelledWaiter"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestLivePreviewBypassesUnfinishedAutomation"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestWindowInterruptResumesSameTask/running=false"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestWindowInterruptResumesSameTask/running=true"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestHumanHelpOutcomeControlsPause"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestIdleRetainsTaskAndCachedPreviewUntilNextCall"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestNavigationDefaultsToDocumentReadyAndPreservesExplicitWait"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestFinishTurnClosesResearchButRetainsHandoffsAndPausedTasks"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestStopCancelsSessionCreation"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestFailedStopRetainsPausedTaskForRetry"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestStopTimeoutLeavesTaskPausedAndRejectsResumeWhileStopping"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/browserskill",
+            "test": "TestStopRecoversAfterDaemonAlreadyRemovedSession"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/application/service/memory",
+            "test": "TestTopicMergeEval"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/application/service",
+            "test": "TestCreateStore_DifferentEndpointSameIndex_Allowed"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/DeepSeek_API"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/Aliyun_DeepSeek"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/Aliyun_Qwen3-32b"
+          },
+          {
+            "package": "github.com/Tencent/WeKnora/internal/models/chat",
+            "test": "TestRemoteAPIChat/Aliyun_Qwen-max"
+          }
+        ],
+        "failed_tests": [],
+        "packages": {
+          "github.com/Tencent/WeKnora/cmd/desktop": "skip",
+          "github.com/Tencent/WeKnora/cmd/download/duckdb": "skip",
+          "github.com/Tencent/WeKnora/cmd/server": "skip",
+          "github.com/Tencent/WeKnora/docreader/client": "pass",
+          "github.com/Tencent/WeKnora/docreader/proto": "skip",
+          "github.com/Tencent/WeKnora/docs": "pass",
+          "github.com/Tencent/WeKnora/internal/agent": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/compaction": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/token": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/skills": "pass",
+          "github.com/Tencent/WeKnora/internal/agent/approval": "pass",
+          "github.com/Tencent/WeKnora/internal/application/access": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/elasticsearch": "skip",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/doris": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/elasticsearch/v7": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/elasticsearch/v8": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/neo4j": "skip",
+          "github.com/Tencent/WeKnora/internal/agent/tools": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/postgres": "skip",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/milvus": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/opensearch": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/qdrant": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/sqlite": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/tencentvectordb": "pass",
+          "github.com/Tencent/WeKnora/internal/application/repository/retriever/weaviate": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/chat_pipeline": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/metric": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/file": "pass",
+          "github.com/Tencent/WeKnora/internal/assets": "skip",
+          "github.com/Tencent/WeKnora/internal/application/service/retriever": "pass",
+          "github.com/Tencent/WeKnora/internal/browserskill": "pass",
+          "github.com/Tencent/WeKnora/internal/common": "pass",
+          "github.com/Tencent/WeKnora/internal/common/redislock": "pass",
+          "github.com/Tencent/WeKnora/internal/config": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service/memory": "pass",
+          "github.com/Tencent/WeKnora/internal/container": "pass",
+          "github.com/Tencent/WeKnora/internal/database": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/feishu/drive": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/feishu/core": "pass",
+          "github.com/Tencent/WeKnora/internal/application/service": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/gitlab": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/ima": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/rss": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/notion": "pass",
+          "github.com/Tencent/WeKnora/internal/errors": "skip",
+          "github.com/Tencent/WeKnora/internal/filetransport": "pass",
+          "github.com/Tencent/WeKnora/internal/event": "pass",
+          "github.com/Tencent/WeKnora/internal/handler": "pass",
+          "github.com/Tencent/WeKnora/internal/handler/dto": "pass",
+          "github.com/Tencent/WeKnora/internal/handler/session": "pass",
+          "github.com/Tencent/WeKnora/internal/im": "pass",
+          "github.com/Tencent/WeKnora/internal/im/dingtalk": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/yuque": "pass",
+          "github.com/Tencent/WeKnora/internal/im/feishu": "pass",
+          "github.com/Tencent/WeKnora/internal/im/mattermost": "pass",
+          "github.com/Tencent/WeKnora/internal/im/qqbot": "pass",
+          "github.com/Tencent/WeKnora/internal/im/slack": "pass",
+          "github.com/Tencent/WeKnora/internal/datasource/connector/feishu/wiki": "pass",
+          "github.com/Tencent/WeKnora/internal/im/wechat": "skip",
+          "github.com/Tencent/WeKnora/internal/im/telegram": "pass",
+          "github.com/Tencent/WeKnora/internal/im/wecom": "pass",
+          "github.com/Tencent/WeKnora/internal/im/yunzhijia": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/docparser/anydoc": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/chunker": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/docparser": "pass",
+          "github.com/Tencent/WeKnora/internal/ipclass": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/web_fetch": "pass",
+          "github.com/Tencent/WeKnora/internal/infrastructure/web_search": "pass",
+          "github.com/Tencent/WeKnora/internal/logger": "pass",
+          "github.com/Tencent/WeKnora/internal/mcp": "pass",
+          "github.com/Tencent/WeKnora/internal/middleware": "pass",
+          "github.com/Tencent/WeKnora/internal/middleware/asynqdl": "pass",
+          "github.com/Tencent/WeKnora/internal/modelcontext": "pass",
+          "github.com/Tencent/WeKnora/internal/models/asr": "pass",
+          "github.com/Tencent/WeKnora/internal/models/provider": "pass",
+          "github.com/Tencent/WeKnora/internal/models/limiter": "pass",
+          "github.com/Tencent/WeKnora/internal/models/chat": "pass",
+          "github.com/Tencent/WeKnora/internal/models/embedding": "pass",
+          "github.com/Tencent/WeKnora/internal/models/utils": "skip",
+          "github.com/Tencent/WeKnora/internal/models/utils/ollama": "skip",
+          "github.com/Tencent/WeKnora/internal/models/rerank": "pass",
+          "github.com/Tencent/WeKnora/internal/ratelimit": "pass",
+          "github.com/Tencent/WeKnora/internal/models/vlm": "pass",
+          "github.com/Tencent/WeKnora/internal/router": "pass",
+          "github.com/Tencent/WeKnora/internal/runtime": "pass",
+          "github.com/Tencent/WeKnora/internal/storageallowlist": "pass",
+          "github.com/Tencent/WeKnora/internal/searchutil": "pass",
+          "github.com/Tencent/WeKnora/internal/textconv": "pass",
+          "github.com/Tencent/WeKnora/internal/storageurl": "pass",
+          "github.com/Tencent/WeKnora/internal/stream": "pass",
+          "github.com/Tencent/WeKnora/internal/tracing/langfuse": "pass",
+          "github.com/Tencent/WeKnora/internal/types/interfaces": "skip",
+          "github.com/Tencent/WeKnora/internal/utils": "pass",
+          "github.com/Tencent/WeKnora/internal/types": "pass",
+          "github.com/Tencent/WeKnora/packages/dsh-weknora/contract": "pass",
+          "github.com/Tencent/WeKnora/internal/sandbox": "pass"
+        },
+        "test_events": 8733,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded"
+      },
+      {
+        "name": "go-vet",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go vet -p=4 ./...",
+        "exit_code": 0,
+        "duration_seconds": 1.37,
+        "log": ".runtime/submission/private/static-20260912T094644Z/go-vet.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "go-race",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -race -count=1 -p=4 -parallel=8 -timeout=15m -json ./internal/sandbox ./internal/handler ./internal/handler/session ./internal/router ./internal/types",
+        "exit_code": 0,
+        "duration_seconds": 15.845,
+        "log": ".runtime/submission/private/static-20260912T094644Z/go-race.log",
+        "sha256": "3885edca927f506cc9fe322a2da9edb4e4f200fac4149412c12204b6eea39689",
+        "count": 2156,
+        "passed": 2156,
+        "failed": 0,
+        "skips": [],
+        "failed_tests": [],
+        "packages": {
+          "github.com/Tencent/WeKnora/internal/handler/session": "pass",
+          "github.com/Tencent/WeKnora/internal/router": "pass",
+          "github.com/Tencent/WeKnora/internal/handler": "pass",
+          "github.com/Tencent/WeKnora/internal/types": "pass",
+          "github.com/Tencent/WeKnora/internal/sandbox": "pass"
+        },
+        "test_events": 2342,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded"
+      },
+      {
+        "name": "go-race-workbench-service",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -race -count=1 -p=4 -parallel=8 -timeout=15m -json ./internal/application/service -run '^TestWorkbench'",
+        "exit_code": 0,
+        "duration_seconds": 5.877,
+        "log": ".runtime/submission/private/static-20260912T094644Z/go-race-workbench-service.log",
+        "sha256": "c6f93706fb717b4d4258b4676513d69b0314998e158c32c4d79892989029b614",
+        "count": 33,
+        "passed": 33,
+        "failed": 0,
+        "skips": [],
+        "failed_tests": [],
+        "packages": {
+          "github.com/Tencent/WeKnora/internal/application/service": "pass"
+        },
+        "test_events": 36,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded"
+      },
+      {
+        "name": "go-incremental-lint",
+        "command": "/data00/home/liudebao/opensource/WeKnora-sandbox-workbench/.runtime/bin/golangci-lint run --new-from-rev=462999ec3f5c1467ef0ccf5cf8c422393f40a0e6 --timeout=15m --concurrency=4 ./...",
+        "exit_code": 0,
+        "duration_seconds": 3.874,
+        "log": ".runtime/submission/private/static-20260912T094644Z/go-incremental-lint.log",
+        "sha256": "6fcc2cd28c75ea16b2d0bbbad273ea4ed9cc269ec96b1433e50490164a85d7f1"
+      },
+      {
+        "name": "go-integration-lint",
+        "command": "/data00/home/liudebao/opensource/WeKnora-sandbox-workbench/.runtime/bin/golangci-lint run --new-from-rev=462999ec3f5c1467ef0ccf5cf8c422393f40a0e6 --timeout=15m --concurrency=4 '--build-tags=sandbox_terminal_integration workbench_integration' ./internal/sandbox/...",
+        "exit_code": 0,
+        "duration_seconds": 2.321,
+        "log": ".runtime/submission/private/static-20260912T094644Z/go-integration-lint.log",
+        "sha256": "e92606b0bf483111dff0a120c315ea165821348f31365020e2468a0059095c47"
+      },
+      {
+        "name": "python-files",
+        "command": "python3 -B -I internal/sandbox/workbench_files_test.py",
+        "exit_code": 0,
+        "duration_seconds": 0.668,
+        "log": ".runtime/submission/private/static-20260912T094644Z/python-files.log",
+        "sha256": "e7e975d1b91951edf919346266f621fb1baeaa5b29f044d9da56a554a09f0eaa",
+        "count": 20,
+        "count_unit": "unittest test methods"
+      },
+      {
+        "name": "python-probe",
+        "command": "python3 -B -I internal/sandbox/terminal_runtime_probe_test.py",
+        "exit_code": 0,
+        "duration_seconds": 0.118,
+        "log": ".runtime/submission/private/static-20260912T094644Z/python-probe.log",
+        "sha256": "32826eccaaeddf2f432a5ea522d814f0c23d4f47023247183444651110327bbf",
+        "count": 5,
+        "count_unit": "unittest test methods"
+      },
+      {
+        "name": "python-runner",
+        "command": "python3 -B -I internal/sandbox/terminal_runner_test.py",
+        "exit_code": 0,
+        "duration_seconds": 0.118,
+        "log": ".runtime/submission/private/static-20260912T094644Z/python-runner.log",
+        "sha256": "80d22fed2940f322109aec6b4219055c855f0c3f74d9e68f4d5e82329ef4617f",
+        "count": 3,
+        "count_unit": "unittest test methods"
+      },
+      {
+        "name": "python-builder",
+        "command": "/data00/home/liudebao/opensource/WeKnora-sandbox-workbench/.runtime/skill-review-venv/bin/python -B -m unittest discover -s examples/skills/presentation-builder/tests -v",
+        "exit_code": 0,
+        "duration_seconds": 1.319,
+        "log": ".runtime/submission/private/static-20260912T094644Z/python-builder.log",
+        "sha256": "65024ba22414b58f71711f6f695a0a3d52b82fd61db48c757fed9469c7c28c18",
+        "count": 27,
+        "count_unit": "unittest test methods"
+      },
+      {
+        "name": "frontend-tests",
+        "command": "npm run test",
+        "exit_code": 0,
+        "duration_seconds": 5.685,
+        "log": ".runtime/submission/private/frontend-20260912T094649Z/frontend-tests.log",
+        "sha256": "48adde44bab6607e9eefc76bf9965ea98f997de4c7b235b559087c4d496cea4f"
+      },
+      {
+        "name": "frontend-types",
+        "command": "npm run type-check",
+        "exit_code": 0,
+        "duration_seconds": 24.113,
+        "log": ".runtime/submission/private/frontend-20260912T094649Z/frontend-types.log",
+        "sha256": "a56bb276db4e129b0d23ef978a488dfc6f0845a00550a6cb828699323ac34625"
+      },
+      {
+        "name": "frontend-build",
+        "command": "npm run build",
+        "exit_code": 0,
+        "duration_seconds": 42.744,
+        "log": ".runtime/submission/private/frontend-20260912T094649Z/frontend-build.log",
+        "sha256": "75f2c19a21e86b0e46daf9fa186efaf60806eba78b634d74ade367917404094e"
+      },
+      {
+        "name": "offline-artifacts",
+        "command": "node /data00/home/liudebao/opensource/WeKnora-sandbox-workbench/.runtime/submission/package/verify-agent-artifacts.mjs /data00/home/liudebao/opensource/WeKnora-sandbox-workbench --self-test",
+        "exit_code": 0,
+        "duration_seconds": 1.419,
+        "log": ".runtime/submission/private/frontend-20260912T094649Z/offline-artifacts.log",
+        "sha256": "9474b53cad32ed9c7f7d380053344528e688307d044e2e3f4df647698069603e"
+      },
+      {
+        "name": "go-real",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -count=1 -p=2 -parallel=1 -timeout=15m -json '-tags=sandbox_terminal_integration workbench_integration' ./internal/sandbox -run '^TestTerminalReal|^TestWorkbenchFilesIntegration$|^TestWorkbenchIntegrationConfig$'",
+        "exit_code": 0,
+        "duration_seconds": 79.613,
+        "log": ".runtime/submission/private/real-20260912T094653Z/go-real.log",
+        "sha256": "8d509755e3163aeb5ffc69b17e1951f2aeb70a28646f63a098b88c5dd7cecb95",
+        "count": 45,
+        "passed": 45,
+        "failed": 0,
+        "skips": [],
+        "failed_tests": [],
+        "packages": {
+          "github.com/Tencent/WeKnora/internal/sandbox": "pass"
+        },
+        "test_events": 50,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded"
+      },
+      {
+        "name": "go-real-race",
+        "command": "/home/liudebao/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.0.linux-amd64/bin/go test -race -count=1 -p=2 -parallel=1 -timeout=15m -json '-tags=sandbox_terminal_integration workbench_integration' ./internal/sandbox -run '^TestTerminalReal|^TestWorkbenchFilesIntegration$|^TestWorkbenchIntegrationConfig$'",
+        "exit_code": 0,
+        "duration_seconds": 85.396,
+        "log": ".runtime/submission/private/real-20260912T094653Z/go-real-race.log",
+        "sha256": "3517ff9f460c25b4987a368802625846767b48a292c3e9c0824954bb1eb266d5",
+        "count": 45,
+        "passed": 45,
+        "failed": 0,
+        "skips": [],
+        "failed_tests": [],
+        "packages": {
+          "github.com/Tencent/WeKnora/internal/sandbox": "pass"
+        },
+        "test_events": 50,
+        "cached_test_output": false,
+        "count_unit": "leaf tests; parent containers excluded"
+      }
+    ]
+  },
+  "api": {
+    "source_commit": "59c4e0b2ed3375bf69510339a19abc882f6ffe34",
+    "passed": 24,
+    "concurrent_tenants": {
+      "source_commit": "59c4e0b2ed3375bf69510339a19abc882f6ffe34",
+      "started_at": "2026-09-12T09:47:59.552Z",
+      "status": "passed",
+      "cases": [
+        {
+          "backend": "docker",
+          "status": "passed",
+          "simultaneous_terminals": 2,
+          "distinct_pid_namespaces": true,
+          "own_process_visible": true,
+          "foreign_process_invisible": true,
+          "own_file_readable": true,
+          "foreign_file_invisible": true,
+          "cross_tenant_http_denied": true,
+          "outside_output_paths_denied": true,
+          "accepted_and_completion_audit_for_each_command": true
+        },
+        {
+          "backend": "e2b",
+          "status": "passed",
+          "simultaneous_terminals": 2,
+          "distinct_pid_namespaces": true,
+          "own_process_visible": true,
+          "foreign_process_invisible": true,
+          "own_file_readable": true,
+          "foreign_file_invisible": true,
+          "cross_tenant_http_denied": true,
+          "outside_output_paths_denied": true,
+          "accepted_and_completion_audit_for_each_command": true
+        }
+      ],
+      "cleanup": [
+        {
+          "backend": "docker",
+          "label": "alice",
+          "session_delete": "passed"
+        },
+        {
+          "backend": "docker",
+          "label": "bob",
+          "session_delete": "passed"
+        },
+        {
+          "backend": "e2b",
+          "label": "alice",
+          "session_delete": "passed"
+        },
+        {
+          "backend": "e2b",
+          "label": "bob",
+          "session_delete": "passed"
+        }
+      ],
+      "completed_at": "2026-09-12T09:48:05.870Z"
+    }
+  },
+  "browser": {
+    "summary": {
+      "PASS": 26,
+      "fail": 4,
+      "skip": 2,
+      "consoleWarnings": 0,
+      "consoleErrors": 1,
+      "pageErrors": 0,
+      "networkFailures": 0,
+      "httpErrors": 1
+    },
+    "executor": {
+      "launchAttempts": 2,
+      "flags": [
+        "--disable-gpu",
+        "--disable-software-rasterizer"
+      ],
+      "nodeExitCode": 1,
+      "toolExitStatus": 1,
+      "cleanupNote": "Browser/context close awaited and FINISHED emitted, but Node kept an active handle; test-owned Node PID received SIGTERM before continuation.",
+      "previousRuns": [
+        {
+          "endedAt": "2026-09-11T20:48:07.197Z",
+          "nodeExitCode": 0,
+          "flags": [
+            "--disable-gpu",
+            "--disable-software-rasterizer",
+            "--single-process",
+            "--no-zygote"
+          ],
+          "toolExitStatus": "unknown: initial session closed by test-owned SIGTERM after FINISHED; subsequent status poll returned Unknown process id"
+        }
+      ],
+      "restriction": {
+        "reportedAt": "final tool execution response",
+        "paths": [
+          "/dev/dri/renderD128",
+          "/proc/2457102/oom_score_adj",
+          "/proc/2457116/oom_score_adj",
+          "/proc/2457134/oom_score_adj"
+        ],
+        "crashedPid": 2457102,
+        "crashCode": 15,
+        "sandboxBypass": false,
+        "furtherBrowserLaunches": false
+      },
+      "explanation": "26 successful UI checks and videos finalized. Node exit 1 retains 4 initial driver/cascade assertion failures, each followed by corrected PASS. Tool additionally reported resource restrictions on final shutdown; no clean executor exit is claimed."
+    },
+    "cases": [
+      {
+        "name": "keyboard-enter-newline-no-submit",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:46:56.194Z",
+        "ended_at": "2026-09-11T20:46:57.270Z"
+      },
+      {
+        "name": "keyboard-ctrl-enter-real-pty",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:46:57.270Z",
+        "ended_at": "2026-09-11T20:46:57.912Z"
+      },
+      {
+        "name": "keyboard-cmd-enter-real-pty",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:46:57.912Z",
+        "ended_at": "2026-09-11T20:46:58.414Z"
+      },
+      {
+        "name": "keyboard-console-warning-zero",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:46:58.414Z",
+        "ended_at": "2026-09-11T20:46:58.415Z"
+      },
+      {
+        "name": "desktop-interactive-terminal",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:52:45.482Z",
+        "ended_at": "2026-09-11T20:52:46.133Z"
+      },
+      {
+        "name": "upload-and-table-preview",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:52:46.133Z",
+        "ended_at": "2026-09-11T20:52:47.685Z"
+      },
+      {
+        "name": "audit-visible",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:52:47.813Z",
+        "ended_at": "2026-09-11T20:52:48.070Z"
+      },
+      {
+        "name": "mobile-layout",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:52:48.070Z",
+        "ended_at": "2026-09-11T20:52:49.341Z"
+      },
+      {
+        "name": "file-security-invalid-path-blocked",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:54:29.025Z",
+        "ended_at": "2026-09-11T20:54:29.584Z"
+      },
+      {
+        "name": "directory-create-enter-and-upload",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:54:29.584Z",
+        "ended_at": "2026-09-11T20:54:31.111Z"
+      },
+      {
+        "name": "file-security-overwrite-blocked",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:54:31.111Z",
+        "ended_at": "2026-09-11T20:54:31.732Z"
+      },
+      {
+        "name": "file-download-exact-bytes",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:55:43.147Z",
+        "ended_at": "2026-09-11T20:55:43.366Z"
+      },
+      {
+        "name": "file-rename",
+        "status": "fail",
+        "started_at": "2026-09-11T20:55:43.367Z",
+        "ended_at": "2026-09-11T20:55:49.474Z",
+        "note": "Initial driver timing/cascade failure; corrected case retained separately."
+      },
+      {
+        "name": "file-delete-confirm-cancel-and-delete",
+        "status": "fail",
+        "started_at": "2026-09-11T20:55:49.545Z",
+        "ended_at": "2026-09-11T20:55:55.558Z",
+        "note": "Initial driver timing/cascade failure; corrected case retained separately."
+      },
+      {
+        "name": "directory-rename-and-delete-empty",
+        "status": "fail",
+        "started_at": "2026-09-11T20:55:55.627Z",
+        "ended_at": "2026-09-11T20:56:02.912Z",
+        "note": "Initial driver timing/cascade failure; corrected case retained separately."
+      },
+      {
+        "name": "created-root-upload-delete-cleanup",
+        "status": "fail",
+        "started_at": "2026-09-11T20:56:02.986Z",
+        "ended_at": "2026-09-11T20:56:09.024Z",
+        "note": "Initial driver timing/cascade failure; corrected case retained separately."
+      },
+      {
+        "name": "file-rename-corrected",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:57:40.442Z",
+        "ended_at": "2026-09-11T20:57:45.059Z"
+      },
+      {
+        "name": "file-delete-confirm-cancel-and-delete-corrected",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:57:45.062Z",
+        "ended_at": "2026-09-11T20:57:53.518Z"
+      },
+      {
+        "name": "directory-rename-and-delete-empty-corrected",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:57:53.649Z",
+        "ended_at": "2026-09-11T20:58:02.986Z"
+      },
+      {
+        "name": "created-root-upload-delete-cleanup-corrected",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:58:03.308Z",
+        "ended_at": "2026-09-11T20:58:07.845Z"
+      },
+      {
+        "name": "dual-panel-bidirectional-two-rounds",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:58:42.969Z",
+        "ended_at": "2026-09-11T20:58:43.782Z"
+      },
+      {
+        "name": "bound-refresh-original-config-and-explicit-retry",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:58:43.963Z",
+        "ended_at": "2026-09-11T20:58:44.812Z"
+      },
+      {
+        "name": "bound-close-reopen-original-config-and-explicit-retry",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:58:44.815Z",
+        "ended_at": "2026-09-11T20:58:46.140Z"
+      },
+      {
+        "name": "bound-page-reload-original-config-and-explicit-retry",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:58:46.154Z",
+        "ended_at": "2026-09-11T20:58:49.066Z"
+      },
+      {
+        "name": "desktop-workbench-layout",
+        "status": "PASS",
+        "started_at": "2026-09-11T20:58:49.074Z",
+        "ended_at": "2026-09-11T20:58:49.253Z"
+      },
+      {
+        "name": "second-backend-in-browser",
+        "status": "PASS",
+        "started_at": "2026-09-11T21:01:07.678Z",
+        "ended_at": "2026-09-11T21:01:13.097Z"
+      },
+      {
+        "name": "agent-pptx-preview",
+        "status": "PASS",
+        "started_at": "2026-09-11T21:01:15.663Z",
+        "ended_at": "2026-09-11T21:01:17.028Z"
+      },
+      {
+        "name": "agent-html-preview",
+        "status": "PASS",
+        "started_at": "2026-09-11T21:01:17.156Z",
+        "ended_at": "2026-09-11T21:01:18.674Z"
+      },
+      {
+        "name": "agent-table-preview",
+        "status": "PASS",
+        "started_at": "2026-09-11T21:01:18.798Z",
+        "ended_at": "2026-09-11T21:01:20.198Z"
+      },
+      {
+        "name": "mobile-artifact-preview-and-close",
+        "status": "PASS",
+        "started_at": "2026-09-11T21:01:20.298Z",
+        "ended_at": "2026-09-11T21:01:21.908Z"
+      },
+      {
+        "name": "ci-five-page-fixture-new-browser-rerun",
+        "status": "skip",
+        "note": "CPU launch still reports sandbox resource restrictions on shutdown; do not start further browsers. Existing five-page fixture verified locally only; historical 26-pass CI run is not counted as new."
+      },
+      {
+        "name": "new-agent-session-browser-preview",
+        "status": "skip",
+        "note": "Main thread has not supplied its newly generated Agent session ID/ready notification in this conversation; do not occupy it or substitute historical artifacts."
+      }
+    ],
+    "screenshots": [
+      {
+        "name": "keyboard-ctrl-enter",
+        "path": "evidence/browser-2026-09-11T20-45-42-905Z-keyboard-ctrl-enter.png",
+        "captured_at": "2026-09-11T20:46:57.912Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "keyboard-cmd-enter",
+        "path": "evidence/browser-2026-09-11T20-45-42-905Z-keyboard-cmd-enter.png",
+        "captured_at": "2026-09-11T20:46:58.413Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-terminal",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-terminal.png",
+        "captured_at": "2026-09-11T20:52:46.132Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-csv-preview",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-csv-preview.png",
+        "captured_at": "2026-09-11T20:52:47.684Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-audit",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-audit.png",
+        "captured_at": "2026-09-11T20:52:48.069Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "mobile-terminal",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-mobile-terminal.png",
+        "captured_at": "2026-09-11T20:52:49.341Z",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "file-invalid-path-warning",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-file-invalid-path-warning.png",
+        "captured_at": "2026-09-11T20:54:29.583Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "directory-nested-upload",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-directory-nested-upload.png",
+        "captured_at": "2026-09-11T20:54:31.110Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "file-overwrite-warning",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-file-overwrite-warning.png",
+        "captured_at": "2026-09-11T20:54:31.630Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "failure-file-rename",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-failure-file-rename.png",
+        "captured_at": "2026-09-11T20:55:49.544Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "failure-file-delete-confirm-cancel-and-delete",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-failure-file-delete-confirm-cancel-and-delete.png",
+        "captured_at": "2026-09-11T20:55:55.626Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "failure-directory-rename-and-delete-empty",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-failure-directory-rename-and-delete-empty.png",
+        "captured_at": "2026-09-11T20:56:02.985Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "failure-created-root-upload-delete-cleanup",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-failure-created-root-upload-delete-cleanup.png",
+        "captured_at": "2026-09-11T20:56:09.097Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "file-renamed-corrected",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-file-renamed-corrected.png",
+        "captured_at": "2026-09-11T20:57:45.056Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "file-delete-confirm-corrected",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-file-delete-confirm-corrected.png",
+        "captured_at": "2026-09-11T20:57:47.463Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-original-panel",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-original-panel.png",
+        "captured_at": "2026-09-11T20:58:43.152Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-bound-refresh-retry",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-bound-refresh-retry.png",
+        "captured_at": "2026-09-11T20:58:44.684Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-bound-reload-retry",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-bound-reload-retry.png",
+        "captured_at": "2026-09-11T20:58:49.065Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-limits",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-limits.png",
+        "captured_at": "2026-09-11T20:58:49.230Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "desktop-e2b-terminal",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-desktop-e2b-terminal.png",
+        "captured_at": "2026-09-11T21:01:13.096Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "fresh real UI"
+      },
+      {
+        "name": "historical-skill-artifacts",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-historical-skill-artifacts.png",
+        "captured_at": "2026-09-11T21:01:15.661Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "Fresh UI capture of historical/pre-existing Skill artifacts; not newly generated"
+      },
+      {
+        "name": "historical-skill-pptx",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-historical-skill-pptx.png",
+        "captured_at": "2026-09-11T21:01:17.027Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "Fresh UI capture of historical Skill agent-workbench-demo.pptx; not new generation"
+      },
+      {
+        "name": "historical-skill-html",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-historical-skill-html.png",
+        "captured_at": "2026-09-11T21:01:18.608Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "Fresh UI capture of historical Skill workbench-report.html; not new generation"
+      },
+      {
+        "name": "historical-skill-table",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-historical-skill-table.png",
+        "captured_at": "2026-09-11T21:01:20.197Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "provenance": "Fresh UI capture of historical Skill backend-summary.csv; not new generation"
+      },
+      {
+        "name": "mobile-historical-skill-pptx",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-mobile-historical-skill-pptx.png",
+        "captured_at": "2026-09-11T21:01:21.660Z",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "provenance": "Fresh mobile capture of historical 4-page Skill presentation, not 5-page CI fixture"
+      }
+    ],
+    "videos": [
+      {
+        "name": "keyboard",
+        "path": "evidence/browser-2026-09-11T20-45-42-905Z-keyboard.webm",
+        "recording": "Playwright recordVideo; actual unedited operations",
+        "finished_at": "2026-09-11T20:47:09.853Z"
+      },
+      {
+        "name": "real-ui-core",
+        "path": "evidence/browser-2026-09-11T20-49-26-521Z-real-ui-core.webm",
+        "recording": "Playwright recordVideo; actual unedited operations",
+        "finished_at": "2026-09-11T21:01:30.252Z"
+      }
+    ],
+    "source_commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+    "coverage_note": "Recorded before aggregate-memory and upstream preview integration; no new browser recording."
+  },
+  "agent": {
+    "commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+    "started_at": "2026-09-11T20:50:00.618Z",
+    "passed": true,
+    "steps": [
+      "installed-skill-verified",
+      "new-session-explicitly-bound",
+      "csv-uploaded-via-workbench",
+      "agent-read-skill",
+      "agent-called-shell-exec",
+      "four-artifacts-persisted-and-downloaded",
+      "unchanged-upload-excluded-from-artifacts",
+      "pptx-four-pages-and-totals-verified",
+      "spreadsheet-csv-totals-percentages-match",
+      "html-passive-table-verified"
+    ],
+    "artifacts": [
+      {
+        "name": "support-report.html",
+        "kind": "web_page",
+        "size_bytes": 2887,
+        "sha256": "6448ea40b74611862a8530f44ea26e7e7ec04b83730ecf906e821a52daded307"
+      },
+      {
+        "name": "support-review.pptx",
+        "kind": "presentation",
+        "size_bytes": 33963,
+        "sha256": "bd18b8d5349ee1ac7f10b8a8a2db654b96b4ee4c9d2842ebb24c5ba224b7ff49"
+      },
+      {
+        "name": "support-summary.csv",
+        "kind": "spreadsheet",
+        "size_bytes": 109,
+        "sha256": "691fe22f5a5949bb312cb641f4804e52750e26bc5ee883b450ac5d0564293be7"
+      },
+      {
+        "name": "support-summary.xlsx",
+        "kind": "spreadsheet",
+        "size_bytes": 5664,
+        "sha256": "8b7b5b0f6d716da43810110dd0d67a955485e16ccfcbcee63243457ea1a231e5"
+      }
+    ],
+    "agent_elapsed_ms": 36913,
+    "response_types": [
+      "agent_query",
+      "answer",
+      "tool_call",
+      "tool_result",
+      "thinking",
+      "artifacts_pending",
+      "complete"
+    ],
+    "completed_at": "2026-09-11T20:50:38.298Z",
+    "status": "passed_with_limitations",
+    "passed_scope": "Original structure/data assertions, not full prompt conformance.",
+    "prompt_conformance": "partial",
+    "prompt_deviations": [
+      "CSV/XLSX lack an embedded synthetic-data notice requested by the prompt."
+    ]
+  },
+  "prior_validation": {
+    "source_commit": "2a20930742945ab368da9c906f5b1da714cebac0",
+    "file": "prior-validation-summary.json"
+  },
+  "limitations": [
+    "Docker and Kubernetes E2B-compatible backend only; no native Cube/E2B Cloud/MicroVM evidence.",
+    "Browser executor restricted GPU/proc accesses; not a clean exit.",
+    "New Agent artifacts structurally verified but not freshly previewed in browser.",
+    "Optional Agent openpyxl verification import exited 1; independent artifact checks passed.",
+    "CSV/XLSX have no embedded synthetic-data notice; full prompt conformance is not claimed."
+  ],
+  "closeout_agent": {
+    "source_commit": "e0377f24fa8b3b88537f2ee3db1c218e17716429",
+    "final_code_commit": "59c4e0b2ed3375bf69510339a19abc882f6ffe34",
+    "only_intervening_change": [
+      "internal/sandbox/workbench_files_trace_test.go"
+    ],
+    "started_at": "2026-09-12T09:42:48.599Z",
+    "completed_at": "2026-09-12T09:43:43.002Z",
+    "agent_elapsed_ms": 53622,
+    "original_driver_passed": false,
+    "original_driver_error": "Incorrect resolution percentage",
+    "steps": [
+      "installed-skill-verified",
+      "new-session-explicitly-bound",
+      "csv-uploaded-via-workbench",
+      "agent-read-skill",
+      "agent-called-shell-exec",
+      "four-artifacts-persisted-and-downloaded",
+      "unchanged-upload-excluded-from-artifacts"
+    ],
+    "artifacts": [
+      {
+        "name": "support-report.html",
+        "kind": "web_page",
+        "size_bytes": 2713,
+        "sha256": "6440aa01f53ced57536cfd7d6f2923f122bf7b4994826b0b3ab7fea30f73d7e0"
+      },
+      {
+        "name": "support-review.pptx",
+        "kind": "presentation",
+        "size_bytes": 34086,
+        "sha256": "11950bd41a6d02763db4e5e10a6518e3b46328fded10dd66aa513312d7debce8"
+      },
+      {
+        "name": "support-summary.csv",
+        "kind": "spreadsheet",
+        "size_bytes": 106,
+        "sha256": "243fbdbe30ce09709d19b290cac728937cff581b58dd3b9e83bc531134e89d4a"
+      },
+      {
+        "name": "support-summary.xlsx",
+        "kind": "spreadsheet",
+        "size_bytes": 5787,
+        "sha256": "37ff9a3a2e0e2254e6c6ae12fa691d1f5fe1cae3f44d3325b2a50c31e9f59e1d"
+      }
+    ],
+    "tools": [
+      {
+        "tool": "read_file",
+        "success": true,
+        "exit_code": null
+      },
+      {
+        "tool": "read_file",
+        "success": true,
+        "exit_code": null
+      },
+      {
+        "tool": "read_file",
+        "success": true,
+        "exit_code": null
+      },
+      {
+        "tool": "shell_exec",
+        "success": true,
+        "exit_code": 0
+      },
+      {
+        "tool": "write_sandbox_file",
+        "success": true,
+        "exit_code": null
+      },
+      {
+        "tool": "shell_exec",
+        "success": true,
+        "exit_code": 0
+      },
+      {
+        "tool": "write_sandbox_file",
+        "success": true,
+        "exit_code": null
+      },
+      {
+        "tool": "shell_exec",
+        "success": true,
+        "exit_code": 0
+      },
+      {
+        "tool": "write_sandbox_file",
+        "success": true,
+        "exit_code": null
+      },
+      {
+        "tool": "shell_exec",
+        "success": true,
+        "exit_code": 1
+      },
+      {
+        "tool": "edit_sandbox_file",
+        "success": true,
+        "exit_code": null
+      },
+      {
+        "tool": "shell_exec",
+        "success": true,
+        "exit_code": 0
+      },
+      {
+        "tool": "write_sandbox_file",
+        "success": true,
+        "exit_code": null
+      },
+      {
+        "tool": "shell_exec",
+        "success": true,
+        "exit_code": 0
+      },
+      {
+        "tool": "shell_exec",
+        "success": true,
+        "exit_code": 0
+      },
+      {
+        "tool": "edit_sandbox_file",
+        "success": true,
+        "exit_code": null
+      },
+      {
+        "tool": "edit_sandbox_file",
+        "success": true,
+        "exit_code": null
+      }
+    ],
+    "semantic_validation": {
+      "status": "passed",
+      "scope": "Independent offline semantic checks at the declared one-decimal precision; not browser rendering.",
+      "original_strict_check": {
+        "status": "failed",
+        "reason": "The initial driver required two-decimal accuracy, which the prompt did not specify. Its failure is retained."
+      },
+      "rejected_mutations": [
+        "wrong-percentage",
+        "wrong-total",
+        "duplicate-row",
+        "html-active-script",
+        "html-resource"
+      ],
+      "files": [
+        {
+          "name": "support-input.csv",
+          "bytes": 169,
+          "sha256": "425065dc9d62d13c7b2e0c833e809e398a7cce9db9ce20ef80af2a1b7eaf3e1e"
+        },
+        {
+          "name": "support-review.pptx",
+          "bytes": 34086,
+          "sha256": "11950bd41a6d02763db4e5e10a6518e3b46328fded10dd66aa513312d7debce8"
+        },
+        {
+          "name": "support-report.html",
+          "bytes": 2713,
+          "sha256": "6440aa01f53ced57536cfd7d6f2923f122bf7b4994826b0b3ab7fea30f73d7e0"
+        },
+        {
+          "name": "support-summary.xlsx",
+          "bytes": 5787,
+          "sha256": "37ff9a3a2e0e2254e6c6ae12fa691d1f5fe1cae3f44d3325b2a50c31e9f59e1d"
+        },
+        {
+          "name": "support-summary.csv",
+          "bytes": 106,
+          "sha256": "243fbdbe30ce09709d19b290cac728937cff581b58dd3b9e83bc531134e89d4a"
+        }
+      ],
+      "limitations": [
+        "CSV lacks the requested embedded synthetic-data notice.",
+        "XLSX has a synthetic-data footer outside the four-row table.",
+        "The HTML/XLSX explanatory formula omits the factor of 100; numeric percentage values are correct."
+      ]
+    },
+    "prompt_conformance": "partial",
+    "recovered_tool_failure": "Worksheet.add_format caused AttributeError; the Agent corrected the workbook API call and reran successfully."
+  },
+  "dependency_audit": {
+    "counts": {
+      "info": 0,
+      "low": 0,
+      "moderate": 3,
+      "high": 7,
+      "critical": 0,
+      "total": 10
+    },
+    "scope": "Advisory provenance, not runtime exploitability.",
+    "unchanged_affected_lock_entries_against": [
+      "5d3fa9178131f6cfdbcd183471d57be212c65f26",
+      "462999ec3f5c1467ef0ccf5cf8c422393f40a0e6"
+    ],
+    "entries": [
+      {
+        "name": "axios",
+        "severity": "high"
+      },
+      {
+        "name": "baseline-browser-mapping",
+        "severity": "moderate"
+      },
+      {
+        "name": "browserslist",
+        "severity": "high"
+      },
+      {
+        "name": "dompurify",
+        "severity": "moderate"
+      },
+      {
+        "name": "fast-uri",
+        "severity": "high"
+      },
+      {
+        "name": "image-size",
+        "severity": "high"
+      },
+      {
+        "name": "less",
+        "severity": "high"
+      },
+      {
+        "name": "mermaid",
+        "severity": "moderate"
+      },
+      {
+        "name": "nanoid",
+        "severity": "high"
+      },
+      {
+        "name": "postcss",
+        "severity": "high"
+      }
+    ]
+  },
+  "integration_first_run": {
+    "source_commit": "e0377f24fa8b3b88537f2ee3db1c218e17716429",
+    "status": "failed",
+    "failed_checks": [
+      {
+        "name": "go-full",
+        "exit_code": 1,
+        "sha256": "563844f651c09571084a6c77695091b1ebf94e5f25a03f6f966cf9e81fae70b9"
+      },
+      {
+        "name": "go-race",
+        "exit_code": 1,
+        "sha256": "81a4dd90a26b151e59828918c2bd30ca73ea46df74541beb2f68da0b7a330270"
+      }
+    ],
+    "reason": "Redaction fixture lacked the parent trace now required by upstream StartChildSpan.",
+    "fix": "Added an explicit parent trace and checked untraced RPCs emit no extra span; real OTLP payload redaction assertions retained."
+  }
+}

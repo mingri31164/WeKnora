@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support Operations Review</title>
+<style>
+  body { font-family: Helvetica, Arial, sans-serif; margin: 0 auto; max-width: 46rem;
+         padding: 2rem 1.25rem 3rem; color: #1f2933; line-height: 1.5; }
+  h1 { font-size: 1.75rem; margin: 0 0 0.25rem; }
+  h2 { font-size: 1.15rem; margin: 2rem 0 0.5rem; }
+  .subtitle { margin: 0 0 1rem; color: #52606d; }
+  .banner { background: #fff4e5; border: 1px solid #f0b429; border-radius: 4px;
+             padding: 0.65rem 0.85rem; font-size: 0.92rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0 0.5rem; }
+  caption { text-align: left; font-size: 0.9rem; color: #52606d; padding-bottom: 0.4rem; }
+  th, td { border: 1px solid #cbd2d9; padding: 0.5rem 0.65rem; text-align: left; }
+  thead th { background: #dce6f1; }
+  tbody th { font-weight: 600; }
+  tr.total th, tr.total td { background: #f2f2f2; font-weight: 700; }
+  ul { padding-left: 1.2rem; }
+  footer { margin-top: 2rem; font-size: 0.85rem; color: #52606d; }
+</style>
+</head>
+<body>
+  <h1>Support Operations Review</h1>
+  <p class="subtitle">Ticket volumes and resolution rates for 2026-06, 2026-07, 2026-08</p>
+
+  <p class="banner"><strong>Synthetic data.</strong> Every figure on this page comes from an
+  invented demonstration dataset. It is not production, benchmark, or audited operational data.</p>
+
+  <h2>Team summary</h2>
+  <table>
+    <caption>Synthetic demonstration data. resolution_percent = resolved / tickets, rounded to
+    one decimal.</caption>
+    <thead>
+      <tr>
+        <th scope="col">team</th>
+        <th scope="col">tickets</th>
+        <th scope="col">resolved</th>
+        <th scope="col">resolution_percent</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr><th scope="row">Platform</th><td>450</td><td>417</td><td>92.7</td></tr>
+        <tr><th scope="row">Search</th><td>300</td><td>280</td><td>93.3</td></tr>
+        <tr class="total"><th scope="row">Total</th><td>750</td><td>697</td><td>92.9</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Scope and limitations</h2>
+  <ul>
+    <li>Synthetic demonstration dataset; not real operational data.</li>
+    <li>Covers two teams across three months (2026-06, 2026-07, 2026-08) only.</li>
+    <li>Percentages are derived solely from the supplied counts and rounded to one decimal.</li>
+    <li>Only ticket and resolved counts were provided; no quality, incident, or staffing data.</li>
+    <li>No performance, trend, or quality conclusions are drawn from these figures.</li>
+  </ul>
+
+  <footer>Source: support-input.csv (synthetic). Prepared 2026-09-12.</footer>
+</body>
+</html>

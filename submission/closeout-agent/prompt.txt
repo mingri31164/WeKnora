@@ -1,0 +1,13 @@
+Use the installed presentation-builder skill to analyze the synthetic CSV at /workspace/output/support-input.csv.
+Read skill://presentation-builder/SKILL.md first, then inspect the CSV with read_file or shell_exec.
+The CSV is an invented demonstration dataset, not production or benchmark data.
+Aggregate tickets and resolved by team: Platform 450 tickets / 417 resolved, Search 300 / 280, total 750 / 697.
+Compute resolution percentages from the CSV and explicitly label the data as synthetic in every report.
+Create exactly these four deliverables in /workspace/output:
+1. support-review.pptx using the installed build_presentation.py, a cover titled Support Operations Review and three content slides: totals, team comparison table, scope and limitations.
+2. support-report.html, self-contained and readable with the same native table; no scripts, links, remote images, CSS imports, or network requests.
+3. support-summary.xlsx using the installed XlsxWriter dependency, with columns team,tickets,resolved,resolution_percent and rows Platform,Search,Total. Store literal values, not formulas.
+4. support-summary.csv using exactly the same columns and rows.
+Keep intermediate Python/JSON files under /workspace, outside output. Leave support-input.csv unchanged.
+Use shell_exec with skill_name=presentation-builder to select the installed environment. Do not install packages or call external services.
+Check the four outputs are nonempty and return a link to each. Do not invent performance, incident, or quality claims.
